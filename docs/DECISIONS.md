@@ -16,6 +16,18 @@
 | D-007 | Projectile form | 165 mm cartridge / **puck** | **31 mm × 28 mm puck** | 2026-05-22 | [CARRIER_PROJECTILE_ICD.md](CARRIER_PROJECTILE_ICD.md) |
 | D-008 | Mission framing | Generic terminal AD / **last-ditch APS analogue** | **Last-ditch don't-die layer** | 2026-05-22 | [DESIGN_PHILOSOPHY.md](DESIGN_PHILOSOPHY.md) |
 | D-010 | Terminal drone sensor | Swarm kit only / **EM+radar on tile** | **MKFS-SENS-EM-RADAR** optional; 50–800 yd | 2026-05-22 | [ICD_DRONE_RADAR.md](ICD_DRONE_RADAR.md) |
+| D-011 | Canonical puck forms | A / B / C / D / mix | **PUCK-A + PUCK-B** | 2026-05-22 | [PUCK_DESIGN_OPTIONS.md](../assets/PUCK_DESIGN_OPTIONS.md) |
+
+---
+
+## D-011 Rationale — Canonical Puck Forms
+
+| Form | Name | Role |
+|------|------|------|
+| **PUCK-A** | Standard Drum | Tube fill, tile packing, general ICD diagrams |
+| **PUCK-B** | Hollow-Point Nose | Peel doctrine, cutaways, storyboards |
+
+Options C (peel action shot) and D (setback cap reference) remain available for one-off art but are **not** canonical. All new docs and renders use **A + B**.
 
 ---
 
@@ -44,3 +56,4 @@ Baseline MKFS relies on existing vehicle EO/IR or manual cue — minimizing inte
 | Version | Date | Change |
 |---------|------|--------|
 | 0.1 | 2026-05-22 | D-004, D-005 closed |
+| 0.2 | 2026-05-22 | D-011 — PUCK-A + PUCK-B canonical |

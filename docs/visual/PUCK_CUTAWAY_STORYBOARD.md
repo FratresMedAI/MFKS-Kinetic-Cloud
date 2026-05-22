@@ -1,18 +1,28 @@
 # MKFS Puck Cutaway Storyboard
 
 **Document ID:** MKFS-VIS-STORY-001  
-**Version:** 0.1 (Phase 5)  
-**Related:** [PUCK_RELEASE.md](../PUCK_RELEASE.md) | [CARRIER_PROJECTILE_ICD.md](../CARRIER_PROJECTILE_ICD.md)
+**Version:** 0.2 (Phase 5)  
+**Related:** [PUCK_RELEASE.md](../PUCK_RELEASE.md) | [CARRIER_PROJECTILE_ICD.md](../CARRIER_PROJECTILE_ICD.md) | [PUCK_DESIGN_OPTIONS.md](../../assets/PUCK_DESIGN_OPTIONS.md)
 
 ---
 
 ## 1. Purpose
 
-Frame-by-frame storyboard for hollow-point puck release — for illustrators, animators, and range camera placement. **No new render in this sprint** — structured brief only.
+Frame-by-frame storyboard for hollow-point puck release — for illustrators, animators, and range camera placement.
+
+**Canonical puck forms (D-011):** **PUCK-A** (Standard Drum) for tube/chamber views; **PUCK-B** (Hollow-Point Nose) for peel sequence and cutaways.
 
 ---
 
-## 2. Puck Key Dimensions
+## 2. Reference Render
+
+![MKFS puck design comparison — PUCK-A and PUCK-B](../../assets/mkfs_puck_design_comparison_4up.png)
+
+From [mkfs_puck_design_comparison_4up.png](../../assets/mkfs_puck_design_comparison_4up.png) — use **A** and **B** in all new art.
+
+---
+
+## 3. Puck Key Dimensions
 
 From [CARRIER_PROJECTILE_ICD.md](../CARRIER_PROJECTILE_ICD.md):
 
@@ -21,11 +31,11 @@ From [CARRIER_PROJECTILE_ICD.md](../CARRIER_PROJECTILE_ICD.md):
 | Diameter | 31 mm |
 | Length | 28 mm |
 | Mass | ~63 g |
-| Flechette payload | ~40 Ti @ 1.3 g |
+| Payload | ~40 **titanium BBs** (Ti-6Al-4V) |
 
 ---
 
-## 3. Timeline
+## 4. Timeline
 
 ```mermaid
 flowchart LR
@@ -38,27 +48,22 @@ flowchart LR
 
 ---
 
-## 4. Frame Descriptions
+## 5. Frame Descriptions
 
 ### Frame 1 — Launch (t = 0 ms)
 
 **View:** Side cutaway, tube chamber  
+**Puck form:** **PUCK-A** (Standard Drum) in tube  
 **Action:** Electric primer fires; puck accelerates; setback loads nose/skirt interface  
 **Callouts:** 31 mm diameter, 850–950 m/s muzzle velocity  
-**Art note:** Show flechettes stacked inside skirt cavity, nose ogive intact  
-
-```
-  [  TUBE  ]
-  |  ████  |  ← puck in tube
-  |  ████  |
-  [========]  primer
-```
+**Art note:** Show **titanium BBs** stacked inside skirt cavity, nose ogive intact  
 
 ---
 
 ### Frame 2 — Supersonic flight (t = 20–80 ms)
 
 **View:** External side, no cutaway  
+**Puck form:** **PUCK-B** (Hollow-Point Nose) profile  
 **Action:** Puck stable; skirt latch holds; air flow over ogive  
 **Callouts:** ~200 ft to R_open  
 **Art note:** Minimal vapor trail; no HE flash  
@@ -68,24 +73,18 @@ flowchart LR
 ### Frame 3 — Setback release (t = 78 ms / R_open)
 
 **View:** Cutaway side + front quarter  
+**Puck form:** **PUCK-B** cutaway  
 **Action:** Setback force exceeds latch; skirt begins radial peel  
 **Callouts:** T_release = 0.078 s mechanical; R_open ≈ 200 ft  
-**Art note:** Skirt petals mid-flex — strain visible at score lines  
-
-```
-       ___
-      /   \   ← nose
-     | * * |  ← flechettes inside
-      \___/
-       | |     ← skirt peeling
-```
+**Art note:** Skirt petals mid-flex — strain visible at score lines; **titanium BBs** visible in cavity  
 
 ---
 
 ### Frame 4 — Skirt peel (t = 80–120 ms)
 
 **View:** Front orthographic + side  
-**Action:** Skirt petals fully open; flechettes begin radial ejection  
+**Puck form:** **PUCK-B** opening  
+**Action:** Skirt petals fully open; titanium BBs begin radial ejection  
 **Callouts:** Hollow-point geometry — opens from front  
 **Art note:** 4–6 petal segments; no explosive burst  
 
@@ -94,9 +93,9 @@ flowchart LR
 ### Frame 5 — Drag spread (t = 120–200 ms)
 
 **View:** 3/4 perspective, cloud forming  
-**Action:** Light flechettes decelerate faster; heavy continue forward  
+**Action:** Light BBs decelerate faster; heavy continue forward  
 **Callouts:** Drag differential spreads cloud; ~3.3° half-angle cone  
-**Art note:** Streak lines for flechette paths; puck body tumbles aft  
+**Art note:** Streak lines for BB paths; puck body tumbles aft  
 
 ---
 
@@ -104,12 +103,12 @@ flowchart LR
 
 **View:** Wide — target volume at 350 ft  
 **Action:** Cloud ~24 ft diameter; saturation pattern  
-**Callouts:** 100 flechettes per puck; 310+ hits/m² per 136-tube salvo  
+**Callouts:** ~40 titanium BBs per puck; tile salvo density per [BALLISTICS_RESULTS.md](../../research/ballistics/BALLISTICS_RESULTS.md)  
 **Art note:** Abstract density heatmap overlay optional  
 
 ---
 
-## 5. Camera / Instrument Placement (Range)
+## 6. Camera / Instrument Placement (Range)
 
 | Camera | Frame | Purpose |
 |--------|-------|---------|
@@ -119,8 +118,9 @@ flowchart LR
 
 ---
 
-## 6. Revision History
+## 7. Revision History
 
 | Version | Date | Change |
 |---------|------|--------|
 | 0.1 | 2026-05-22 | Initial puck cutaway storyboard |
+| 0.2 | 2026-05-22 | D-011 — PUCK-A/B canonical; embed 4-up render; titanium BBs language |

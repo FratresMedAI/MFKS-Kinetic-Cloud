@@ -2,7 +2,7 @@
 
 **Document ID:** MKFS-DOC-DEPLOY-001  
 **Version:** 0.1 (Phase 0)  
-**Related:** [REQUIREMENTS.md](REQUIREMENTS.md) | [VEHICLE_INTEGRATION.md](VEHICLE_INTEGRATION.md) | [SYSTEM_ARCHITECTURE.md](architecture/SYSTEM_ARCHITECTURE.md) | [current_tasks.md](../tasks/current_tasks.md)
+**Related:** [REQUIREMENTS.md](REQUIREMENTS.md) | [VEHICLE_INTEGRATION.md](VEHICLE_INTEGRATION.md) | [SYSTEM_ARCHITECTURE.md](architecture/SYSTEM_ARCHITECTURE.md) | [RIFLING_SPIN_ANALYSIS.md](RIFLING_SPIN_ANALYSIS.md) | [current_tasks.md](../tasks/current_tasks.md)
 
 ---
 
@@ -187,7 +187,23 @@ Phase 1 will develop a full model in `research/ballistics/`. Initial assumptions
 
 ---
 
-## 8. Recommended Baseline
+## 8. Tube Bore — Rifling vs Smooth (See MKFS-DOC-RIFL-001)
+
+Full analysis: [RIFLING_SPIN_ANALYSIS.md](RIFLING_SPIN_ANALYSIS.md).
+
+| Question | Answer |
+|----------|--------|
+| Rifle the barrels? | **No — smooth bore baseline** (33 mm straight) |
+| Does spin boost `V_0` or range? | **No** — rifling costs engraving energy; does not add propellant impulse |
+| Can spin widen the BB cloud? | **Modestly** — optional light twist (1:48–1:72) adds tangential spread at peel |
+| Conflict with Option D peel? | Full rifling + Option A spin-release **conflicts** with setback skirt timing |
+| Hybrid path | **Option D primary**; light rifling only as Phase 2 dispersion variant (D+A downstream collet per down-select) |
+
+Option A in §3 assumes rifling for centrifugal release. MKFS baseline keeps Option D on **smooth bore**; spin is not required for `R_open` or current salvo density targets.
+
+---
+
+## 9. Recommended Baseline
 
 **Primary recommendation: Option D — Spring-loaded petal / setback release**
 
@@ -207,7 +223,7 @@ Phase 1 will develop a full model in `research/ballistics/`. Initial assumptions
 
 ---
 
-## 9. Phase 1 Validation Plan
+## 10. Phase 1 Validation Plan
 
 | Task | Method | Success Criteria |
 |------|--------|------------------|
@@ -219,8 +235,9 @@ Phase 1 will develop a full model in `research/ballistics/`. Initial assumptions
 
 ---
 
-## 10. Revision History
+## 11. Revision History
 
 | Version | Date | Change |
 |---------|------|--------|
 | 0.1 | 2026-05-22 | Phase 0 initial deployment options and baseline recommendation |
+| 0.2 | 2026-05-22 | §8 rifling vs smooth bore; cross-link RIFLING_SPIN_ANALYSIS |

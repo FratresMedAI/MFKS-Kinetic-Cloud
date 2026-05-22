@@ -1,9 +1,9 @@
 # MKFS Carrier Projectile — Interface Control Document
 
 **Document ID:** MKFS-ICD-001  
-**Version:** 0.4  
+**Version:** 0.5  
 **Interface:** MKFS-IF-001  
-**Related:** [DESIGN_PHILOSOPHY.md](DESIGN_PHILOSOPHY.md) | [PUCK_RELEASE.md](PUCK_RELEASE.md) | [DEPLOYMENT_MECHANISM.md](DEPLOYMENT_MECHANISM.md)
+**Related:** [DESIGN_PHILOSOPHY.md](DESIGN_PHILOSOPHY.md) | [PUCK_RELEASE.md](PUCK_RELEASE.md) | [DEPLOYMENT_MECHANISM.md](DEPLOYMENT_MECHANISM.md) | [PUCK_DESIGN_OPTIONS.md](../assets/PUCK_DESIGN_OPTIONS.md)
 
 ---
 
@@ -12,6 +12,15 @@
 Define the **hollow-point puck** (`MKFS-CART-PUCK`) — short 31 mm carrier whose **skirt peels open** like a hollow-point bullet. **Speed + air drag + geometry** spread the flechette/buckshot cloud. **No explosives. No electronic fuze.**
 
 **Design fusion:** CIWS volume + 30 mm class + puck form + 00 buck payload + hollow-point opening → one kinetic strip.
+
+### Canonical form factors (D-011)
+
+| ID | Name | Use |
+|----|------|-----|
+| **PUCK-A** | Standard Drum | General cartridge / tube-fill diagrams; flat top, scored skirt band |
+| **PUCK-B** | Hollow-Point Nose | Peel doctrine, cutaways, storyboards; domed nose + titanium BB payload visible |
+
+See [PUCK_DESIGN_OPTIONS.md](../assets/PUCK_DESIGN_OPTIONS.md) and [mkfs_puck_design_comparison_4up.png](../assets/mkfs_puck_design_comparison_4up.png).
 
 ---
 
@@ -158,3 +167,4 @@ Flechette: Ti-6Al-4V, 18 mm × 2 mm, chisel nose.
 | 0.2 | 2026-05-22 | Half-dollar puck; MKFS-CART-PUCK |
 | 0.3 | 2026-05-22 | Size comparison vs 30×113 mm grenade |
 | 0.4 | 2026-05-22 | Hollow-point skirt release; CIWS+buckshot fusion |
+| 0.5 | 2026-05-22 | D-011 — PUCK-A / PUCK-B canonical form factors |

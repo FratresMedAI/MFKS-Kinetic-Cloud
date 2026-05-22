@@ -110,6 +110,17 @@ All tasks complete. See [CARRIER_PROJECTILE_ICD.md](../docs/CARRIER_PROJECTILE_I
 | P6-002 | Terminal drone radar + EM sensor | Done | [ICD_DRONE_RADAR.md](../docs/ICD_DRONE_RADAR.md) |
 | P6-003 | Core enhancements (FCU scale, turret ripple, dual-strip) | Done | [MKFS_CORE_ENHANCEMENTS.md](../docs/MKFS_CORE_ENHANCEMENTS.md) |
 | P6-004 | FCU salvo scale update (136/289 tubes) | Done | [FCU_STATE_MACHINE.md](../src/fire_control/FCU_STATE_MACHINE.md) |
+| P6-005 | Rifling vs smooth-bore analysis | Done | [RIFLING_SPIN_ANALYSIS.md](../docs/RIFLING_SPIN_ANALYSIS.md) |
+| P6-006 | Canonical puck forms (PUCK-A + PUCK-B) | Done | [PUCK_DESIGN_OPTIONS.md](../assets/PUCK_DESIGN_OPTIONS.md), D-011 |
+
+---
+
+## Phase 7 — Documentation Lock ✅
+
+| ID | Task | Status | Linked Doc |
+|----|------|--------|------------|
+| P7-001 | Rifling/spin concept doc + deployment cross-link | Done | [RIFLING_SPIN_ANALYSIS.md](../docs/RIFLING_SPIN_ANALYSIS.md) |
+| P7-002 | Puck A/B locked across ICD, storyboard, assets | Done | D-011 |
 
 ---
 
@@ -122,6 +133,7 @@ All tasks complete. See [CARRIER_PROJECTILE_ICD.md](../docs/CARRIER_PROJECTILE_I
 | D-003 | CAN 2.0B | [DECISIONS.md](../docs/DECISIONS.md) |
 | D-004 | 25-tube standard tier | [DECISIONS.md](../docs/DECISIONS.md) |
 | D-005 | Optional swarm sensor kit | [DECISIONS.md](../docs/DECISIONS.md) |
+| D-011 | PUCK-A + PUCK-B canonical | [DECISIONS.md](../docs/DECISIONS.md) |
 
 ---
 
