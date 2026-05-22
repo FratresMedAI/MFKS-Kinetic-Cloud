@@ -68,6 +68,15 @@
 | 459.0 | 38.4 | 23.3 | 126.6 | 193.6 | 268.9 | 806.8 |
 | 492.0 | 42.5 | 18.9 | 103.0 | 157.5 | 218.9 | 656.6 |
 
+## Spin Variant Comparison @ 350 ft (2×1 strip)
+
+| Variant | V₀ (m/s) | Half-angle (°) | R_open (ft) | Pattern (ft) | Hits/m² (136) |
+|---------|----------|----------------|-------------|--------------|---------------|
+| Smooth bore baseline (D-002 Option D) | 900.0 | 3.3 | 199.5 | 24.5 | **310.06** |
+| Light rifling 1:60 — Phase 2 experiment only | 891.0 | 4.1 | 197.5 | 29.5 | **214.49** |
+
+→ [SPIN_DISPERSION_SCENARIO.md](SPIN_DISPERSION_SCENARIO.md)
+
 ## V₀ Sensitivity (±5%)
 
 | V₀ Δ% | V₀ (m/s) | R_open (ft) | Shift (ft) | Pass ±30 ft |

@@ -255,6 +255,24 @@
       "hits_m2_turret_full_3deck": 656.6
     }
   ],
+  "spin_variant_comparison": {
+    "smooth_baseline": {
+      "label": "Smooth bore baseline (D-002 Option D)",
+      "v0_ms": 900.0,
+      "dispersion_half_angle_deg": 3.3,
+      "r_open_ft": 199.5,
+      "pattern_diameter_ft": 24.5,
+      "hits_m2_strip_2x1": 310.06
+    },
+    "light_twist_1_60": {
+      "label": "Light rifling 1:60 \u2014 Phase 2 experiment only",
+      "v0_ms": 891.0,
+      "dispersion_half_angle_deg": 4.1,
+      "r_open_ft": 197.5,
+      "pattern_diameter_ft": 29.5,
+      "hits_m2_strip_2x1": 214.49
+    }
+  },
   "v0_sensitivity": [
     {
       "v0_pct": -5,

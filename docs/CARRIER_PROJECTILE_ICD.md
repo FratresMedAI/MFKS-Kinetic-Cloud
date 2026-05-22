@@ -9,7 +9,7 @@
 
 ## 1. Purpose
 
-Define the **hollow-point puck** (`MKFS-CART-PUCK`) — short 31 mm carrier whose **skirt peels open** like a hollow-point bullet. **Speed + air drag + geometry** spread the flechette/buckshot cloud. **No explosives. No electronic fuze.**
+Define the **hollow-point puck** (`MKFS-CART-PUCK`) — short 31 mm carrier whose **skirt peels open** like a hollow-point bullet. **Speed + air drag + geometry** spread the **titanium BB cloud**. **No explosives. No electronic fuze.**
 
 **Design fusion:** CIWS volume + 30 mm class + puck form + 00 buck payload + hollow-point opening → one kinetic strip.
 
@@ -87,7 +87,7 @@ So when you say **“half dollar size”**:
        ┌───┐                 ┌───┐
        │   │  stable flight  │ ● │  nose continues
        │   │  ───────────►   │╱ ╲│  skirt mushrooms aft
-       └───┘                 │███│  flechettes shear out
+       └───┘                 │███│  Ti BBs shear out
                              └───┘
 ```
 
@@ -104,7 +104,7 @@ So when you say **“half dollar size”**:
 
 ## 4. Why Puck + Many Tubes
 
-One 165 mm “rifle” round carries many flechettes but **fills a huge tube**. A **puck** carries fewer flechettes per round but:
+One 165 mm “rifle” round carries many sub-projectiles but **fills a huge tube**. A **puck** carries fewer **titanium BBs** per round but:
 
 - Fits **35 mm pitch** → **9 tubes per foot** of tile  
 - **200 pucks** from a 2×100 layout >> one box of 25 big rounds  
@@ -115,9 +115,9 @@ One 165 mm “rifle” round carries many flechettes but **fills a huge tube**. 
 | | Old concept (superseded) | Puck concept |
 |--|--------------------------|--------------|
 | Form | 165 mm × 30 mm | **28 mm × 31 mm** |
-| Flechettes / round | ~100 | **30–40** |
+| Flechettes / round | ~100 | **~40 Ti BBs** |
 | Tubes on 2×1 ft tile | ~5 | **~136** |
-| Flechettes per 2×1 salvo | ~500 | **~4,700+** |
+| Ti BBs per 2×1 salvo | ~500 | **~5,400+** |
 
 ---
 
@@ -128,10 +128,10 @@ One 165 mm “rifle” round carries many flechettes but **fills a huge tube**. 
 | Case / base | 18 g | Chamber seal, primer pocket |
 | Propellant | 8 g | Launch |
 | Carrier cap | 12 g | Setback petal (Option D) |
-| Flechette bundle | 25 g | **~40 × Ti flechettes** *(00 buck class spread)* |
+| Flechette bundle *(legacy term)* | 25 g | **Ti BB bundle — ~40 × titanium BBs** *(00 buck class spread)* |
 | **Total** | **~63 g** | |
 
-Flechette: Ti-6Al-4V, 18 mm × 2 mm, chisel nose.
+Sub-projectile: Ti-6Al-4V **BB sphere**, 00-buck class. *(Legacy ICD term “flechette” retained in ballistics model constants only.)*
 
 ---
 
@@ -168,3 +168,4 @@ Flechette: Ti-6Al-4V, 18 mm × 2 mm, chisel nose.
 | 0.3 | 2026-05-22 | Size comparison vs 30×113 mm grenade |
 | 0.4 | 2026-05-22 | Hollow-point skirt release; CIWS+buckshot fusion |
 | 0.5 | 2026-05-22 | D-011 — PUCK-A / PUCK-B canonical form factors |
+| 0.6 | 2026-05-22 | Phase 8 — titanium BB terminology; Ti BB bundle §5 |

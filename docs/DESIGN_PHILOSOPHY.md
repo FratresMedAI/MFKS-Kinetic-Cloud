@@ -101,7 +101,7 @@ Projectiles are **short pucks** (~31 mm × ~28 mm) — half-dollar **width**, gr
 | Diameter | 31 mm |
 | Length | ~28 mm |
 | Release | Hollow-point skirt peel @ `R_open` |
-| Sub-projectiles | ~40 flechettes / puck |
+| Sub-projectiles | **~40 titanium BBs** / puck |
 | Full **2×2 ft** box | ~289 pucks → **~11,500+** sub-projectiles |
 
 **Terminal goal:** full strip dump **saturates a volume of sky** (~200–500 ft deep, wide merged cone) — “eviscerate the swarm” in the last-ditch window.

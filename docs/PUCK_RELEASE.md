@@ -33,13 +33,13 @@ flowchart LR
   LAUNCH[Launch_setback] --> FLIGHT[Supersonic_flight]
   FLIGHT --> PEEL[Skirt_peels_open]
   PEEL --> DRAG[Drag_accelerates_spread]
-  DRAG --> CLOUD[Buckshot_flechette_cloud]
+  DRAG --> CLOUD[Ti_BB_cloud]
 ```
 
 1. **Launch** — Electric primer; puck exits tube at **850–950 m/s**. Setback loads the nose/skirt interface.  
 2. **Flight** — Puck flies stable (short ogive nose). Mechanical latch holds skirt closed until release condition.  
 3. **Peel** — At **`R_open`** (~200 ft): setback-preloaded petals **or** aerodynamic pressure on scored skirt exceeds retention → **skirt mushrooms backward** (hollow-point behavior).  
-4. **Spread** — Open skirt = **massive drag asymmetry** + forward body continues → sub-projectiles (flechettes / buckshot-class pellets) **shear out radially**.  
+4. **Spread** — Open skirt = **massive drag asymmetry** + forward body continues → **titanium BBs** **shear out radially**.  
 5. **Cloud** — Each puck = mini **00 buck** burst. **Full strip** = hundreds of overlapping bursts → **terminal volume saturation**.
 
 ### Why Puck Shape Enables This
@@ -62,7 +62,7 @@ Each puck releases a **shot column** — not one killer, a **cluster**:
 | Parameter | Target |
 |-----------|--------|
 | Sub-projectiles per puck | **35–45** |
-| Individual mass | **0.5–0.9 g** *(00 buck ~3.5 g — we use more, lighter, faster flechettes)* |
+| Individual mass | **0.5–0.9 g** *(00 buck ~3.5 g — lighter Ti BBs, higher count)* |
 | Material | Ti-6Al-4V or tungsten composite |
 | Release | Radial + forward cone as skirt peels |
 | Role | Structural kill on Class 1–2 UAS — motor, wing, battery |
@@ -114,7 +114,7 @@ Baseline: **Option HP — Hollow-Point Skirt** *(evolves Option D setback)*
 | Arming | Launch setback pre-stresses scored skirt |
 | Release trigger | Setback threshold **or** dynamic pressure at `R_open` airspeed |
 | Opening | Skirt petals peel aft — hollow-point mushroom |
-| Dispersal | Drag + centrifugal shedding of flechette column |
+| Dispersal | Drag + centrifugal shedding of **Ti BB column** |
 
 **No explosives.** Retention spring preload sets band index (short / standard / long `R_open`).
 

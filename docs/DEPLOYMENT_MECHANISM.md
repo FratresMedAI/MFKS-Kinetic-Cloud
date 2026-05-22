@@ -8,7 +8,7 @@
 
 ## 1. Purpose
 
-Explore purely mechanical range-band deployment options for the MKFS carrier projectile. The deployment mechanism must release a titanium flechette / sub-projectile cloud at preset distances with **no explosives and no electronic fuze** in the round.
+Explore purely mechanical range-band deployment options for the MKFS carrier projectile. The deployment mechanism must release a **titanium BB / sub-projectile cloud** at preset distances with **no explosives and no electronic fuze** in the round.
 
 ---
 
@@ -123,21 +123,21 @@ See [BALLISTICS_RESULTS.md](../research/ballistics/BALLISTICS_RESULTS.md) for fu
 
 ---
 
-## 5. Flechette Cloud Dispersion Model (Initial Assumptions)
+## 5. Ti BB Cloud Dispersion Model (Initial Assumptions)
 
 Phase 1 will develop a full model in `research/ballistics/`. Initial assumptions:
 
 | Parameter | Assumed Value |
 |-----------|---------------|
-| Flechette material | Titanium alloy (Ti-6Al-4V) |
-| Flechette count per carrier | 80–120 |
-| Individual flechette mass | 1.5–3 g |
-| Flechette length | 25–40 mm |
+| Sub-projectile material | Titanium alloy (Ti-6Al-4V) — **BB spheres** |
+| Sub-projectiles per carrier | **~40** *(ICD)* |
+| Individual BB mass | 0.5–0.9 g |
+| Form | 00-buck class sphere |
 | Release velocity (sub-projectile) | Carrier velocity + 5–15 m/s radial spread |
 | Pattern diameter at 350 ft | 15–25 ft (4.6–7.6 m) *(target)* |
 | Pattern thickness (depth) | 30–50 ft (9–15 m) |
 
-**Lethality criterion (design target):** ≥ 1 flechette strike per 0.5 m² at 350 ft against Class 1–2 UAS *(assumed — requires test validation)*.
+**Lethality criterion (design target):** ≥ 1 **Ti BB** strike per 0.5 m² at 350 ft against Class 1–2 UAS *(assumed — requires test validation)*.
 
 ---
 

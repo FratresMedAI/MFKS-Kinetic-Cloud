@@ -35,7 +35,7 @@
 |---------|-------------|---------------|
 | T2-001 | Doppler `V_0` (n=30) | 900 m/s ± 45 m/s |
 | T2-002 | Witness screens at 200, 350, 500 ft | Pattern diameter 15–25 ft at 350 ft |
-| T2-003 | Pattern density (350 ft, 25-tube salvo) | ≥ 2 flechettes/m² |
+| T2-003 | Pattern density (350 ft, **136-tube 2×1 strip** salvo) | ≥ 2 **Ti BBs**/m² |
 | T2-004 | `V_0` sensitivity (cold/hot propellant) | `R_open` shift ≤ 30 ft |
 
 ---
@@ -45,7 +45,7 @@
 | Test ID | Description | Pass Criteria |
 |---------|-------------|---------------|
 | T3-001 | Single tube fire | Clean ignition, no hangfire > 500 ms |
-| T3-002 | 25-tube salvo (20 ms spacing) | 100% tube fire; no cross-ignition |
+| T3-002 | **136-tube salvo** (2 ms spacing, LAST_DITCH_FULL) | 100% tube fire; no cross-ignition |
 | T3-003 | Pod swap time | < 5 min, 2 crew |
 | T3-004 | FCU state machine | All transitions per FCU spec |
 | T3-005 | EMI (MIL-STD-461 CE/RE) | No false fire |

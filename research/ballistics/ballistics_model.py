@@ -49,6 +49,21 @@ SALVO_CONFIGS: dict[str, dict] = {
 
 EVAL_RANGE_M = 106.7  # 350 ft — nominal band center
 
+# Spin dispersion variants — RIFLING_SPIN_ANALYSIS.md §9 (Phase 8)
+# FLECHETTE_COUNT = sub-projectile count per puck (~40 Ti BBs in ICD; model uses 100 legacy density term)
+SPIN_VARIANTS: dict[str, dict] = {
+    "smooth_baseline": {
+        "label": "Smooth bore baseline (D-002 Option D)",
+        "v0_ms": 900.0,
+        "dispersion_half_angle_deg": 3.3,
+    },
+    "light_twist_1_60": {
+        "label": "Light rifling 1:60 — Phase 2 experiment only",
+        "v0_ms": 891.0,
+        "dispersion_half_angle_deg": 4.1,
+    },
+}
+
 
 @dataclass
 class TrajectoryPoint:
@@ -196,6 +211,26 @@ def compute_band_salvo_table(r_open_m: float) -> list[dict]:
     return rows
 
 
+def compute_spin_variant_comparison() -> dict:
+    """Compare smooth bore vs light-twist dispersion at 350 ft."""
+    results = {}
+    for key, cfg in SPIN_VARIANTS.items():
+        v0 = cfg["v0_ms"]
+        half_angle = cfg["dispersion_half_angle_deg"]
+        r_open_m = r_open_for_v0(v0, ELEVATION_DEG)
+        pattern_m = pattern_diameter_at_range(EVAL_RANGE_M, r_open_m, half_angle)
+        strip = salvo_metrics(SALVO_CONFIGS["strip_2x1"]["tubes"], pattern_m)
+        results[key] = {
+            "label": cfg["label"],
+            "v0_ms": v0,
+            "dispersion_half_angle_deg": half_angle,
+            "r_open_ft": round(ft(r_open_m), 1),
+            "pattern_diameter_ft": strip["pattern_diameter_ft"],
+            "hits_m2_strip_2x1": strip["hits_per_m2"],
+        }
+    return results
+
+
 def main() -> None:
     pts = simulate_trajectory(V0_NOMINAL, ELEVATION_DEG)
 
@@ -265,6 +300,7 @@ def main() -> None:
         "salvo_scenarios_at_350ft": salvo_scenarios,
         "band_pattern_envelope": band_results,
         "band_salvo_envelope": band_salvo_table,
+        "spin_variant_comparison": compute_spin_variant_comparison(),
         "v0_sensitivity": sensitivity_analysis(),
     }
 
@@ -348,6 +384,22 @@ def main() -> None:
                 f"{row['hits_m2_strip_3x1']} | {row['hits_m2_turret_deck']} | "
                 f"{row['hits_m2_turret_full_3deck']} |"
             )
+
+    spin = output["spin_variant_comparison"]
+    md_lines.extend([
+        "",
+        "## Spin Variant Comparison @ 350 ft (2×1 strip)",
+        "",
+        "| Variant | V₀ (m/s) | Half-angle (°) | R_open (ft) | Pattern (ft) | Hits/m² (136) |",
+        "|---------|----------|----------------|-------------|--------------|---------------|",
+    ])
+    for key, row in spin.items():
+        md_lines.append(
+            f"| {row['label']} | {row['v0_ms']} | {row['dispersion_half_angle_deg']} | "
+            f"{row['r_open_ft']} | {row['pattern_diameter_ft']} | **{row['hits_m2_strip_2x1']}** |"
+        )
+    md_lines.append("")
+    md_lines.append("→ [SPIN_DISPERSION_SCENARIO.md](SPIN_DISPERSION_SCENARIO.md)")
 
     md_lines.extend([
         "",

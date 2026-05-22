@@ -12,10 +12,12 @@ Close-in drone swarms at **200–500 yd** overwhelm vehicles when EW fails, miss
 
 **MKFS** is a last-ditch kinetic layer — same *role* as CIWS or hard-kill APS, but **kinetic-only**:
 
-- **Half-dollar-class puck cartridges** (31 mm × 28 mm)  
-- **Hollow-point skirt release** — speed + drag spread flechette clouds  
+- **Half-dollar-class puck cartridges** (31 mm × 28 mm) — **PUCK-A** (drum) + **PUCK-B** (hollow-point peel)  
+- **Hollow-point skirt release** — speed + drag spread **titanium BB clouds**  
 - **No explosives. No guidance in the round.**  
 - **Electronic fire at the launcher** — every tube addressable  
+
+![Puck forms — PUCK-A Standard Drum + PUCK-B Hollow-Point Nose](../assets/mkfs_puck_design_comparison_4up.png)
 
 ## Three Packaging Lines
 
@@ -33,7 +35,7 @@ Close-in drone swarms at **200–500 yd** overwhelm vehicles when EW fails, miss
 | Turret deck (289 tubes) | **659** |
 | Full turret dump (867 tubes) | **1,977** |
 
-Pattern ~24 ft — CIWS-class volume without a gatling.
+Pattern ~24 ft — CIWS-class **Ti BB** volume without a gatling.
 
 ## Open for Collaboration
 

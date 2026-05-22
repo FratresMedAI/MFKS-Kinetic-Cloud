@@ -27,7 +27,7 @@ Honest comparison of MKFS against alternative terminal-defense approaches — wh
 
 ## 3. Where MKFS Wins
 
-**Terminal swarm volume.** At 350 ft, a single 2×1 strip delivers **310 hits/m²** — see [SALVO_SCENARIOS.md](../research/ballistics/SALVO_SCENARIOS.md). A 289-tube turret deck delivers **659 hits/m²**. No other portable vehicle system matches flechette count in one trigger pull.
+**Terminal swarm volume.** At 350 ft, a single 2×1 strip delivers **310 hits/m²** — see [SALVO_SCENARIOS.md](../research/ballistics/SALVO_SCENARIOS.md). A 289-tube turret deck delivers **659 hits/m²**. No other portable vehicle system matches **titanium BB count** in one trigger pull.
 
 **No HE in the round.** Simpler storage, fewer explosive safety restrictions, no detonation chain in the magazine.
 
@@ -35,7 +35,7 @@ Honest comparison of MKFS against alternative terminal-defense approaches — wh
 
 **Cost per engagement.** Dual-strip salvo ROM **$11K–$20K** vs **$100K+** per missile — see [MAGAZINE_ECONOMICS.md](MAGAZINE_ECONOMICS.md).
 
-**All-weather kinetic.** Unlike DEW, rain and dust do not defocus flechettes.
+**All-weather kinetic.** Unlike DEW, rain and dust do not defocus **Ti BBs**.
 
 ---
 
@@ -47,7 +47,7 @@ Honest comparison of MKFS against alternative terminal-defense approaches — wh
 
 **Reload time.** Pod swap ~5 min; turret deck reload longer. DEW and EW do not consume physical rounds the same way.
 
-**Fratricide.** Thousands of flechettes require strict interlocks — see [FRATRICIDE_DECONFLICTION.md](FRATRICIDE_DECONFLICTION.md). Trophy/DEW have different collateral profiles.
+**Fratricide.** Thousands of **titanium BBs** require strict interlocks — see [FRATRICIDE_DECONFLICTION.md](FRATRICIDE_DECONFLICTION.md). Trophy/DEW have different collateral profiles.
 
 **Peacetime optics.** Kinetic counter-UAS near populated areas faces regulatory scrutiny regardless of HE content.
 
@@ -73,3 +73,4 @@ MKFS sits **between** failed mid-range intercept and inner APS — the **"don't 
 | Version | Date | Change |
 |---------|------|--------|
 | 0.1 | 2026-05-22 | Initial competitive positioning |
+| 0.2 | 2026-05-22 | Phase 8 — titanium BB density language |

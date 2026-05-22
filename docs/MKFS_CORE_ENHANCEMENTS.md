@@ -80,6 +80,8 @@ Stay on **31 mm × 28 mm hollow-point puck** everywhere:
 
 No caliber drift. No merged munitions.
 
+→ [PUCK_CUTAWAY_STORYBOARD.md](visual/PUCK_CUTAWAY_STORYBOARD.md) · [SPIN_DISPERSION_SCENARIO.md](../research/ballistics/SPIN_DISPERSION_SCENARIO.md) · [HIL_SIM.md](../src/fire_control/HIL_SIM.md)
+
 ---
 
 ## 8. What We Rejected
@@ -98,3 +100,4 @@ No caliber drift. No merged munitions.
 | Version | Date | Change |
 |---------|------|--------|
 | 0.1 | 2026-05-22 | Core terminal enhancements; LR spinoff rejected |
+| 0.2 | 2026-05-22 | Phase 8 cross-links — storyboard, spin scenario, HIL |

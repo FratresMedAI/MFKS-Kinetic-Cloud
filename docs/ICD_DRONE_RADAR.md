@@ -81,7 +81,13 @@ Radar **never** autonomously fires. Operator arms FCU; sensor provides track to 
 
 ---
 
-## 6. Honest Limits
+## 6. Co-Mount Concept Render
+
+![MKFS sensor on tile — EM+radar co-mount on 2×1 strip](../assets/mkfs_sensor_on_tile.png)
+
+---
+
+## 7. Honest Limits
 
 - No sensor sees **every** drone — birds, ground clutter, autonomous pre-planned paths still hurt  
 - Passive EM silent when link is off  
@@ -89,9 +95,10 @@ Radar **never** autonomously fires. Operator arms FCU; sensor provides track to 
 
 ---
 
-## 7. Revision History
+## 8. Revision History
 
 | Version | Date | Change |
 |---------|------|--------|
 | 0.1 | 2026-05-22 | Initial draft *(included LR — rejected)* |
 | 0.2 | 2026-05-22 | **Terminal band only**; MKFS tile/turret cueing |
+| 0.3 | 2026-05-22 | Phase 8 — co-mount concept render |

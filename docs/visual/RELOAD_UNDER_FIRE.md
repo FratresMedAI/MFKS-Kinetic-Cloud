@@ -72,7 +72,13 @@ While forward strip is in RELOAD:
 
 ---
 
-## 6. Render Brief *(Future Asset)*
+## 6. Concept Render
+
+![MKFS reload under fire — dual strip pod swap on Stryker](../../assets/mkfs_reload_under_fire_stryker.png)
+
+---
+
+## 7. Render Brief *(Reference)*
 
 ### Shot list
 
@@ -102,3 +108,4 @@ Urgent but controlled — not panic. Last-ditch professionalism.
 | Version | Date | Change |
 |---------|------|--------|
 | 0.1 | 2026-05-22 | Initial reload-under-fire concept |
+| 0.2 | 2026-05-22 | Phase 8 — embed Stryker reload render |

@@ -34,7 +34,7 @@ FratresMedAI · Apache 2.0 Open Concept
 | 300–400 yd closure | Seconds to act |
 | Autonomous after jamming | Soft kill insufficient |
 
-**Answer:** Saturate the terminal volume with kinetic flechettes.
+**Answer:** Saturate the terminal volume with **titanium BB clouds**.
 
 ---
 
@@ -51,20 +51,33 @@ FratresMedAI · Apache 2.0 Open Concept
 
 ---
 
-## Slide 5 — Puck Mechanism
+## Slide 5 — Puck Forms
+
+![PUCK-A Standard Drum + PUCK-B Hollow-Point Nose](../../assets/mkfs_puck_design_comparison_4up.png)
+
+| Form | Role |
+|------|------|
+| **PUCK-A** | Tube fill, chamber diagrams |
+| **PUCK-B** | Hollow-point peel, cutaways, storyboard |
+
+→ [PUCK_DESIGN_OPTIONS.md](../../assets/PUCK_DESIGN_OPTIONS.md) · D-011
+
+---
+
+## Slide 6 — Puck Mechanism
 
 **MKFS-CART-PUCK** — 31 mm × 28 mm hollow-point carrier
 
 1. Launch @ 900 m/s  
 2. Setback @ ~200 ft (`R_open`)  
 3. Skirt peels — hollow-point geometry  
-4. Drag spreads **~100 Ti flechettes** per puck  
+4. Drag spreads **~40 titanium BBs** per puck  
 
-→ [PUCK_RELEASE.md](../PUCK_RELEASE.md)
+→ [PUCK_RELEASE.md](../PUCK_RELEASE.md) · [PUCK_CUTAWAY_STORYBOARD.md](../visual/PUCK_CUTAWAY_STORYBOARD.md)
 
 ---
 
-## Slide 6 — Packaging
+## Slide 7 — Packaging
 
 | Line | Mount | Tubes |
 |------|-------|-------|
@@ -76,7 +89,7 @@ Flat tube batteries — not box launchers.
 
 ---
 
-## Slide 7 — Ballistics Headline
+## Slide 8 — Ballistics Headline
 
 **@ 350 ft · ~24 ft pattern**
 
@@ -91,7 +104,7 @@ Flat tube batteries — not box launchers.
 
 ---
 
-## Slide 8 — Safety & Fratricide
+## Slide 9 — Safety & Fratricide
 
 - FCU interlocks: dismount zones, elevation limits, sector masks  
 - **LAST_DITCH_FULL** requires dual confirmation near friendlies  
@@ -101,12 +114,12 @@ Flat tube batteries — not box launchers.
 
 ---
 
-## Slide 9 — Roadmap
+## Slide 10 — Roadmap
 
 | Milestone | Status |
 |-----------|--------|
 | Concept + ICD + ballistics | **Done** (open repo) |
-| M1 mechanism prototype | Next |
+| M1 mechanism prototype | Next — [M1_SETBACK_PETAL_SPEC.md](../../prototypes/mechanism/M1_SETBACK_PETAL_SPEC.md) |
 | 136-tube range test | T5 concept ready |
 | Stryker mount | Adapter spec done |
 
@@ -114,7 +127,7 @@ Flat tube batteries — not box launchers.
 
 ---
 
-## Slide 10 — Collaborate
+## Slide 11 — Collaborate
 
 **We provide:** ICD, CONOPS, ballistics model, FCU stub, renders  
 **We seek:** Mechanism prototype, range data, adapter CAD, manufacturing ROM  

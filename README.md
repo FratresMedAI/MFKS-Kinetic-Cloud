@@ -18,6 +18,8 @@ Last-ditch kinetic defense. Two packaging lines:
 | Appliqué mounts (Stryker/JLTV/USV) | [mkfs_mounting_concept_stryker_jltv_usv.png](assets/mkfs_mounting_concept_stryker_jltv_usv.png) |
 | Standalone 6×6 support truck | [mkfs_standalone_support_vehicle.png](assets/mkfs_standalone_support_vehicle.png) |
 | Moving-head pan-tilt turret (2×2 ft) | [mkfs_moving_head_turret_2x2.png](assets/mkfs_moving_head_turret_2x2.png) |
+| Puck design comparison (PUCK-A / PUCK-B) | [mkfs_puck_design_comparison_4up.png](assets/mkfs_puck_design_comparison_4up.png) |
+| Puck cutaway storyboard (6-up) | [mkfs_puck_storyboard_6up.png](assets/mkfs_puck_storyboard_6up.png) |
 
 ### Appliqué mounts (Stryker/JLTV/USV)
 
@@ -30,6 +32,14 @@ Last-ditch kinetic defense. Two packaging lines:
 ### Moving-head pan-tilt turret (2×2 ft)
 
 ![Moving-head pan-tilt turret — 2×2 ft magazine inside head](assets/mkfs_moving_head_turret_2x2.png)
+
+### Puck forms & cutaway storyboard
+
+![Puck design comparison — PUCK-A Standard Drum + PUCK-B Hollow-Point Nose](assets/mkfs_puck_design_comparison_4up.png)
+
+![MKFS puck cutaway storyboard — launch through terminal cloud](assets/mkfs_puck_storyboard_6up.png)
+
+→ [PUCK_CUTAWAY_STORYBOARD.md](docs/visual/PUCK_CUTAWAY_STORYBOARD.md) · [PUCK_DESIGN_OPTIONS.md](assets/PUCK_DESIGN_OPTIONS.md)
 
 ## Concept & Outreach *(Phase 5)*
 

@@ -10,13 +10,14 @@
 | D-001 | Cartridge caliber | 25 / 30 / 40 mm | **30 mm** | 2026-05-22 | [CALIBER_TRADE_STUDY.md](../research/CALIBER_TRADE_STUDY.md) |
 | D-002 | Deployment mechanism | A / B / C / D / hybrid | **Option D** (setback petal) | 2026-05-22 | [DEPLOYMENT_DOWN_SELECT.md](DEPLOYMENT_DOWN_SELECT.md) |
 | D-003 | FCU data bus | RS-485 / CAN | **CAN 2.0B @ 500 kbps** | 2026-05-22 | [ICD_POWER_C4ISR.md](ICD_POWER_C4ISR.md) |
-| D-004 | Standard tier (Bradley/Stryker) | 25 / 36 tubes | **25 tubes (standard tier)** | 2026-05-22 | See rationale below |
+| D-004 | Standard tier (Bradley/Stryker) | 25 / 36 tubes | **25 tubes** — **superseded by D-012** | 2026-05-22 | See rationale below |
 | D-005 | Swarm sensor in baseline | Required / optional | **Optional kit**; vehicle sensors baseline | 2026-05-22 | [ICD_SENSOR_INTEGRATION.md](ICD_SENSOR_INTEGRATION.md) |
 | D-006 | Module size | **2×2 ft** (610×610 mm) — sole standard | 2026-05-22 | [DESIGN_PHILOSOPHY.md](DESIGN_PHILOSOPHY.md) |
 | D-007 | Projectile form | 165 mm cartridge / **puck** | **31 mm × 28 mm puck** | 2026-05-22 | [CARRIER_PROJECTILE_ICD.md](CARRIER_PROJECTILE_ICD.md) |
 | D-008 | Mission framing | Generic terminal AD / **last-ditch APS analogue** | **Last-ditch don't-die layer** | 2026-05-22 | [DESIGN_PHILOSOPHY.md](DESIGN_PHILOSOPHY.md) |
 | D-010 | Terminal drone sensor | Swarm kit only / **EM+radar on tile** | **MKFS-SENS-EM-RADAR** optional; 50–800 yd | 2026-05-22 | [ICD_DRONE_RADAR.md](ICD_DRONE_RADAR.md) |
 | D-011 | Canonical puck forms | A / B / C / D / mix | **PUCK-A + PUCK-B** | 2026-05-22 | [PUCK_DESIGN_OPTIONS.md](../assets/PUCK_DESIGN_OPTIONS.md) |
+| D-012 | Tile tube architecture | 25-tube module / **136-tube 2×1 strip** | **136-tube 2×1 appliqué strip** | 2026-05-22 | Supersedes D-004 for salvo scale |
 
 ---
 
@@ -31,7 +32,9 @@ Options C (peel action shot) and D (setback cap reference) remain available for 
 
 ---
 
-## D-004 Rationale — Standard Tier (25 Tubes)
+## D-004 Rationale — Standard Tier (25 Tubes) *(Superseded by D-012)*
+
+> **Superseded:** Tile architecture now standardizes on **136-tube 2×1 strips** and **289-tube turret decks**. Legacy 25-tube module references remain in ballistics model as `legacy_25` only.
 
 | Factor | 25-tube | 36-tube |
 |--------|---------|---------|
@@ -57,3 +60,4 @@ Baseline MKFS relies on existing vehicle EO/IR or manual cue — minimizing inte
 |---------|------|--------|
 | 0.1 | 2026-05-22 | D-004, D-005 closed |
 | 0.2 | 2026-05-22 | D-011 — PUCK-A + PUCK-B canonical |
+| 0.3 | 2026-05-22 | D-004 superseded; D-012 — 136-tube tile architecture |

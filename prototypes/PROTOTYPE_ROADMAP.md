@@ -40,8 +40,8 @@ gantt
 | M1 | Mechanism proof | Setback petal prototype | T1-001 pass |
 | M2 | Ballistics validation | Range test data | T2-001–004 pass |
 | M3 | Single tube | Chamber + primer demo | Clean fire × 50 |
-| M4 | 5-tube strip | Salvo timing | T3-002 partial |
-| M5 | Full module | 25-tube + pod swap | T3-002, T3-003 pass |
+| M4 | 5-tube dev strip | Salvo timing | T3-002 partial *(dev strip)* |
+| M5 | Full module | **136-tube 2×1 pod** + pod swap | T3-002, T3-003 pass |
 | M6 | FCU HIL | End-to-end sim | T3-004 pass |
 | M7 | Stryker mount | First vehicle integration | T4-001 pass |
 | M8 | Fleet adapters | All 5 kit variants | T4-001 all platforms |
@@ -89,3 +89,4 @@ Excludes vehicle access, range fees, and production tooling.
 | Version | Date | Change |
 |---------|------|--------|
 | 0.1 | 2026-05-22 | Initial roadmap |
+| 0.2 | 2026-05-22 | Phase 8 — M5 → 136-tube full pod; M4 dev strip clarified |

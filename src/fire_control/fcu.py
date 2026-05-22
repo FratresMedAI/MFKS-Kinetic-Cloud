@@ -4,6 +4,17 @@ from __future__ import annotations
 
 from enum import Enum, auto
 
+PROFILE_DELAYS_MS: dict[str, int] = {
+    "LAST_DITCH_FULL": 2,
+    "TURRET_RIPPLE": 50,
+    "DUAL_STRIP_PHASE": 20,
+    "SWARM_BURST": 5,
+    "SWARM_WIDE": 10,
+    "SWARM_FOCUS": 10,
+    "SECTOR_LEFT": 10,
+    "SECTOR_RIGHT": 10,
+}
+
 
 class FCUState(Enum):
     OFF = auto()
@@ -71,6 +82,13 @@ class FCU:
             self.fault_cleared = False
         return self.state
 
+    def salvo_duration_ms(self, tube_count: int, profile: str = "LAST_DITCH_FULL") -> int:
+        """Total salvo duration for a single module."""
+        if tube_count <= 0:
+            return 0
+        inter_ms = PROFILE_DELAYS_MS.get(profile, 10)
+        return (tube_count - 1) * inter_ms
+
     def build_fire_queue(self, tube_count: int, inter_tube_ms: int = 20) -> list[tuple[int, int]]:
         """Return (tube_id, delay_ms) pairs for a full salvo."""
         if self.state != FCUState.ENGAGING:
@@ -81,18 +99,42 @@ class FCU:
         """Build fire queue for addressed tubes. profile sets inter-tube delay."""
         if self.state != FCUState.ENGAGING:
             return []
-        delays = {
-            "LAST_DITCH_FULL": 2,
-            "TURRET_RIPPLE": 50,
-            "DUAL_STRIP_PHASE": 20,
-            "SWARM_BURST": 5,
-            "SWARM_WIDE": 10,
-            "SWARM_FOCUS": 10,
-            "SECTOR_LEFT": 10,
-            "SECTOR_RIGHT": 10,
-        }
-        ms = delays.get(profile, 10)
+        ms = PROFILE_DELAYS_MS.get(profile, 10)
         return [(tid, i * ms) for i, tid in enumerate(tube_ids)]
+
+    def build_turret_ripple(
+        self,
+        deck_tube_ids: list[list[int]],
+        inter_tube_ms: int = 2,
+        inter_deck_ms: int = 50,
+    ) -> list[tuple[int, int]]:
+        """Stagger multi-deck turret salvo — deck 1, pause, deck 2, etc."""
+        if self.state != FCUState.ENGAGING:
+            return []
+        queue: list[tuple[int, int]] = []
+        deck_offset = 0
+        for deck in deck_tube_ids:
+            for i, tid in enumerate(deck):
+                queue.append((tid, deck_offset + i * inter_tube_ms))
+            if deck:
+                deck_offset = queue[-1][1] + inter_deck_ms
+        return queue
+
+    def build_dual_strip_phase(
+        self,
+        strip_a: list[int],
+        strip_b: list[int],
+        inter_tube_ms: int = 10,
+        module_offset_ms: int = 20,
+    ) -> list[tuple[int, int]]:
+        """Fire strip A then strip B with module phase offset."""
+        if self.state != FCUState.ENGAGING:
+            return []
+        queue_a = [(tid, i * inter_tube_ms) for i, tid in enumerate(strip_a)]
+        max_a = queue_a[-1][1] if queue_a else 0
+        start_b = max_a + module_offset_ms
+        queue_b = [(tid, start_b + i * inter_tube_ms) for i, tid in enumerate(strip_b)]
+        return queue_a + queue_b
 
 
 if __name__ == "__main__":
@@ -106,3 +148,4 @@ if __name__ == "__main__":
     fcu.salvo_complete()
     print(f"State after salvo: {fcu.state.name}")
     print(f"Fire queue (first 5): {queue[:5]}")
+    print(f"Salvo duration: {fcu.salvo_duration_ms(136, 'LAST_DITCH_FULL')} ms")
