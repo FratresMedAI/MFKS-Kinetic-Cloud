@@ -15,8 +15,7 @@
 | D-006 | Module size | **2×2 ft** (610×610 mm) — sole standard | 2026-05-22 | [DESIGN_PHILOSOPHY.md](DESIGN_PHILOSOPHY.md) |
 | D-007 | Projectile form | 165 mm cartridge / **puck** | **31 mm × 28 mm puck** | 2026-05-22 | [CARRIER_PROJECTILE_ICD.md](CARRIER_PROJECTILE_ICD.md) |
 | D-008 | Mission framing | Generic terminal AD / **last-ditch APS analogue** | **Last-ditch don't-die layer** | 2026-05-22 | [DESIGN_PHILOSOPHY.md](DESIGN_PHILOSOPHY.md) |
-| D-009 | LR munition line | Terminal only / **LR spinoff** | **MKFS-LR** — 30 mm, AMR, Gustaf, disposable pod | 2026-05-22 | [LR_MUNITION_VARIANTS.md](LR_MUNITION_VARIANTS.md) |
-| D-010 | Drone sensor | Swarm kit only / **EM+radar** | **MKFS-SENS-EM-RADAR** optional | 2026-05-22 | [ICD_DRONE_RADAR.md](ICD_DRONE_RADAR.md) |
+| D-010 | Terminal drone sensor | Swarm kit only / **EM+radar on tile** | **MKFS-SENS-EM-RADAR** optional; 50–800 yd | 2026-05-22 | [ICD_DRONE_RADAR.md](ICD_DRONE_RADAR.md) |
 
 ---
 

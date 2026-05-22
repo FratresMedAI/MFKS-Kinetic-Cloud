@@ -1,8 +1,8 @@
 # MKFS Fire Control Unit — State Machine Specification
 
 **Document ID:** MKFS-SW-FCU-001  
-**Version:** 0.1 (Phase 2)  
-**Related:** [SYSTEM_ARCHITECTURE.md](../../docs/architecture/SYSTEM_ARCHITECTURE.md) | [REQUIREMENTS.md](../../docs/REQUIREMENTS.md) FR-009
+**Version:** 0.2  
+**Related:** [MKFS_CORE_ENHANCEMENTS.md](../../docs/MKFS_CORE_ENHANCEMENTS.md) | [SYSTEM_ARCHITECTURE.md](../../docs/architecture/SYSTEM_ARCHITECTURE.md) | [REQUIREMENTS.md](../../docs/REQUIREMENTS.md) FR-009
 
 ---
 
@@ -71,7 +71,7 @@ COMPUTE:
   4. Apply V0 temperature compensation (elevation trim)
 
 OUTPUT: fire_queue[tube_id, delay_ms]
-        max 25 tubes per module per salvo
+        max tubes = full tile/turret address map (136 / 208 / 289 / 867 — no 25-tube cap)
 ```
 
 ### Salvo Profiles (Presets)
@@ -79,11 +79,22 @@ OUTPUT: fire_queue[tube_id, delay_ms]
 | Profile | Tubes | Inter-tube Delay | Use Case |
 |---------|-------|------------------|----------|
 | **LAST_DITCH_FULL** | **All addressed** | **0–5 ms** | **Swarm on you — dump everything NOW** |
+| **TURRET_RIPPLE** | All decks sequential | 50 ms between decks | Pan-tilt 3-deck stagger — widens cloud |
+| **DUAL_STRIP_PHASE** | Both tiles | 20 ms module offset | Stryker/JLTV overlapping cones |
 | SWARM_WIDE | All on selected tile(s) | 10 ms | Broad coverage |
 | SWARM_FOCUS | Sector mask | 10 ms | Concentrated cone |
 | SWARM_BURST | Half or full tile | 5 ms | High density |
 | SECTOR_LEFT / SECTOR_RIGHT | Address mask | 10 ms | Friendly side clear |
 | HOLD | 0 | — | Safe |
+
+### Salvo duration *(nominal 2 ms inter-tube)*
+
+| Package | Tubes | FULL dump time |
+|---------|-------|----------------|
+| 2×1 strip | 136 | ~0.27 s |
+| 3×1 strip | 208 | ~0.42 s |
+| Turret deck | 289 | ~0.58 s |
+| Turret 3-deck | 867 | ~1.7 s |
 
 ---
 
@@ -116,3 +127,4 @@ OUTPUT: fire_queue[tube_id, delay_ms]
 | Version | Date | Change |
 |---------|------|--------|
 | 0.1 | 2026-05-22 | Initial FCU state machine; CAN recommended |
+| 0.2 | 2026-05-22 | Full tile/turret salvo scale; TURRET_RIPPLE, DUAL_STRIP_PHASE |

@@ -102,12 +102,14 @@ All tasks complete. See [CARRIER_PROJECTILE_ICD.md](../docs/CARRIER_PROJECTILE_I
 
 ---
 
-## Phase 6 — Extended Reach & Sensing ✅
+## Phase 6 — Core MKFS Enhancements ✅
 
 | ID | Task | Status | Linked Doc |
 |----|------|--------|------------|
-| P6-001 | LR munition variants (30 mm, AMR, Gustaf, shoulder pod) | Done | [LR_MUNITION_VARIANTS.md](../docs/LR_MUNITION_VARIANTS.md) |
-| P6-002 | Drone radar + EM sensor ICD | Done | [ICD_DRONE_RADAR.md](../docs/ICD_DRONE_RADAR.md) |
+| P6-001 | LR munition spinoff | **Cancelled** | Not MKFS — removed |
+| P6-002 | Terminal drone radar + EM sensor | Done | [ICD_DRONE_RADAR.md](../docs/ICD_DRONE_RADAR.md) |
+| P6-003 | Core enhancements (FCU scale, turret ripple, dual-strip) | Done | [MKFS_CORE_ENHANCEMENTS.md](../docs/MKFS_CORE_ENHANCEMENTS.md) |
+| P6-004 | FCU salvo scale update (136/289 tubes) | Done | [FCU_STATE_MACHINE.md](../src/fire_control/FCU_STATE_MACHINE.md) |
 
 ---
 

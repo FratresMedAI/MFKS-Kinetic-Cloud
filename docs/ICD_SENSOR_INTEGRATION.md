@@ -1,9 +1,9 @@
 # MKFS Sensor Integration Requirements
 
 **Document ID:** MKFS-ICD-SENS-001  
-**Version:** 0.2 (Phase 6)  
+**Version:** 0.2 (terminal sensor integration)  
 **Decision D-005:** **Vehicle sensors baseline; optional swarm sensor kit**  
-**Related:** [ICD_DRONE_RADAR.md](ICD_DRONE_RADAR.md) | [LR_MUNITION_VARIANTS.md](LR_MUNITION_VARIANTS.md) | [SYSTEM_ARCHITECTURE.md](architecture/SYSTEM_ARCHITECTURE.md) | [ICD_POWER_C4ISR.md](ICD_POWER_C4ISR.md)
+**Related:** [ICD_DRONE_RADAR.md](ICD_DRONE_RADAR.md) | [MKFS_CORE_ENHANCEMENTS.md](MKFS_CORE_ENHANCEMENTS.md) | [SYSTEM_ARCHITECTURE.md](architecture/SYSTEM_ARCHITECTURE.md) | [ICD_POWER_C4ISR.md](ICD_POWER_C4ISR.md)
 
 ---
 
@@ -38,7 +38,7 @@ flowchart LR
 
 ## 3. Optional — MKFS Swarm Sensor Kit (`MKFS-SENS-SWARM-OPT`)
 
-> **Phase 6 update:** Superseded for new designs by [`MKFS-SENS-EM-RADAR`](ICD_DRONE_RADAR.md) — radar + passive EM, 1,500 yd, LR munition cueing. Retained here for backward compatibility.
+> **v0.2:** Enhanced by [`MKFS-SENS-EM-RADAR`](ICD_DRONE_RADAR.md) — radar + passive EM, **50–800 yd terminal band**, cues MKFS tiles/turret only.
 
 | Parameter | Specification |
 |-----------|---------------|
@@ -54,16 +54,16 @@ flowchart LR
 
 ---
 
-## 3b. Optional — MKFS EM/Radar Kit (`MKFS-SENS-EM-RADAR`) *(Phase 6)*
+## 3b. Optional — MKFS EM/Radar Kit (`MKFS-SENS-EM-RADAR`)
 
 Full specification: [ICD_DRONE_RADAR.md](ICD_DRONE_RADAR.md)
 
 | Parameter | Specification |
 |-----------|---------------|
 | Type | X-band FMCW radar + passive ISM ESM |
-| Coverage | 360°, 50–1,500 yd |
+| Coverage | 360°, **50–800 yd** *(terminal band)* |
 | Detect | Group 1–2 UAS; datalink EM bearing |
-| Cues | Terminal strips + [LR munitions](LR_MUNITION_VARIANTS.md) |
+| Cues | **MKFS appliqué strips + turret only** |
 
 ---
 
@@ -97,4 +97,4 @@ Stale track (> 500 ms) → hold fire, alert operator.
 | Version | Date | Change |
 |---------|------|--------|
 | 0.1 | 2026-05-22 | Baseline vs optional kit defined; D-005 closed |
-| 0.2 | 2026-05-22 | Phase 6 EM/radar kit; link to ICD_DRONE_RADAR, LR munitions |
+| 0.2 | 2026-05-22 | Terminal EM/radar kit; MKFS tile/turret cueing only |

@@ -99,22 +99,21 @@ Five operational vignettes illustrating MKFS **last-ditch** employment — threa
 
 ---
 
-## Vignette 6 — Layered LR + Radar + Terminal *(Phase 6)*
+## Vignette 6 — Radar Cue, Terminal Strip Kill
 
-**Platform:** MRAP with `MKFS-SENS-EM-RADAR` + dual 2×1 strips + pintle 30 mm  
-**Threat:** 10× mixed swarm, approach from 1,200 yd  
-**Conditions:** ESM picks up 5.8 GHz FPV links; radar tracks 8 contacts
+**Platform:** MRAP with `MKFS-SENS-EM-RADAR` on forward 2×1 strip + dual strips (272 tubes)  
+**Threat:** 8× FPV, approach from 600 yd  
+**Conditions:** ESM picks up 5.8 GHz links; radar tracks at 550 yd
 
 | Phase | Action |
 |-------|--------|
-| Detect | EM bearing cues radar; fused track to FCU @ 900 yd |
-| LR | Gunner fires **3× MKFS-CART-30-SHELL** bursts — clouds at 700 yd |
-| Mid | 4 drones down; 6 continue |
-| Terminal | At 400 yd FCU **SWARM_WIDE** both strips — 272 tubes |
-| Outcome | Swarm broken; 2 leakers defeated at 280 yd |
-| Magazine | 30 mm depleted; both strips **empty** |
+| Detect | EM bearing cues radar; fused track to FCU @ 550 yd |
+| Stage | Commander arms; FCU stages **SWARM_WIDE** on both strips |
+| Terminal | At **380 yd** both strips fire — phased 20 ms offset — 272 tubes |
+| Outcome | 7 of 8 down; 1 leaker — **SECTOR_LEFT** finishes at 290 yd |
+| Magazine | Forward pod **empty**; aft **68 tubes** remain |
 
-→ [LR_MUNITION_VARIANTS.md](LR_MUNITION_VARIANTS.md) · [ICD_DRONE_RADAR.md](ICD_DRONE_RADAR.md)
+→ [ICD_DRONE_RADAR.md](ICD_DRONE_RADAR.md) · [MKFS_CORE_ENHANCEMENTS.md](MKFS_CORE_ENHANCEMENTS.md)
 
 ---
 

@@ -1,185 +1,97 @@
-# MKFS Drone Detection Radar & EM Sensor
+# MKFS Terminal Drone Sensor — Radar + EM
 
 **Document ID:** MKFS-ICD-RADAR-001  
-**Version:** 0.1 (Phase 6 concept)  
+**Version:** 0.2 (terminal band only)  
 **Product:** `MKFS-SENS-EM-RADAR`  
-**Related:** [ICD_SENSOR_INTEGRATION.md](ICD_SENSOR_INTEGRATION.md) | [LR_MUNITION_VARIANTS.md](LR_MUNITION_VARIANTS.md) | [FCU_STATE_MACHINE.md](../src/fire_control/FCU_STATE_MACHINE.md)
+**Related:** [ICD_SENSOR_INTEGRATION.md](ICD_SENSOR_INTEGRATION.md) | [MKFS_CORE_ENHANCEMENTS.md](MKFS_CORE_ENHANCEMENTS.md) | [FCU_STATE_MACHINE.md](../src/fire_control/FCU_STATE_MACHINE.md)
 
 ---
 
 ## 1. Purpose
 
-Define a **dedicated drone-detection sensor** for MKFS — compact **radar + passive EM** — that picks up Group 1–2 UAS (quadcopter through small fixed-wing) and cues FCU for terminal strips **and** LR munition variants.
+Compact **radar + passive EM** kit mounted **on or beside MKFS tiles/turret** — detects Group 1–2 drones in the **terminal band (50–800 yd)** and cues FCU to fire **appliqué strips and pan-tilt turret only**.
 
-Baseline vehicle EO/IR is not enough at 800 yd in clutter. This kit **sees the drone**, not just the operator's eyeballs.
+This is **not** a long-range engagement system. It exists so MKFS sees the swarm **before** it is on the vehicle skin — still inside the puck cloud envelope.
 
 ---
 
-## 2. Sensor Concept — "EM Type" Dual Mode
+## 2. What We Are / Are Not Doing
+
+| Yes | No |
+|-----|-----|
+| Cue MKFS tile / turret salvos | 30 mm chain gun puck shells |
+| Detect FPV datalink + air track | AMR / Gustaf / shoulder LR pods |
+| Co-mount on MKFS mast | BLOS air defense |
+| Hand track to FCU for LAST_DITCH_FULL | Replace vehicle organic AD |
+
+---
+
+## 3. Dual-Mode Sensor
 
 ```mermaid
-flowchart TB
-  subgraph sens [MKFS_SENS_EM_RADAR]
-    FMCW[X_band_FMCW_Radar]
-    PD[Passive_RF_ESM]
-    FUSION[TrackFusion_CPU]
-  end
-  FMCW --> FUSION
-  PD --> FUSION
+flowchart LR
+  ESM[Passive_EM_2.4_5.8GHz] --> FUSION[TrackFusion]
+  RAD[X_band_FMCW] --> FUSION
   FUSION -->|CAN_0x300| FCU[FCU]
+  FCU --> TILE[Applique_Strip]
+  FCU --> TUR[Turret_Head]
 ```
 
-| Mode | What it detects | How |
-|------|-----------------|-----|
-| **Active radar** | Physical drone — RCS down to ~0.01 m² | X-band FMCW pulse-Doppler |
-| **Passive EM (ESM)** | Drone datalink — 2.4 / 5.8 GHz ISM, analog FPV | Direction-finding antenna |
-| **Fusion** | Combined track — radar primary, EM confirms / cues search |
+| Mode | Detects | Range |
+|------|---------|-------|
+| **Active radar** | Physical drone (RCS ~0.01 m²) | **50–800 yd** |
+| **Passive EM** | Control link bearing (2.4 / 5.8 GHz) | Cues radar search |
 
-**"EM type"** = electromagnetic sensing: **active RF transmit/receive (radar)** plus **passive RF listen (ESM)**. Not laser. Not purely optical.
+**EM type** = active RF radar + passive RF listen. Finds drones in clutter when EO/IR fails.
 
 ---
 
-## 3. Active Radar — Specifications *(Concept)*
+## 4. Specifications *(Concept)*
 
 | Parameter | Value |
 |-----------|-------|
-| Designation | `MKFS-RAD-FMCW-X` |
-| Band | X-band (~10 GHz) |
-| Type | FMCW pulse-Doppler |
-| Azimuth coverage | **360°** *(mast mount)* or **180°** *(forward-only cheek mount)* |
-| Elevation | −5° to +55° |
-| Range | **50–1,500 yd** (45–1,370 m) |
-| Min RCS | **0.01 m²** @ 500 yd *(Group 1 quadcopter class)* |
-| Track capacity | **32 simultaneous** |
-| Update rate | 10 Hz |
-| IFF | **None** — operator confirm required |
+| Mass | ≤ 15 kg *(integrated with tile mast)* |
+| Power | 75 W avg / 120 W peak @ 28 VDC |
+| Azimuth | 360° *(mast)* or 180° *(forward tile)* |
+| Elevation | −5° to +45° |
+| Tracks | 32 simultaneous |
+| Update | 10 Hz |
+| Interface | CAN 2.0B — extends [ICD_SENSOR_INTEGRATION.md](ICD_SENSOR_INTEGRATION.md) |
 
-### What it will pick up
+### Mount — on MKFS, not separate mast farm
 
-| Target | Detect @ 500 yd | Notes |
-|--------|-------------------|-------|
-| FPV quadcopter | Yes | Primary design case |
-| Fixed-wing Group 2 | Yes | Higher RCS |
-| Bird | Sometimes | Clutter rejection filter — velocity gate |
-| Helicopter | Yes | FCU ROE block — friendly air inhibit |
+| Package | Sensor mount |
+|---------|----------------|
+| 2×1 / 3×1 strip | Low-profile array on tile edge |
+| Pan-tilt turret | Co-mount on yoke — **same head that fires** |
+| MRAP kit | ADP-MAST-OPT tied to tile plate |
 
 ---
 
-## 4. Passive EM — Specifications *(Concept)*
+## 5. FCU Engagement *(Terminal Only)*
 
-| Parameter | Value |
-|-----------|-------|
-| Designation | `MKFS-ESM-ISM` |
-| Bands | 2.4 GHz, 5.8 GHz *(extensible)* |
-| Function | Detect + **DF bearing** to drone control link |
-| Range | **800 m–2 km** *(depends on transmitter power)* |
-| Use | Cue radar search sector; detect swarm before visual |
+| Track range | FCU action |
+|-------------|------------|
+| 400–800 yd | Alert + stage **SWARM_WIDE** — operator arms |
+| 250–500 yd | **Primary kill band** — sector or full tile salvo |
+| < 250 yd | **LAST_DITCH_FULL** if authorized |
+| Stale > 500 ms | Hold fire |
 
-**EW-degraded environment:** Radar still works if drone is autonomous / pre-programmed. ESM helps when RF link is active.
-
----
-
-## 5. Physical Package
-
-| Parameter | Value |
-|-----------|-------|
-| Kit ID | `MKFS-SENS-EM-RADAR` |
-| Mass | ≤ 22 kg *(radar + ESM + processor)* |
-| Power | 90 W avg / 150 W peak @ 28 VDC |
-| Mount options | Adapter mast (MRAP), turret yoke cheek, USV tower |
-| Environmental | −32°C to +55°C; IP67 antenna enclosure |
-
-### Form factor sketch
-
-```
-        ┌─────────┐
-        │ planar  │  ← X-band array (~30 cm)
-        │  array  │
-        └────┬────┘
-             │ mast or cheek bracket
-        ┌────┴────┐
-        │ ESM fins│  ← 2.4/5.8 GHz DF
-        └─────────┘
-```
+Radar **never** autonomously fires. Operator arms FCU; sensor provides track to existing presets in [FCU_STATE_MACHINE.md](../src/fire_control/FCU_STATE_MACHINE.md).
 
 ---
 
-## 6. FCU Interface
+## 6. Honest Limits
 
-Extends [ICD_SENSOR_INTEGRATION.md](ICD_SENSOR_INTEGRATION.md) CAN map:
-
-| Msg ID | Direction | Content |
-|--------|-----------|---------|
-| 0x300 | Sensor → FCU | Track report (az, el, range, velocity, RCS class) |
-| 0x301 | Sensor → FCU | EM bearing + band |
-| 0x302 | FCU → Sensor | Sector search cue |
-| 0x303 | Sensor → FCU | Heartbeat / fault |
-
-### Track fusion priority
-
-1. **MKFS-SENS-EM-RADAR** fused track  
-2. Vehicle organic radar *(if exportable)*  
-3. RWS EO/IR manual  
-4. Commander manual entry  
-
-Stale track > 500 ms → FCU hold fire.
+- No sensor sees **every** drone — birds, ground clutter, autonomous pre-planned paths still hurt  
+- Passive EM silent when link is off  
+- Not a replacement for vehicle RWS — ** augments** MKFS cueing  
 
 ---
 
-## 7. Engagement Logic
-
-| Range | FCU recommendation |
-|-------|-------------------|
-| 800–1,500 yd | Cue **MKFS-LR** (30 mm / AMR / Gustaf) if fitted — [LR_MUNITION_VARIANTS.md](LR_MUNITION_VARIANTS.md) |
-| 400–800 yd | Pre-stage terminal strip **SWARM_WIDE** |
-| 200–500 yd | **LAST_DITCH_FULL** or sector salvo |
-| < 200 yd | Terminal dump + APS deconfliction |
-
-Radar does **not** autonomously fire — operator arms FCU; sensor provides track.
-
----
-
-## 8. Platform Integration
-
-| Platform | Mount | Notes |
-|----------|-------|-------|
-| Stryker | Forward adapter mast | Clears RWS dead zone |
-| JLTV | Roof mast | Convoy escort |
-| MRAP | ADP-MAST-OPT *(included in MRAP kit)* | Primary target platform |
-| Pan-tilt turret | Co-mount on yoke | Radar + shooter same head |
-| USV | Tower top | Maritime spinoff |
-| FOB fixed | Perimeter tower | See [MARITIME_FIXED_SITE.md](MARITIME_FIXED_SITE.md) |
-
----
-
-## 9. Comparison to Baseline Optional Kit
-
-| | `MKFS-SENS-SWARM-OPT` (v0.1) | `MKFS-SENS-EM-RADAR` (this doc) |
-|--|-------------------------------|----------------------------------|
-| Radar | FMCW only | FMCW + **passive EM** |
-| Range | 50–800 yd | **50–1,500 yd** |
-| EM datalink detect | No | **Yes** |
-| Mass | ≤ 15 kg | ≤ 22 kg |
-| LR munition cue | No | **Yes** |
-
-**Recommendation:** Supersede v0.1 swarm kit spec with this doc for Phase 6; keep D-005 "optional" decision.
-
----
-
-## 10. Honest Limits
-
-| Limit | Reality |
-|-------|---------|
-| "Any drone" | **No sensor sees everything** — low RCS, nap-of-earth, and weather still hurt |
-| Birds / clutter | Requires AI classifier or operator confirm |
-| Spectrum | Passive EM useless on fully autonomous pre-planned path |
-| Cost | Compact C-UAS radars run **$50K–$200K+** per unit ROM |
-| ITAR | Radar export may be controlled — see [ITAR_EXPORT_FRAMING.md](ITAR_EXPORT_FRAMING.md) |
-
----
-
-## 11. Revision History
+## 7. Revision History
 
 | Version | Date | Change |
 |---------|------|--------|
-| 0.1 | 2026-05-22 | Initial EM/radar drone detection sensor concept |
+| 0.1 | 2026-05-22 | Initial draft *(included LR — rejected)* |
+| 0.2 | 2026-05-22 | **Terminal band only**; MKFS tile/turret cueing |

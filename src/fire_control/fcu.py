@@ -83,6 +83,8 @@ class FCU:
             return []
         delays = {
             "LAST_DITCH_FULL": 2,
+            "TURRET_RIPPLE": 50,
+            "DUAL_STRIP_PHASE": 20,
             "SWARM_BURST": 5,
             "SWARM_WIDE": 10,
             "SWARM_FOCUS": 10,
@@ -100,7 +102,7 @@ if __name__ == "__main__":
     fcu.operator_arm = True
     fcu.try_arm()
     fcu.threat_cue(True)
-    queue = fcu.build_fire_queue(25)
+    queue = fcu.build_fire_queue(136, inter_tube_ms=2)
     fcu.salvo_complete()
     print(f"State after salvo: {fcu.state.name}")
     print(f"Fire queue (first 5): {queue[:5]}")
