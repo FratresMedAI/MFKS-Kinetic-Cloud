@@ -1,0 +1,115 @@
+# MKFS Current Tasks
+
+**Last updated:** 2026-05-22  
+**Project phase:** Design intent v0.2 — tile + puck architecture
+
+---
+
+## Design Intent Revision (v0.2)
+
+**[DESIGN_PHILOSOPHY.md](../docs/DESIGN_PHILOSOPHY.md)** is now the authoritative size/role doc:
+
+- **2×1 / 3×1 ft tiles** — low profile, turret/hull/roof  
+- **31 mm puck** projectiles (half-dollar class)  
+- **Electronic per-tube fire** — scales to 2×100 tubes  
+- **Last-ditch / don't-die** — APS analogue for swarms  
+
+Prior "2×2 ft box / 25 tube" docs superseded where they conflict.
+
+---
+
+## Status Legend
+
+| Status | Meaning |
+|--------|---------|
+| Done | Complete and reviewed |
+| In Progress | Active work |
+| Upcoming | Not yet started |
+
+---
+
+## Phase 0 — Foundation ✅
+
+All tasks complete. See [REQUIREMENTS.md](../docs/REQUIREMENTS.md), [VEHICLE_INTEGRATION.md](../docs/VEHICLE_INTEGRATION.md).
+
+---
+
+## Phase 1 — Core Technology ✅
+
+All tasks complete. See [CARRIER_PROJECTILE_ICD.md](../docs/CARRIER_PROJECTILE_ICD.md), [BALLISTICS_RESULTS.md](../research/ballistics/BALLISTICS_RESULTS.md), [DEPLOYMENT_DOWN_SELECT.md](../docs/DEPLOYMENT_DOWN_SELECT.md).
+
+---
+
+## Phase 2 — Array Prototype ✅
+
+| ID | Task | Status | Linked Doc |
+|----|------|--------|------------|
+| P2-001 | Multi-tube array module design | Done | [ARRAY_MODULE_SPEC.md](../prototypes/array/ARRAY_MODULE_SPEC.md) |
+| P2-002 | FCU state machine spec | Done | [FCU_STATE_MACHINE.md](../src/fire_control/FCU_STATE_MACHINE.md) |
+| P2-003 | Quick-swap pod mechanism | Done | [POD_MECHANISM_SPEC.md](../prototypes/array/POD_MECHANISM_SPEC.md) |
+| P2-004 | Tube tier sizing | Done | [ARRAY_MODULE_SPEC.md](../prototypes/array/ARRAY_MODULE_SPEC.md) §2 |
+| P2-005 | Array prototype spec | Done | [ARRAY_MODULE_SPEC.md](../prototypes/array/ARRAY_MODULE_SPEC.md) |
+| P2-006 | FCU software stub + tests | Done | [fcu.py](../src/fire_control/fcu.py), [test_fcu.py](../src/fire_control/test_fcu.py) |
+
+---
+
+## Phase 3 — Vehicle Integration ✅
+
+| ID | Task | Status | Linked Doc |
+|----|------|--------|------------|
+| P3-001 | Stryker adapter kit | Done | [MKFS-ADP-STRYKER-A.md](../docs/adapters/MKFS-ADP-STRYKER-A.md) |
+| P3-002 | Bradley adapter kit | Done | [MKFS-ADP-BRADLEY-A.md](../docs/adapters/MKFS-ADP-BRADLEY-A.md) |
+| P3-003 | M113 adapter + structural | Done | [MKFS-ADP-M113-A.md](../docs/adapters/MKFS-ADP-M113-A.md) |
+| P3-004 | LAV-25 adapter + stow | Done | [MKFS-ADP-LAV25-A.md](../docs/adapters/MKFS-ADP-LAV25-A.md) |
+| P3-005 | MRAP adapter variants | Done | [MKFS-ADP-MRAP-A.md](../docs/adapters/MKFS-ADP-MRAP-A.md) |
+| P3-006 | Dual-array fire plans | Done | [DUAL_ARRAY_FIRE_PLANS.md](../docs/DUAL_ARRAY_FIRE_PLANS.md) |
+| P3-007 | Power/C4ISR ICD | Done | [ICD_POWER_C4ISR.md](../docs/ICD_POWER_C4ISR.md) |
+| P3-008 | Sensor integration | Done | [ICD_SENSOR_INTEGRATION.md](../docs/ICD_SENSOR_INTEGRATION.md) |
+
+---
+
+## Phase 4 — Documentation & Next Steps
+
+| ID | Task | Status | Linked Doc |
+|----|------|--------|------------|
+| P4-001 | Full system specification | Done | [SYSTEM_SPEC.md](../docs/SYSTEM_SPEC.md) |
+| P4-002 | Prototype roadmap | Done | [PROTOTYPE_ROADMAP.md](../prototypes/PROTOTYPE_ROADMAP.md) |
+| P4-003 | Risk register | Done | [RISK_REGISTER.md](../docs/RISK_REGISTER.md) |
+| P4-004 | Manufacturing considerations | Done | [MANUFACTURING.md](../docs/MANUFACTURING.md) |
+| P4-005 | Test and evaluation plan | Done | [TEST_EVAL_PLAN.md](../docs/TEST_EVAL_PLAN.md) |
+| P4-006 | Physical prototype builds (M1–M10) | Upcoming | [PROTOTYPE_ROADMAP.md](../prototypes/PROTOTYPE_ROADMAP.md) |
+| P4-007 | Range test execution (T1–T5) | Upcoming | [TEST_EVAL_PLAN.md](../docs/TEST_EVAL_PLAN.md) |
+
+---
+
+## Decisions — All Closed ✅
+
+| ID | Outcome | Doc |
+|----|---------|-----|
+| D-001 | 30 mm | [DECISIONS.md](../docs/DECISIONS.md) |
+| D-002 | Option D | [DECISIONS.md](../docs/DECISIONS.md) |
+| D-003 | CAN 2.0B | [DECISIONS.md](../docs/DECISIONS.md) |
+| D-004 | 25-tube standard tier | [DECISIONS.md](../docs/DECISIONS.md) |
+| D-005 | Optional swarm sensor kit | [DECISIONS.md](../docs/DECISIONS.md) |
+
+---
+
+## Next Actions (Physical Prototype)
+
+1. **M1** — Build setback petal mechanism prototype; run T1-001
+2. **M3** — Single-tube proof; chamber pressure and primer validation
+3. **M5** — Full 25-tube module + pod swap demo (T3-002, T3-003)
+4. **M7** — First vehicle mount (Stryker ICV)
+5. **M2** — Outdoor range ballistics (T2 series)
+
+---
+
+## Quick Reference
+
+| Constant | Value |
+|----------|-------|
+| Caliber | 30 mm |
+| Flechette pack | 100 × Ti @ 1.3 g |
+| `R_open` / `R_band` | 200 ft / 250–500 ft |
+| Pattern (350 ft, 25-tube salvo) | ~24.5 ft; ~57 hits/m² |
+| FCU bus | CAN 2.0B @ 500 kbps |

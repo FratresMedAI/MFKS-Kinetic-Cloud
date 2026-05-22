@@ -1,0 +1,154 @@
+{
+  "parameters": {
+    "v0_nominal_ms": 900.0,
+    "elevation_deg": 30.0,
+    "carrier_mass_kg": 0.188,
+    "carrier_cd": 0.35,
+    "flechette_count": 100,
+    "dispersion_half_angle_deg": 3.3
+  },
+  "time_to_range_drag_corrected": [
+    {
+      "label": "R_open",
+      "range_ft": 200.1,
+      "range_m": 61,
+      "time_s": 0.0805,
+      "velocity_ms": 849.9
+    },
+    {
+      "label": "R_band_min",
+      "range_ft": 249.3,
+      "range_m": 76,
+      "time_s": 0.1011,
+      "velocity_ms": 838.0
+    },
+    {
+      "label": "350 ft",
+      "range_ft": 350.1,
+      "range_m": 106.7,
+      "time_s": 0.144,
+      "velocity_ms": 814.2
+    },
+    {
+      "label": "R_band_max",
+      "range_ft": 498.7,
+      "range_m": 152,
+      "time_s": 0.2095,
+      "velocity_ms": 780.3
+    },
+    {
+      "label": "R_max",
+      "range_ft": 1499.3,
+      "range_m": 457,
+      "time_s": 0.7307,
+      "velocity_ms": 585.7
+    }
+  ],
+  "r_open_mechanical": {
+    "r_open_ft": 199.5,
+    "r_open_m": 60.79,
+    "t_release_s": 0.078
+  },
+  "pattern_at_350ft": {
+    "pattern_diameter_ft": 24.5,
+    "pattern_diameter_m": 7.47,
+    "hits_per_m2_single_round": 2.28,
+    "hits_per_m2_salvo_25_tube": 57.0,
+    "meets_15_25ft_target": true,
+    "meets_2_per_m2_single": true,
+    "meets_2_per_m2_salvo_25": true
+  },
+  "band_pattern_envelope": [
+    {
+      "range_ft": 230.0,
+      "pattern_diameter_ft": 9.2,
+      "hits_per_m2_single": 16.04,
+      "hits_per_m2_salvo_25": 400.93
+    },
+    {
+      "range_ft": 262.0,
+      "pattern_diameter_ft": 13.4,
+      "hits_per_m2_single": 7.63,
+      "hits_per_m2_salvo_25": 190.64
+    },
+    {
+      "range_ft": 295.0,
+      "pattern_diameter_ft": 17.6,
+      "hits_per_m2_single": 4.44,
+      "hits_per_m2_salvo_25": 111.01
+    },
+    {
+      "range_ft": 328.0,
+      "pattern_diameter_ft": 21.7,
+      "hits_per_m2_single": 2.9,
+      "hits_per_m2_salvo_25": 72.56
+    },
+    {
+      "range_ft": 361.0,
+      "pattern_diameter_ft": 25.9,
+      "hits_per_m2_single": 2.04,
+      "hits_per_m2_salvo_25": 51.11
+    },
+    {
+      "range_ft": 394.0,
+      "pattern_diameter_ft": 30.1,
+      "hits_per_m2_single": 1.52,
+      "hits_per_m2_salvo_25": 37.93
+    },
+    {
+      "range_ft": 427.0,
+      "pattern_diameter_ft": 34.2,
+      "hits_per_m2_single": 1.17,
+      "hits_per_m2_salvo_25": 29.27
+    },
+    {
+      "range_ft": 459.0,
+      "pattern_diameter_ft": 38.4,
+      "hits_per_m2_single": 0.93,
+      "hits_per_m2_salvo_25": 23.26
+    },
+    {
+      "range_ft": 492.0,
+      "pattern_diameter_ft": 42.5,
+      "hits_per_m2_single": 0.76,
+      "hits_per_m2_salvo_25": 18.93
+    }
+  ],
+  "v0_sensitivity": [
+    {
+      "v0_pct": -5,
+      "v0_ms": 855.0,
+      "r_open_ft": 189.5,
+      "r_open_shift_ft": -10.0,
+      "pass_30ft": true
+    },
+    {
+      "v0_pct": -3,
+      "v0_ms": 873.0,
+      "r_open_ft": 193.5,
+      "r_open_shift_ft": -6.0,
+      "pass_30ft": true
+    },
+    {
+      "v0_pct": 0,
+      "v0_ms": 900.0,
+      "r_open_ft": 199.5,
+      "r_open_shift_ft": 0.0,
+      "pass_30ft": true
+    },
+    {
+      "v0_pct": 3,
+      "v0_ms": 927.0,
+      "r_open_ft": 205.4,
+      "r_open_shift_ft": 6.0,
+      "pass_30ft": true
+    },
+    {
+      "v0_pct": 5,
+      "v0_ms": 945.0,
+      "r_open_ft": 209.4,
+      "r_open_shift_ft": 10.0,
+      "pass_30ft": true
+    }
+  ]
+}
