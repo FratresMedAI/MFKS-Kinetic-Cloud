@@ -4,8 +4,16 @@
     "elevation_deg": 30.0,
     "carrier_mass_kg": 0.188,
     "carrier_cd": 0.35,
-    "flechette_count": 100,
-    "dispersion_half_angle_deg": 3.3
+    "flechette_count_per_puck": 100,
+    "dispersion_half_angle_deg": 3.3,
+    "salvo_configs": {
+      "legacy_25": 25,
+      "strip_2x1": 136,
+      "strip_3x1": 208,
+      "turret_deck": 289,
+      "turret_full_3deck": 867,
+      "turret_full_4deck": 1156
+    }
   },
   "time_to_range_drag_corrected": [
     {
@@ -57,6 +65,56 @@
     "meets_15_25ft_target": true,
     "meets_2_per_m2_single": true,
     "meets_2_per_m2_salvo_25": true
+  },
+  "salvo_scenarios_at_350ft": {
+    "legacy_25": {
+      "tube_count": 25,
+      "flechette_count": 2500,
+      "hits_per_m2": 57.0,
+      "pattern_diameter_ft": 24.5,
+      "pattern_diameter_m": 7.47,
+      "label": "Legacy 25-tube module (superseded tier)"
+    },
+    "strip_2x1": {
+      "tube_count": 136,
+      "flechette_count": 13600,
+      "hits_per_m2": 310.06,
+      "pattern_diameter_ft": 24.5,
+      "pattern_diameter_m": 7.47,
+      "label": "2\u00d71 ft appliqu\u00e9 strip"
+    },
+    "strip_3x1": {
+      "tube_count": 208,
+      "flechette_count": 20800,
+      "hits_per_m2": 474.21,
+      "pattern_diameter_ft": 24.5,
+      "pattern_diameter_m": 7.47,
+      "label": "3\u00d71 ft appliqu\u00e9 strip"
+    },
+    "turret_deck": {
+      "tube_count": 289,
+      "flechette_count": 28900,
+      "hits_per_m2": 658.88,
+      "pattern_diameter_ft": 24.5,
+      "pattern_diameter_m": 7.47,
+      "label": "2\u00d72 ft turret \u2014 single deck"
+    },
+    "turret_full_3deck": {
+      "tube_count": 867,
+      "flechette_count": 86700,
+      "hits_per_m2": 1976.64,
+      "pattern_diameter_ft": 24.5,
+      "pattern_diameter_m": 7.47,
+      "label": "2\u00d72 ft turret \u2014 3-deck full dump"
+    },
+    "turret_full_4deck": {
+      "tube_count": 1156,
+      "flechette_count": 115600,
+      "hits_per_m2": 2635.52,
+      "pattern_diameter_ft": 24.5,
+      "pattern_diameter_m": 7.47,
+      "label": "2\u00d72 ft turret \u2014 4-deck full dump"
+    }
   },
   "band_pattern_envelope": [
     {
@@ -112,6 +170,89 @@
       "pattern_diameter_ft": 42.5,
       "hits_per_m2_single": 0.76,
       "hits_per_m2_salvo_25": 18.93
+    }
+  ],
+  "band_salvo_envelope": [
+    {
+      "range_ft": 230.0,
+      "pattern_diameter_ft": 9.2,
+      "hits_m2_legacy_25": 400.9,
+      "hits_m2_strip_2x1": 2181.1,
+      "hits_m2_strip_3x1": 3335.8,
+      "hits_m2_turret_deck": 4634.8,
+      "hits_m2_turret_full_3deck": 13904.3
+    },
+    {
+      "range_ft": 262.0,
+      "pattern_diameter_ft": 13.4,
+      "hits_m2_legacy_25": 190.6,
+      "hits_m2_strip_2x1": 1037.1,
+      "hits_m2_strip_3x1": 1586.1,
+      "hits_m2_turret_deck": 2203.8,
+      "hits_m2_turret_full_3deck": 6611.4
+    },
+    {
+      "range_ft": 295.0,
+      "pattern_diameter_ft": 17.6,
+      "hits_m2_legacy_25": 111.0,
+      "hits_m2_strip_2x1": 603.9,
+      "hits_m2_strip_3x1": 923.6,
+      "hits_m2_turret_deck": 1283.3,
+      "hits_m2_turret_full_3deck": 3850.0
+    },
+    {
+      "range_ft": 328.0,
+      "pattern_diameter_ft": 21.7,
+      "hits_m2_legacy_25": 72.6,
+      "hits_m2_strip_2x1": 394.7,
+      "hits_m2_strip_3x1": 603.7,
+      "hits_m2_turret_deck": 838.8,
+      "hits_m2_turret_full_3deck": 2516.5
+    },
+    {
+      "range_ft": 361.0,
+      "pattern_diameter_ft": 25.9,
+      "hits_m2_legacy_25": 51.1,
+      "hits_m2_strip_2x1": 278.0,
+      "hits_m2_strip_3x1": 425.2,
+      "hits_m2_turret_deck": 590.8,
+      "hits_m2_turret_full_3deck": 1772.5
+    },
+    {
+      "range_ft": 394.0,
+      "pattern_diameter_ft": 30.1,
+      "hits_m2_legacy_25": 37.9,
+      "hits_m2_strip_2x1": 206.4,
+      "hits_m2_strip_3x1": 315.6,
+      "hits_m2_turret_deck": 438.5,
+      "hits_m2_turret_full_3deck": 1315.6
+    },
+    {
+      "range_ft": 427.0,
+      "pattern_diameter_ft": 34.2,
+      "hits_m2_legacy_25": 29.3,
+      "hits_m2_strip_2x1": 159.2,
+      "hits_m2_strip_3x1": 243.5,
+      "hits_m2_turret_deck": 338.3,
+      "hits_m2_turret_full_3deck": 1015.0
+    },
+    {
+      "range_ft": 459.0,
+      "pattern_diameter_ft": 38.4,
+      "hits_m2_legacy_25": 23.3,
+      "hits_m2_strip_2x1": 126.6,
+      "hits_m2_strip_3x1": 193.6,
+      "hits_m2_turret_deck": 268.9,
+      "hits_m2_turret_full_3deck": 806.8
+    },
+    {
+      "range_ft": 492.0,
+      "pattern_diameter_ft": 42.5,
+      "hits_m2_legacy_25": 18.9,
+      "hits_m2_strip_2x1": 103.0,
+      "hits_m2_strip_3x1": 157.5,
+      "hits_m2_turret_deck": 218.9,
+      "hits_m2_turret_full_3deck": 656.6
     }
   ],
   "v0_sensitivity": [

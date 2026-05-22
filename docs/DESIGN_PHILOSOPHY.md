@@ -172,6 +172,8 @@ FCU presets:
 
 See [ARRAY_MODULE_SPEC.md](../prototypes/array/ARRAY_MODULE_SPEC.md), [CARRIER_PROJECTILE_ICD.md](CARRIER_PROJECTILE_ICD.md), [VEHICLE_INTEGRATION.md](VEHICLE_INTEGRATION.md).
 
+**Phase 5 concept docs:** [SALVO_SCENARIOS.md](../research/ballistics/SALVO_SCENARIOS.md) · [CONOPS_VIGNETTES.md](CONOPS_VIGNETTES.md) · [COMPETITIVE_POSITIONING.md](COMPETITIVE_POSITIONING.md) · [COLLABORATION_CHARTER.md](COLLABORATION_CHARTER.md)
+
 ---
 
 ## 9. Revision History
@@ -181,3 +183,4 @@ See [ARRAY_MODULE_SPEC.md](../prototypes/array/ARRAY_MODULE_SPEC.md), [CARRIER_P
 | 0.1 | 2026-05-22 | Initial (Phase 0) |
 | 0.3 | 2026-05-22 | Saturn battery reference, CIWS turret |
 | 0.4 | 2026-05-22 | **Restored 2×2 ft as sole standard module** (~289 tubes) |
+| 0.5 | 2026-05-22 | Phase 5 cross-links — salvo scenarios, CONOPS, collab |

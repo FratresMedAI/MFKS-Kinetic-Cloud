@@ -65,10 +65,14 @@
 
 ## 6. T5 — System Engagement *(Phase 4+)*
 
+**Desk exercise:** [SWARM_TEST_CONCEPT.md](SWARM_TEST_CONCEPT.md) (MKFS-DOC-T5-001)
+
 | Test ID | Description | Pass Criteria |
 |---------|-------------|---------------|
 | T5-001 | Multi-target drone surrogates | ≥ 80% kill in swarm scenario |
 | T5-002 | End-to-end cue-to-fire latency | < 2 s (with vehicle sensors) |
+| T5-003 | Salvo density @ 350 ft | ≥ 300 hits/m² (136-tube strip) |
+| T5-004 | Fratricide | Zero strikes in inhibit zone — [FRATRICIDE_DECONFLICTION.md](FRATRICIDE_DECONFLICTION.md) |
 
 ---
 
@@ -77,3 +81,4 @@
 | Version | Date | Change |
 |---------|------|--------|
 | 0.1 | 2026-05-22 | Initial T&E plan outline |
+| 0.2 | 2026-05-22 | T5 expanded; links to SWARM_TEST_CONCEPT, FRATRICIDE_DECONFLICTION |

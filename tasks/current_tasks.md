@@ -1,7 +1,7 @@
 # MKFS Current Tasks
 
 **Last updated:** 2026-05-22  
-**Project phase:** Design intent v0.2 — tile + puck architecture
+**Project phase:** Phase 5 complete — idea monkey sprint; physical prototype next
 
 ---
 
@@ -82,6 +82,26 @@ All tasks complete. See [CARRIER_PROJECTILE_ICD.md](../docs/CARRIER_PROJECTILE_I
 
 ---
 
+## Phase 5 — Idea Monkey Sprint ✅
+
+| ID | Task | Status | Linked Doc |
+|----|------|--------|------------|
+| P5-001 | Salvo recalibration (136/208/289 tubes) | Done | [SALVO_SCENARIOS.md](../research/ballistics/SALVO_SCENARIOS.md) |
+| P5-002 | Threat vignettes | Done | [CONOPS_VIGNETTES.md](../docs/CONOPS_VIGNETTES.md) |
+| P5-003 | Magazine economics | Done | [MAGAZINE_ECONOMICS.md](../docs/MAGAZINE_ECONOMICS.md) |
+| P5-004 | Fratricide & deconfliction | Done | [FRATRICIDE_DECONFLICTION.md](../docs/FRATRICIDE_DECONFLICTION.md) |
+| P5-005 | Competitive positioning | Done | [COMPETITIVE_POSITIONING.md](../docs/COMPETITIVE_POSITIONING.md) |
+| P5-006 | Puck cutaway storyboard | Done | [PUCK_CUTAWAY_STORYBOARD.md](../docs/visual/PUCK_CUTAWAY_STORYBOARD.md) |
+| P5-007 | Reload-under-fire concept | Done | [RELOAD_UNDER_FIRE.md](../docs/visual/RELOAD_UNDER_FIRE.md) |
+| P5-008 | One-pager + pitch deck | Done | [ONE_PAGER.md](../docs/outreach/ONE_PAGER.md), [PITCH_DECK.md](../docs/outreach/PITCH_DECK.md) |
+| P5-009 | Swarm test concept (T5 desk) | Done | [SWARM_TEST_CONCEPT.md](../docs/SWARM_TEST_CONCEPT.md) |
+| P5-010 | CONTRIBUTING + charter | Done | [CONTRIBUTING.md](../CONTRIBUTING.md), [COLLABORATION_CHARTER.md](../docs/COLLABORATION_CHARTER.md) |
+| P5-011 | Questions for primes | Done | [QUESTIONS_FOR_PRIMES.md](../docs/outreach/QUESTIONS_FOR_PRIMES.md) |
+| P5-012 | Maritime & fixed-site | Done | [MARITIME_FIXED_SITE.md](../docs/MARITIME_FIXED_SITE.md) |
+| P5-013 | ITAR / export framing | Done | [ITAR_EXPORT_FRAMING.md](../docs/ITAR_EXPORT_FRAMING.md) |
+
+---
+
 ## Decisions — All Closed ✅
 
 | ID | Outcome | Doc |
@@ -111,5 +131,6 @@ All tasks complete. See [CARRIER_PROJECTILE_ICD.md](../docs/CARRIER_PROJECTILE_I
 | Caliber | 30 mm |
 | Flechette pack | 100 × Ti @ 1.3 g |
 | `R_open` / `R_band` | 200 ft / 250–500 ft |
-| Pattern (350 ft, 25-tube salvo) | ~24.5 ft; ~57 hits/m² |
+| Pattern (350 ft, 136-tube salvo) | ~24.5 ft; **~310 hits/m²** |
+| Pattern (350 ft, 289-tube deck) | ~24.5 ft; **~659 hits/m²** |
 | FCU bus | CAN 2.0B @ 500 kbps |

@@ -37,6 +37,18 @@ R_BAND_MIN_M = 76.0
 R_BAND_MAX_M = 152.0
 R_MAX_M = 457.0
 
+# Salvo configurations — tube counts per design intent (DESIGN_PHILOSOPHY.md)
+SALVO_CONFIGS: dict[str, dict] = {
+    "legacy_25": {"tubes": 25, "label": "Legacy 25-tube module (superseded tier)"},
+    "strip_2x1": {"tubes": 136, "label": "2×1 ft appliqué strip"},
+    "strip_3x1": {"tubes": 208, "label": "3×1 ft appliqué strip"},
+    "turret_deck": {"tubes": 289, "label": "2×2 ft turret — single deck"},
+    "turret_full_3deck": {"tubes": 867, "label": "2×2 ft turret — 3-deck full dump"},
+    "turret_full_4deck": {"tubes": 1156, "label": "2×2 ft turret — 4-deck full dump"},
+}
+
+EVAL_RANGE_M = 106.7  # 350 ft — nominal band center
+
 
 @dataclass
 class TrajectoryPoint:
@@ -141,6 +153,49 @@ def sensitivity_analysis() -> list[dict]:
     return results
 
 
+def salvo_metrics(tube_count: int, pattern_m: float) -> dict:
+    flechettes = FLECHETTE_COUNT * tube_count
+    density = hits_per_m2(flechettes, pattern_m)
+    return {
+        "tube_count": tube_count,
+        "flechette_count": flechettes,
+        "hits_per_m2": round(density, 2),
+        "pattern_diameter_ft": round(ft(pattern_m), 1),
+        "pattern_diameter_m": round(pattern_m, 2),
+    }
+
+
+def compute_salvo_scenarios(r_open_m: float) -> dict:
+    """Salvo density at 350 ft for all tube configurations."""
+    pattern_m = pattern_diameter_at_range(EVAL_RANGE_M, r_open_m, DISPERSION_HALF_ANGLE_DEG)
+    scenarios = {}
+    for key, cfg in SALVO_CONFIGS.items():
+        metrics = salvo_metrics(cfg["tubes"], pattern_m)
+        metrics["label"] = cfg["label"]
+        scenarios[key] = metrics
+    return scenarios
+
+
+def compute_band_salvo_table(r_open_m: float) -> list[dict]:
+    """Pattern envelope across R_band for key salvo configs."""
+    keys = ["legacy_25", "strip_2x1", "strip_3x1", "turret_deck", "turret_full_3deck"]
+    rows = []
+    for dist_m in range(70, 160, 10):
+        r = range_at_distance(simulate_trajectory(V0_NOMINAL, ELEVATION_DEG), float(dist_m))
+        if not r:
+            continue
+        d = pattern_diameter_at_range(r.range_m, r_open_m, DISPERSION_HALF_ANGLE_DEG)
+        row: dict = {
+            "range_ft": round(r.range_ft, 0),
+            "pattern_diameter_ft": round(ft(d), 1),
+        }
+        for key in keys:
+            tubes = SALVO_CONFIGS[key]["tubes"]
+            row[f"hits_m2_{key}"] = round(hits_per_m2(FLECHETTE_COUNT * tubes, d), 1)
+        rows.append(row)
+    return rows
+
+
 def main() -> None:
     pts = simulate_trajectory(V0_NOMINAL, ELEVATION_DEG)
 
@@ -165,9 +220,10 @@ def main() -> None:
             })
 
     r_open_m = r_open_for_v0(V0_NOMINAL, ELEVATION_DEG)
-    pattern_m = pattern_diameter_at_range(106.7, r_open_m, DISPERSION_HALF_ANGLE_DEG)
+    pattern_m = pattern_diameter_at_range(EVAL_RANGE_M, r_open_m, DISPERSION_HALF_ANGLE_DEG)
     density_single = hits_per_m2(FLECHETTE_COUNT, pattern_m)
-    density_salvo_25 = hits_per_m2(FLECHETTE_COUNT * 25, pattern_m)
+    salvo_scenarios = compute_salvo_scenarios(r_open_m)
+    band_salvo_table = compute_band_salvo_table(r_open_m)
 
     band_results = []
     for dist_m in range(70, 160, 10):
@@ -187,8 +243,9 @@ def main() -> None:
             "elevation_deg": ELEVATION_DEG,
             "carrier_mass_kg": CARRIER_MASS_KG,
             "carrier_cd": CARRIER_CD,
-            "flechette_count": FLECHETTE_COUNT,
+            "flechette_count_per_puck": FLECHETTE_COUNT,
             "dispersion_half_angle_deg": DISPERSION_HALF_ANGLE_DEG,
+            "salvo_configs": {k: v["tubes"] for k, v in SALVO_CONFIGS.items()},
         },
         "time_to_range_drag_corrected": time_table,
         "r_open_mechanical": {
@@ -200,12 +257,14 @@ def main() -> None:
             "pattern_diameter_ft": round(ft(pattern_m), 1),
             "pattern_diameter_m": round(pattern_m, 2),
             "hits_per_m2_single_round": round(density_single, 2),
-            "hits_per_m2_salvo_25_tube": round(density_salvo_25, 2),
+            "hits_per_m2_salvo_25_tube": round(salvo_scenarios["legacy_25"]["hits_per_m2"], 2),
             "meets_15_25ft_target": 15 <= ft(pattern_m) <= 25,
             "meets_2_per_m2_single": density_single >= 2.0,
-            "meets_2_per_m2_salvo_25": density_salvo_25 >= 2.0,
+            "meets_2_per_m2_salvo_25": salvo_scenarios["legacy_25"]["hits_per_m2"] >= 2.0,
         },
+        "salvo_scenarios_at_350ft": salvo_scenarios,
         "band_pattern_envelope": band_results,
+        "band_salvo_envelope": band_salvo_table,
         "v0_sensitivity": sensitivity_analysis(),
     }
 
@@ -236,6 +295,7 @@ def main() -> None:
 
     ro = output["r_open_mechanical"]
     p = output["pattern_at_350ft"]
+    scenarios = output["salvo_scenarios_at_350ft"]
     md_lines.extend([
         "",
         "## Mechanical R_open (Option D)",
@@ -247,11 +307,21 @@ def main() -> None:
         "",
         f"- Pattern diameter: **{p['pattern_diameter_ft']} ft** ({p['pattern_diameter_m']} m)",
         f"- Hits/m² (single round): **{p['hits_per_m2_single_round']}**",
-        f"- Hits/m² (25-tube salvo): **{p['hits_per_m2_salvo_25_tube']}**",
         f"- Meets 15–25 ft target: {'Yes' if p['meets_15_25ft_target'] else 'No'}",
-        f"- Meets ≥2 hits/m² (salvo): {'Yes' if p['meets_2_per_m2_salvo_25'] else 'No'}",
         "",
-        "## Pattern Envelope (R_band)",
+        "## Salvo Scenarios at 350 ft",
+        "",
+        "| Config | Tubes | Flechettes | Hits/m² |",
+        "|--------|-------|------------|---------|",
+    ])
+    for key, s in scenarios.items():
+        md_lines.append(
+            f"| {s['label']} | {s['tube_count']} | {s['flechette_count']:,} | **{s['hits_per_m2']}** |"
+        )
+
+    md_lines.extend([
+        "",
+        "## Pattern Envelope (R_band) — Legacy 25-tube",
         "",
         "| Range (ft) | Pattern Dia (ft) | Hits/m² (1 rnd) | Hits/m² (25 rnd) |",
         "|------------|------------------|-----------------|------------------|",
@@ -261,6 +331,23 @@ def main() -> None:
             f"| {row['range_ft']} | {row['pattern_diameter_ft']} | "
             f"{row['hits_per_m2_single']} | {row['hits_per_m2_salvo_25']} |"
         )
+
+    band_salvo = output["band_salvo_envelope"]
+    if band_salvo:
+        md_lines.extend([
+            "",
+            "## Pattern Envelope (R_band) — Multi-Salvo Hits/m²",
+            "",
+            "| Range (ft) | Dia (ft) | 25 | 136 | 208 | 289 | 867 |",
+            "|------------|----------|-----|-----|-----|-----|-----|",
+        ])
+        for row in band_salvo:
+            md_lines.append(
+                f"| {row['range_ft']} | {row['pattern_diameter_ft']} | "
+                f"{row['hits_m2_legacy_25']} | {row['hits_m2_strip_2x1']} | "
+                f"{row['hits_m2_strip_3x1']} | {row['hits_m2_turret_deck']} | "
+                f"{row['hits_m2_turret_full_3deck']} |"
+            )
 
     md_lines.extend([
         "",
@@ -279,9 +366,10 @@ def main() -> None:
 
     print(f"Wrote {json_path}")
     print(f"Wrote {md_path}")
+    turret = scenarios["turret_deck"]
     print(
         f"Pattern at 350 ft: {p['pattern_diameter_ft']} ft, "
-        f"salvo density {p['hits_per_m2_salvo_25_tube']} hits/m²"
+        f"289-tube salvo density {turret['hits_per_m2']} hits/m²"
     )
 
 

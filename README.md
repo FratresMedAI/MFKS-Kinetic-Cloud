@@ -31,6 +31,25 @@ Last-ditch kinetic defense. Two packaging lines:
 
 ![Moving-head pan-tilt turret — 2×2 ft magazine inside head](assets/mkfs_moving_head_turret_2x2.png)
 
+## Concept & Outreach *(Phase 5)*
+
+| Topic | Doc |
+|-------|-----|
+| Salvo recalibration (136/208/289 tubes) | [SALVO_SCENARIOS.md](research/ballistics/SALVO_SCENARIOS.md) |
+| Magazine economics | [MAGAZINE_ECONOMICS.md](docs/MAGAZINE_ECONOMICS.md) |
+| Threat vignettes | [CONOPS_VIGNETTES.md](docs/CONOPS_VIGNETTES.md) |
+| Fratricide & deconfliction | [FRATRICIDE_DECONFLICTION.md](docs/FRATRICIDE_DECONFLICTION.md) |
+| Competitive positioning | [COMPETITIVE_POSITIONING.md](docs/COMPETITIVE_POSITIONING.md) |
+| Maritime & fixed-site | [MARITIME_FIXED_SITE.md](docs/MARITIME_FIXED_SITE.md) |
+| Swarm test concept (T5) | [SWARM_TEST_CONCEPT.md](docs/SWARM_TEST_CONCEPT.md) |
+| ITAR / export framing | [ITAR_EXPORT_FRAMING.md](docs/ITAR_EXPORT_FRAMING.md) |
+| Puck cutaway storyboard | [PUCK_CUTAWAY_STORYBOARD.md](docs/visual/PUCK_CUTAWAY_STORYBOARD.md) |
+| Reload under fire | [RELOAD_UNDER_FIRE.md](docs/visual/RELOAD_UNDER_FIRE.md) |
+| One-pager | [ONE_PAGER.md](docs/outreach/ONE_PAGER.md) |
+| Pitch deck | [PITCH_DECK.md](docs/outreach/PITCH_DECK.md) |
+| Questions for primes | [QUESTIONS_FOR_PRIMES.md](docs/outreach/QUESTIONS_FOR_PRIMES.md) |
+| Contributing | [CONTRIBUTING.md](CONTRIBUTING.md) · [COLLABORATION_CHARTER.md](docs/COLLABORATION_CHARTER.md) |
+
 ## License
 
 Licensed under **[Apache License 2.0](LICENSE)** — industry-friendly open terms with an explicit patent grant.
