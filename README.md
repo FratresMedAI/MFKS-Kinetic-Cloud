@@ -31,6 +31,14 @@ Last-ditch kinetic defense. Two packaging lines:
 
 ![Moving-head pan-tilt turret — 2×2 ft magazine inside head](assets/mkfs_moving_head_turret_2x2.png)
 
+## License
+
+**Copyright © 2026 FratresMedAI. All Rights Reserved.**
+
+This repository is **proprietary**. You may view it on GitHub for informational purposes only. You may **not** copy, reuse, modify, sell, or build products from these materials without **written permission** from FratresMedAI.
+
+→ Full terms: [LICENSE](LICENSE)
+
 ## Disclaimer
 
-Concept documentation only.
+Concept documentation only. Not an engineering specification or offer.
