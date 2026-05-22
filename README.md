@@ -33,12 +33,12 @@ Last-ditch kinetic defense. Two packaging lines:
 
 ## License
 
-**Copyright © 2026 FratresMedAI. All Rights Reserved.**
+Licensed under **[Apache License 2.0](LICENSE)** — industry-friendly open terms with an explicit patent grant.
 
-This repository is **proprietary**. You may view it on GitHub for informational purposes only. You may **not** copy, reuse, modify, sell, or build products from these materials without **written permission** from FratresMedAI.
+Contributions and collaboration welcome (issues, pull requests, or direct outreach). Defense primes, integrators, and research partners can fork, extend, and build on this work under the license terms.
 
-→ Full terms: [LICENSE](LICENSE)
+→ [LICENSE](LICENSE) · [NOTICE](NOTICE)
 
 ## Disclaimer
 
-Concept documentation only. Not an engineering specification or offer.
+Concept documentation only. Not an engineering specification, procurement offer, or export-controlled deliverable.
