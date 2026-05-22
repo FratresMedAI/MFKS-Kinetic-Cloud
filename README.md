@@ -49,6 +49,8 @@ Last-ditch kinetic defense. Two packaging lines:
 | Pitch deck | [PITCH_DECK.md](docs/outreach/PITCH_DECK.md) |
 | Questions for primes | [QUESTIONS_FOR_PRIMES.md](docs/outreach/QUESTIONS_FOR_PRIMES.md) |
 | Contributing | [CONTRIBUTING.md](CONTRIBUTING.md) · [COLLABORATION_CHARTER.md](docs/COLLABORATION_CHARTER.md) |
+| LR munition variants *(30 mm, AMR, Gustaf, shoulder pod)* | [LR_MUNITION_VARIANTS.md](docs/LR_MUNITION_VARIANTS.md) |
+| Drone radar + EM sensor | [ICD_DRONE_RADAR.md](docs/ICD_DRONE_RADAR.md) |
 
 ## License
 

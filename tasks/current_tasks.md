@@ -102,6 +102,15 @@ All tasks complete. See [CARRIER_PROJECTILE_ICD.md](../docs/CARRIER_PROJECTILE_I
 
 ---
 
+## Phase 6 — Extended Reach & Sensing ✅
+
+| ID | Task | Status | Linked Doc |
+|----|------|--------|------------|
+| P6-001 | LR munition variants (30 mm, AMR, Gustaf, shoulder pod) | Done | [LR_MUNITION_VARIANTS.md](../docs/LR_MUNITION_VARIANTS.md) |
+| P6-002 | Drone radar + EM sensor ICD | Done | [ICD_DRONE_RADAR.md](../docs/ICD_DRONE_RADAR.md) |
+
+---
+
 ## Decisions — All Closed ✅
 
 | ID | Outcome | Doc |

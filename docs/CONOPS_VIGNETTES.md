@@ -99,6 +99,25 @@ Five operational vignettes illustrating MKFS **last-ditch** employment — threa
 
 ---
 
+## Vignette 6 — Layered LR + Radar + Terminal *(Phase 6)*
+
+**Platform:** MRAP with `MKFS-SENS-EM-RADAR` + dual 2×1 strips + pintle 30 mm  
+**Threat:** 10× mixed swarm, approach from 1,200 yd  
+**Conditions:** ESM picks up 5.8 GHz FPV links; radar tracks 8 contacts
+
+| Phase | Action |
+|-------|--------|
+| Detect | EM bearing cues radar; fused track to FCU @ 900 yd |
+| LR | Gunner fires **3× MKFS-CART-30-SHELL** bursts — clouds at 700 yd |
+| Mid | 4 drones down; 6 continue |
+| Terminal | At 400 yd FCU **SWARM_WIDE** both strips — 272 tubes |
+| Outcome | Swarm broken; 2 leakers defeated at 280 yd |
+| Magazine | 30 mm depleted; both strips **empty** |
+
+→ [LR_MUNITION_VARIANTS.md](LR_MUNITION_VARIANTS.md) · [ICD_DRONE_RADAR.md](ICD_DRONE_RADAR.md)
+
+---
+
 ## 6. Revision History
 
 | Version | Date | Change |

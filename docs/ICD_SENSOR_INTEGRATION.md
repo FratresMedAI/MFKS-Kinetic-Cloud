@@ -1,9 +1,9 @@
 # MKFS Sensor Integration Requirements
 
 **Document ID:** MKFS-ICD-SENS-001  
-**Version:** 0.1 (Phase 3)  
+**Version:** 0.2 (Phase 6)  
 **Decision D-005:** **Vehicle sensors baseline; optional swarm sensor kit**  
-**Related:** [SYSTEM_ARCHITECTURE.md](architecture/SYSTEM_ARCHITECTURE.md) | [ICD_POWER_C4ISR.md](ICD_POWER_C4ISR.md)
+**Related:** [ICD_DRONE_RADAR.md](ICD_DRONE_RADAR.md) | [LR_MUNITION_VARIANTS.md](LR_MUNITION_VARIANTS.md) | [SYSTEM_ARCHITECTURE.md](architecture/SYSTEM_ARCHITECTURE.md) | [ICD_POWER_C4ISR.md](ICD_POWER_C4ISR.md)
 
 ---
 
@@ -14,10 +14,12 @@ flowchart LR
   RWS[VehicleRWS_EOIR]
   RAD[VehicleRadar_Opt]
   SWARM[MKFS_SwarmKit_Opt]
+  EMRAD[MKFS_EM_Radar_Opt]
   FCU[FCU]
   RWS --> FCU
   RAD --> FCU
   SWARM --> FCU
+  EMRAD --> FCU
 ```
 
 ---
@@ -36,6 +38,8 @@ flowchart LR
 
 ## 3. Optional — MKFS Swarm Sensor Kit (`MKFS-SENS-SWARM-OPT`)
 
+> **Phase 6 update:** Superseded for new designs by [`MKFS-SENS-EM-RADAR`](ICD_DRONE_RADAR.md) — radar + passive EM, 1,500 yd, LR munition cueing. Retained here for backward compatibility.
+
 | Parameter | Specification |
 |-----------|---------------|
 | Type | Compact X-band FMCW radar *(conceptual)* |
@@ -46,7 +50,20 @@ flowchart LR
 | Mount | Adapter mast (MRAP kit included; others optional) |
 | Interface | CAN 0x300 TRACK messages |
 
-**Decision D-005:** Optional kit — not required for baseline vehicle integration. Recommended for convoy/MRAP missions without organic air defense cueing.
+**Decision D-005:** Optional kit — not required for baseline vehicle integration. Recommended for convoy/MRAP missions without organic air defense cueing. **See [ICD_DRONE_RADAR.md](ICD_DRONE_RADAR.md) for Phase 6 EM/radar spec.**
+
+---
+
+## 3b. Optional — MKFS EM/Radar Kit (`MKFS-SENS-EM-RADAR`) *(Phase 6)*
+
+Full specification: [ICD_DRONE_RADAR.md](ICD_DRONE_RADAR.md)
+
+| Parameter | Specification |
+|-----------|---------------|
+| Type | X-band FMCW radar + passive ISM ESM |
+| Coverage | 360°, 50–1,500 yd |
+| Detect | Group 1–2 UAS; datalink EM bearing |
+| Cues | Terminal strips + [LR munitions](LR_MUNITION_VARIANTS.md) |
 
 ---
 
@@ -80,3 +97,4 @@ Stale track (> 500 ms) → hold fire, alert operator.
 | Version | Date | Change |
 |---------|------|--------|
 | 0.1 | 2026-05-22 | Baseline vs optional kit defined; D-005 closed |
+| 0.2 | 2026-05-22 | Phase 6 EM/radar kit; link to ICD_DRONE_RADAR, LR munitions |

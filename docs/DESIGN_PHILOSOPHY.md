@@ -174,6 +174,8 @@ See [ARRAY_MODULE_SPEC.md](../prototypes/array/ARRAY_MODULE_SPEC.md), [CARRIER_P
 
 **Phase 5 concept docs:** [SALVO_SCENARIOS.md](../research/ballistics/SALVO_SCENARIOS.md) · [CONOPS_VIGNETTES.md](CONOPS_VIGNETTES.md) · [COMPETITIVE_POSITIONING.md](COMPETITIVE_POSITIONING.md) · [COLLABORATION_CHARTER.md](COLLABORATION_CHARTER.md)
 
+**Phase 6 spinoffs:** [LR_MUNITION_VARIANTS.md](LR_MUNITION_VARIANTS.md) · [ICD_DRONE_RADAR.md](ICD_DRONE_RADAR.md) — extended-range munitions + drone radar/EM sensor
+
 ---
 
 ## 9. Revision History
