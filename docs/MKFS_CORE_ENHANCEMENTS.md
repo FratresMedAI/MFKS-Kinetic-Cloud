@@ -84,7 +84,22 @@ No caliber drift. No merged munitions.
 
 ---
 
-## 8. What We Rejected
+## 8. Enhancement G — Edge C2 & Degraded Comms
+
+Address central-network critique: **kinetic commit never waits on TCP/IP** (D-013).
+
+| Pattern | Purpose |
+|---------|---------|
+| Hierarchical intent C2 | C4ISR sends ROE/intent; FCU executes locally |
+| Local predictor | Engage predicted volume at 250 ms delay / 60 mph |
+| Degradation ladder | C4ISR loss → last-known intent → manual cue |
+| Optional gossip | Adjacent-node track share without central fusion |
+
+→ [NETWORK_ARCHITECTURE.md](NETWORK_ARCHITECTURE.md) · [latency_resilience_model.py](../scripts/latency_resilience_model.py)
+
+---
+
+## 9. What We Rejected
 
 | Rejected | Why |
 |----------|-----|
@@ -95,9 +110,10 @@ No caliber drift. No merged munitions.
 
 ---
 
-## 9. Revision History
+## 10. Revision History
 
 | Version | Date | Change |
 |---------|------|--------|
 | 0.1 | 2026-05-22 | Core terminal enhancements; LR spinoff rejected |
 | 0.2 | 2026-05-22 | Phase 8 cross-links — storyboard, spin scenario, HIL |
+| 0.3 | 2026-05-22 | Phase 9 — Enhancement G edge C2 / degraded comms |

@@ -18,6 +18,7 @@
 | D-010 | Terminal drone sensor | Swarm kit only / **EM+radar on tile** | **MKFS-SENS-EM-RADAR** optional; 50–800 yd | 2026-05-22 | [ICD_DRONE_RADAR.md](ICD_DRONE_RADAR.md) |
 | D-011 | Canonical puck forms | A / B / C / D / mix | **PUCK-A + PUCK-B** | 2026-05-22 | [PUCK_DESIGN_OPTIONS.md](../assets/PUCK_DESIGN_OPTIONS.md) |
 | D-012 | Tile tube architecture | 25-tube module / **136-tube 2×1 strip** | **136-tube 2×1 appliqué strip** | 2026-05-22 | Supersedes D-004 for salvo scale |
+| D-013 | Kinetic commit path | TCP/IP allowed / **CAN-only fire path** | **Fire path SHALL NOT traverse TCP/IP** | 2026-05-22 | [NETWORK_ARCHITECTURE.md](NETWORK_ARCHITECTURE.md) |
 
 ---
 
@@ -54,6 +55,18 @@ Baseline MKFS relies on existing vehicle EO/IR or manual cue — minimizing inte
 
 ---
 
+## D-013 Rationale — CAN-Only Kinetic Commit Path
+
+| Path | Allowed for FIRE_CMD? | Rationale |
+|------|----------------------|-----------|
+| Vehicle CAN (500 kbps) | **Yes** | Deterministic ≤ 5 ms; local to defended asset |
+| Vehicle Ethernet / TCP/IP | **No** | Packet loss, latency spikes, central dependency |
+| C4ISR / 1553 | **Intent only** | ROE, geofence, mission intent — seconds-scale OK |
+
+Central-network critique (250 ms @ 60 mph → ~22 ft miss) motivates keeping tracks and fire commands on the **edge node**, with local prediction compensating delay. See [NETWORK_ARCHITECTURE.md](NETWORK_ARCHITECTURE.md).
+
+---
+
 ## Revision History
 
 | Version | Date | Change |
@@ -61,3 +74,4 @@ Baseline MKFS relies on existing vehicle EO/IR or manual cue — minimizing inte
 | 0.1 | 2026-05-22 | D-004, D-005 closed |
 | 0.2 | 2026-05-22 | D-011 — PUCK-A + PUCK-B canonical |
 | 0.3 | 2026-05-22 | D-004 superseded; D-012 — 136-tube tile architecture |
+| 0.4 | 2026-05-22 | D-013 — CAN-only kinetic commit path (edge-first C2) |

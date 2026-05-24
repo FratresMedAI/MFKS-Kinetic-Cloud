@@ -80,19 +80,20 @@ Low-profile **symmetrical tiles** (2×1, 3×1 ft) mounted on turret cheeks, hull
 
 **Function:** Deliver flechette cloud to preset range band (`R_open` ~200 ft, peak `R_band` 250–500 ft).
 
-### 3.3 Fire Control Unit (FCU)
+### 3.3 Fire Control Unit (FCU) — Edge Node
 
-Launcher-level electronics for engagement sequencing. **No fire control inside the round.**
+Launcher-level **edge node** for engagement sequencing. **No fire control inside the round.** Kinetic commit path stays on vehicle CAN — never TCP/IP (D-013). See [NETWORK_ARCHITECTURE.md](../NETWORK_ARCHITECTURE.md).
 
 | Function | Description |
 |----------|-------------|
-| Threat cueing | Receives tracks from vehicle sensors or optional swarm radar |
+| Threat cueing | Local CAN tracks + optional C4ISR intent |
+| Track fusion & prediction | Local triage, CV/Kalman predictor |
 | Tube selection | Selects tubes for salvo pattern |
 | Salvo timing | Sequences initiation with programmable inter-round delay |
 | Safety | Arming interlocks, muzzle clearance check, friendly-fire zone inhibit |
 | Status | Pod round count, module health, fault reporting |
 
-**Interface:** MKFS-IF-004 (28 VDC, RS-485/CAN data)
+**Interface:** MKFS-IF-004 (28 VDC, CAN data per D-003)
 
 ### 3.4 Vehicle Adapter Kit
 

@@ -22,10 +22,13 @@ jobs:
         run: pip install pytest
 
       - name: Run FCU unit tests
-        run: python -m pytest src/fire_control/test_fcu.py -v
+        run: python -m pytest src/fire_control/test_fcu.py src/fire_control/test_hil_sim.py -v
 
       - name: Run ballistics model
         run: python research/ballistics/ballistics_model.py
 
-      - name: Verify ballistics outputs exist
-        run: test -f research/ballistics/ballistics_output.json && test -f research/ballistics/BALLISTICS_RESULTS.md
+      - name: Run latency resilience model
+        run: python scripts/latency_resilience_model.py
+
+      - name: Verify model outputs exist
+        run: test -f research/ballistics/ballistics_output.json && test -f research/ballistics/BALLISTICS_RESULTS.md && test -f scripts/latency_resilience_output.json

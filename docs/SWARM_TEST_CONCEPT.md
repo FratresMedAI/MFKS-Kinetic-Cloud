@@ -1,9 +1,9 @@
 # MKFS Swarm Test Concept — Desk Exercise (T5)
 
 **Document ID:** MKFS-DOC-T5-001  
-**Version:** 0.1 (Phase 5)  
+**Version:** 0.2 (Phase 9)  
 **Scope:** Planning document only — **no hardware required** to produce this artifact  
-**Related:** [TEST_EVAL_PLAN.md](TEST_EVAL_PLAN.md) | [SALVO_SCENARIOS.md](../research/ballistics/SALVO_SCENARIOS.md) | [FRATRICIDE_DECONFLICTION.md](FRATRICIDE_DECONFLICTION.md)
+**Related:** [TEST_EVAL_PLAN.md](TEST_EVAL_PLAN.md) | [SALVO_SCENARIOS.md](../research/ballistics/SALVO_SCENARIOS.md) | [FRATRICIDE_DECONFLICTION.md](FRATRICIDE_DECONFLICTION.md) | [NETWORK_ARCHITECTURE.md](NETWORK_ARCHITECTURE.md)
 
 ---
 
@@ -20,8 +20,9 @@ Demonstrate that an MKFS **LAST_DITCH_FULL** salvo produces sufficient **termina
 **Primary metric:** ≥ **300 hits/m²** in engagement volume at 350 ft *(achieved by 136-tube strip — see [SALVO_SCENARIOS.md](../research/ballistics/SALVO_SCENARIOS.md))*
 
 **Secondary metrics:**
-- Time from cue to first tube fire: **< 2 s**
-- Full salvo complete: **< 3 s** (136 tubes @ 5 ms inter-tube)
+- **Local cue-to-fire** (CAN path only): **< 500 ms**
+- **C4ISR-inclusive cue-to-fire** (when link healthy): **< 2 s**
+- Full salvo complete: **< 3 s** (136 tubes @ 2 ms inter-tube, LAST_DITCH_FULL)
 - Zero fratricide violations in instrumented safety zone
 
 ---
@@ -104,14 +105,37 @@ Cross-reference elevation limits and dismount arcs in [FRATRICIDE_DECONFLICTION.
 
 ---
 
-## 8. Link to TEST_EVAL_PLAN
+## 10. Network-Stress Scenarios *(Desk Exercise)*
+
+Addresses central-network critique per [NETWORK_ARCHITECTURE.md](NETWORK_ARCHITECTURE.md). No hardware required for desk pass/fail definition.
+
+| ID | Scenario | Inject | Pass criteria |
+|----|----------|--------|---------------|
+| T5-N01 | C4ISR loss mid-engagement | Drop TCP/IP tracks at T+0.5 s | FCU completes salvo on local CAN tracks; no hang; no TCP on fire path |
+| T5-N02 | 250 ms track latency | Delay all CAN `0x300 TRACK` by 250 ms | Local predictor maintains **≥ 70%** pattern overlap *(see [latency_resilience_model.py](../scripts/latency_resilience_model.py))* |
+| T5-N03 | Sensor overload | 50 tracks, 32-cap sensor | Triage engages top-N by closure rate; no FCU fault |
+| T5-N04 | Partial convoy gossip | 1 of 3 nodes loses C4ISR | Adjacent node shares tracks via gossip; fratricide inhibit uses conservative union |
+
+### Failure modes the system must handle
+
+| Failure | Expected behavior |
+|---------|-------------------|
+| TCP/IP retransmit storm | Fire path unaffected; C4ISR intent may stall — use last-known intent TTL |
+| Central fusion overload | Local FCU triage; no blocking wait on central node |
+| Stale track > 500 ms | Hold fire per ICD; alert operator |
+| Conflicting friendly position | Hold fire (SI-011) until resolved |
+
+---
+
+## 11. Link to TEST_EVAL_PLAN
 
 This document **supplements** [TEST_EVAL_PLAN.md](TEST_EVAL_PLAN.md) § T5. Update T5 row on range execution to reference MKFS-DOC-T5-001.
 
 ---
 
-## 9. Revision History
+## 12. Revision History
 
 | Version | Date | Change |
 |---------|------|--------|
 | 0.1 | 2026-05-22 | Initial desk-exercise T5 concept |
+| 0.2 | 2026-05-22 | Phase 9 — network-stress scenarios T5-N01–N04; split local vs C4ISR latency metrics |

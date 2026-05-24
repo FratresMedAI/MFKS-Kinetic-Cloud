@@ -52,6 +52,7 @@ Last-ditch kinetic defense. Two packaging lines:
 | Competitive positioning | [COMPETITIVE_POSITIONING.md](docs/COMPETITIVE_POSITIONING.md) |
 | Maritime & fixed-site | [MARITIME_FIXED_SITE.md](docs/MARITIME_FIXED_SITE.md) |
 | Swarm test concept (T5) | [SWARM_TEST_CONCEPT.md](docs/SWARM_TEST_CONCEPT.md) |
+| **Network & C2 architecture** | [NETWORK_ARCHITECTURE.md](docs/NETWORK_ARCHITECTURE.md) |
 | ITAR / export framing | [ITAR_EXPORT_FRAMING.md](docs/ITAR_EXPORT_FRAMING.md) |
 | Puck cutaway storyboard | [PUCK_CUTAWAY_STORYBOARD.md](docs/visual/PUCK_CUTAWAY_STORYBOARD.md) |
 | Reload under fire | [RELOAD_UNDER_FIRE.md](docs/visual/RELOAD_UNDER_FIRE.md) |

@@ -1,8 +1,8 @@
 # MKFS Risk Register
 
 **Document ID:** MKFS-DOC-RISK-001  
-**Version:** 0.1 (Phase 4 draft)  
-**Related:** [REQUIREMENTS.md](REQUIREMENTS.md) | [DEPLOYMENT_DOWN_SELECT.md](DEPLOYMENT_DOWN_SELECT.md)
+**Version:** 0.2 (Phase 9)  
+**Related:** [REQUIREMENTS.md](REQUIREMENTS.md) | [DEPLOYMENT_DOWN_SELECT.md](DEPLOYMENT_DOWN_SELECT.md) | [NETWORK_ARCHITECTURE.md](NETWORK_ARCHITECTURE.md)
 
 ---
 
@@ -18,8 +18,16 @@
 | R-006 | Ti flechette cost / supply chain | Medium | Medium | Dual-source; steel fallback variant | Logistics |
 | R-007 | CAN bus EMI on vehicle platform | Low | Medium | Shielded harness; MIL-38999 connector; HIL test | Software |
 | R-008 | Mechanism failure rate > 0.5% | Low | High | Accelerated life test; redundant petal design | QA |
-| R-009 | Sensor cueing latency vs. small UAS | Medium | High | Optional swarm radar kit; manual override salvo | Integration |
+| R-009 | Sensor cueing latency vs. small UAS | Medium | High | Co-mounted CAN sensor; local predictor; manual override | Integration |
 | R-010 | Regulatory / classification of kinetic counter-UAS | Low | High | Early legal review; kinetic-only advantage — see [ITAR_EXPORT_FRAMING.md](ITAR_EXPORT_FRAMING.md) | Program |
+
+## Network & C2 Risks *(Phase 9)*
+
+| ID | Risk | Likelihood | Impact | Mitigation | Owner |
+|----|------|------------|--------|------------|-------|
+| R-011 | Central fusion / C4ISR overload under multi-wave swarm | Medium | High | Edge FCU triage; CAN-local tracks; D-013 no TCP on fire path | Software |
+| R-012 | C4ISR latency / packet loss → stale aim | Medium | High | Local predictor; 500 ms hold-fire; [latency_resilience_model.py](../scripts/latency_resilience_model.py) | Software |
+| R-013 | Gossip fratricide uncertainty (spoofed/stale friendly position) | Low | Critical | SI-010/011; conservative inhibit union; hold fire on conflict | Safety |
 
 ---
 
@@ -27,10 +35,10 @@
 
 ```
 Impact
-  Critical | R-004        | R-001 R-002 R-008 R-010
-  High     |              | R-009
-  Medium   |              | R-003 R-005 R-006 R-007
-  Low      |              |
+  Critical | R-004 R-013   | R-001 R-002 R-008 R-010
+  High     |               | R-009 R-011 R-012
+  Medium   |               | R-003 R-005 R-006 R-007
+  Low      |               |
            +--------------+--------------+
               Low           Medium         Likelihood
 ```
@@ -42,3 +50,4 @@ Impact
 | Version | Date | Change |
 |---------|------|--------|
 | 0.1 | 2026-05-22 | Initial top 10 risks |
+| 0.2 | 2026-05-22 | Phase 9 — R-011–R-013 network/C2 risks |

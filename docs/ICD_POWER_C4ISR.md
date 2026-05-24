@@ -96,6 +96,8 @@ Peak duration: ≤ 2 s per salvo. Vehicle shall provide ≥ 400 W allocated capa
 
 FCU shall operate fully with no C4ISR connection (local sensor or manual cue).
 
+**Phase 9 — D-013:** C4ISR is **non-real-time**. Threat tracks over TCP/IP are **informational only** — they must not gate CAN `FIRE_CMD`. Mission intent, ROE, and geofence updates may arrive over C4ISR with seconds-scale latency. See [NETWORK_ARCHITECTURE.md](NETWORK_ARCHITECTURE.md).
+
 ---
 
 ## 5. EMI / EMC
@@ -115,3 +117,4 @@ Harness: double-shielded, ≤ 3 m from ignition wiring.
 | Version | Date | Change |
 |---------|------|--------|
 | 0.1 | 2026-05-22 | CAN adopted; message map defined |
+| 0.2 | 2026-05-22 | Phase 9 — D-013; C4ISR non-real-time annotation |

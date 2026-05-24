@@ -1,0 +1,206 @@
+{
+  "parameters": {
+    "pattern_diameter_m": 7.47,
+    "baseline_speed_mph": 60.0,
+    "baseline_delay_ms": 250.0
+  },
+  "baseline_reference": {
+    "speed_mph": 60.0,
+    "delay_ms": 250.0,
+    "lead_error_m": 6.71,
+    "lead_error_ft": 22.0,
+    "pattern_diameter_ft": 24.5,
+    "pattern_overlap_at_baseline": 0.0,
+    "note": "Volume fire partially absorbs lead error; does not eliminate it."
+  },
+  "delay_sweep": [
+    {
+      "speed_mph": 30,
+      "delay_ms": 50,
+      "lead_error_m": 0.67,
+      "lead_error_ft": 2.2,
+      "pattern_overlap": 0.984,
+      "engagement_proxy": 0.984
+    },
+    {
+      "speed_mph": 30,
+      "delay_ms": 100,
+      "lead_error_m": 1.34,
+      "lead_error_ft": 4.4,
+      "pattern_overlap": 0.933,
+      "engagement_proxy": 0.933
+    },
+    {
+      "speed_mph": 30,
+      "delay_ms": 150,
+      "lead_error_m": 2.01,
+      "lead_error_ft": 6.6,
+      "pattern_overlap": 0.843,
+      "engagement_proxy": 0.843
+    },
+    {
+      "speed_mph": 30,
+      "delay_ms": 250,
+      "lead_error_m": 3.35,
+      "lead_error_ft": 11.0,
+      "pattern_overlap": 0.441,
+      "engagement_proxy": 0.441
+    },
+    {
+      "speed_mph": 30,
+      "delay_ms": 350,
+      "lead_error_m": 4.69,
+      "lead_error_ft": 15.4,
+      "pattern_overlap": 0.0,
+      "engagement_proxy": 0.0
+    },
+    {
+      "speed_mph": 30,
+      "delay_ms": 500,
+      "lead_error_m": 6.71,
+      "lead_error_ft": 22.0,
+      "pattern_overlap": 0.0,
+      "engagement_proxy": 0.0
+    },
+    {
+      "speed_mph": 60,
+      "delay_ms": 50,
+      "lead_error_m": 1.34,
+      "lead_error_ft": 4.4,
+      "pattern_overlap": 0.933,
+      "engagement_proxy": 0.933
+    },
+    {
+      "speed_mph": 60,
+      "delay_ms": 100,
+      "lead_error_m": 2.68,
+      "lead_error_ft": 8.8,
+      "pattern_overlap": 0.696,
+      "engagement_proxy": 0.696
+    },
+    {
+      "speed_mph": 60,
+      "delay_ms": 150,
+      "lead_error_m": 4.02,
+      "lead_error_ft": 13.2,
+      "pattern_overlap": 0.0,
+      "engagement_proxy": 0.0
+    },
+    {
+      "speed_mph": 60,
+      "delay_ms": 250,
+      "lead_error_m": 6.71,
+      "lead_error_ft": 22.0,
+      "pattern_overlap": 0.0,
+      "engagement_proxy": 0.0
+    },
+    {
+      "speed_mph": 60,
+      "delay_ms": 350,
+      "lead_error_m": 9.39,
+      "lead_error_ft": 30.8,
+      "pattern_overlap": 0.0,
+      "engagement_proxy": 0.0
+    },
+    {
+      "speed_mph": 60,
+      "delay_ms": 500,
+      "lead_error_m": 13.41,
+      "lead_error_ft": 44.0,
+      "pattern_overlap": 0.0,
+      "engagement_proxy": 0.0
+    },
+    {
+      "speed_mph": 90,
+      "delay_ms": 50,
+      "lead_error_m": 2.01,
+      "lead_error_ft": 6.6,
+      "pattern_overlap": 0.843,
+      "engagement_proxy": 0.843
+    },
+    {
+      "speed_mph": 90,
+      "delay_ms": 100,
+      "lead_error_m": 4.02,
+      "lead_error_ft": 13.2,
+      "pattern_overlap": 0.0,
+      "engagement_proxy": 0.0
+    },
+    {
+      "speed_mph": 90,
+      "delay_ms": 150,
+      "lead_error_m": 6.04,
+      "lead_error_ft": 19.8,
+      "pattern_overlap": 0.0,
+      "engagement_proxy": 0.0
+    },
+    {
+      "speed_mph": 90,
+      "delay_ms": 250,
+      "lead_error_m": 10.06,
+      "lead_error_ft": 33.0,
+      "pattern_overlap": 0.0,
+      "engagement_proxy": 0.0
+    },
+    {
+      "speed_mph": 90,
+      "delay_ms": 350,
+      "lead_error_m": 14.08,
+      "lead_error_ft": 46.2,
+      "pattern_overlap": 0.0,
+      "engagement_proxy": 0.0
+    },
+    {
+      "speed_mph": 90,
+      "delay_ms": 500,
+      "lead_error_m": 20.12,
+      "lead_error_ft": 66.0,
+      "pattern_overlap": 0.0,
+      "engagement_proxy": 0.0
+    }
+  ],
+  "packet_loss_sweep": [
+    {
+      "packet_loss_pct": 0,
+      "cue_delivery_prob": 1.0,
+      "cue_delivery_prob_2retry": 1.0,
+      "engagement_no_predictor": 0.0,
+      "engagement_with_predictor": 0.894
+    },
+    {
+      "packet_loss_pct": 5,
+      "cue_delivery_prob": 0.95,
+      "cue_delivery_prob_2retry": 1.0,
+      "engagement_no_predictor": 0.0,
+      "engagement_with_predictor": 0.849
+    },
+    {
+      "packet_loss_pct": 10,
+      "cue_delivery_prob": 0.9,
+      "cue_delivery_prob_2retry": 0.999,
+      "engagement_no_predictor": 0.0,
+      "engagement_with_predictor": 0.804
+    },
+    {
+      "packet_loss_pct": 15,
+      "cue_delivery_prob": 0.85,
+      "cue_delivery_prob_2retry": 0.997,
+      "engagement_no_predictor": 0.0,
+      "engagement_with_predictor": 0.76
+    },
+    {
+      "packet_loss_pct": 20,
+      "cue_delivery_prob": 0.8,
+      "cue_delivery_prob_2retry": 0.992,
+      "engagement_no_predictor": 0.0,
+      "engagement_with_predictor": 0.715
+    },
+    {
+      "packet_loss_pct": 30,
+      "cue_delivery_prob": 0.7,
+      "cue_delivery_prob_2retry": 0.973,
+      "engagement_no_predictor": 0.0,
+      "engagement_with_predictor": 0.626
+    }
+  ]
+}

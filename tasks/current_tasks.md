@@ -1,7 +1,7 @@
 # MKFS Current Tasks
 
 **Last updated:** 2026-05-22  
-**Project phase:** Phase 8 complete — puck storyboard, FCU scale, doc lock, M1 spec
+**Project phase:** Phase 9 complete — network/C2 architecture, latency model, degraded comms scenarios
 
 ---
 
@@ -135,6 +135,7 @@ All tasks complete. See [CARRIER_PROJECTILE_ICD.md](../docs/CARRIER_PROJECTILE_I
 | D-012 | 136-tube 2×1 tile architecture | [DECISIONS.md](../docs/DECISIONS.md) |
 | D-005 | Optional swarm sensor kit | [DECISIONS.md](../docs/DECISIONS.md) |
 | D-011 | PUCK-A + PUCK-B canonical | [DECISIONS.md](../docs/DECISIONS.md) |
+| D-013 | CAN-only kinetic commit path | [DECISIONS.md](../docs/DECISIONS.md) |
 
 ---
 
@@ -149,6 +150,21 @@ All tasks complete. See [CARRIER_PROJECTILE_ICD.md](../docs/CARRIER_PROJECTILE_I
 | P8-005 | FCU 136/867 tube tests + HIL stub | Done | [fcu.py](../src/fire_control/fcu.py), [HIL_SIM.md](../src/fire_control/HIL_SIM.md) |
 | P8-006 | Outreach refresh + M1 build spec | Done | [ONE_PAGER.md](../docs/outreach/ONE_PAGER.md), [M1_SETBACK_PETAL_SPEC.md](../prototypes/mechanism/M1_SETBACK_PETAL_SPEC.md) |
 | P8-007 | Optional reload + sensor renders | Done | [mkfs_reload_under_fire_stryker.png](../assets/mkfs_reload_under_fire_stryker.png), [mkfs_sensor_on_tile.png](../assets/mkfs_sensor_on_tile.png) |
+
+---
+
+## Phase 9 — Network & C2 Resilience ✅
+
+| ID | Task | Status | Linked Doc |
+|----|------|--------|------------|
+| P9-001 | Network architecture doc | Done | [NETWORK_ARCHITECTURE.md](../docs/NETWORK_ARCHITECTURE.md) |
+| P9-002 | Latency / packet-loss model | Done | [latency_resilience_model.py](../scripts/latency_resilience_model.py) |
+| P9-003 | Degraded SWARM_TEST + FRATRICIDE scenarios | Done | T5-N01–N04, SI-009–011 |
+| P9-004 | HIL delayed/lost tracks | Upcoming | [PHASE9.md](PHASE9.md) |
+| P9-005 | CAN TRACK v2 addendum | Upcoming | [ICD_POWER_C4ISR.md](../docs/ICD_POWER_C4ISR.md) |
+| P9-006 | Gossip ICD stub | Upcoming | [PHASE9.md](PHASE9.md) |
+
+→ Full backlog: [PHASE9.md](PHASE9.md)
 
 ---
 

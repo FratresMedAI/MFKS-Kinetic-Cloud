@@ -78,6 +78,10 @@ Full specification: [ICD_DRONE_RADAR.md](ICD_DRONE_RADAR.md)
 
 Stale track (> 500 ms) → hold fire, alert operator.
 
+**Overload triage (Phase 9):** When track count exceeds sensor capacity (32), FCU ranks by closure rate, range, and EM confidence — engages top-N without faulting. See [NETWORK_ARCHITECTURE.md](NETWORK_ARCHITECTURE.md) §4.2.
+
+**Local predictor (Phase 9):** FCU applies constant-velocity lead computation to aim at predicted intercept volume, not last report. Required at 250 ms delay / 60 mph per [latency_resilience_model.py](../scripts/latency_resilience_model.py).
+
 ---
 
 ## 5. Integration by Platform
@@ -98,3 +102,4 @@ Stale track (> 500 ms) → hold fire, alert operator.
 |---------|------|--------|
 | 0.1 | 2026-05-22 | Baseline vs optional kit defined; D-005 closed |
 | 0.2 | 2026-05-22 | Terminal EM/radar kit; MKFS tile/turret cueing only |
+| 0.3 | 2026-05-22 | Phase 9 — overload triage + local predictor reference |

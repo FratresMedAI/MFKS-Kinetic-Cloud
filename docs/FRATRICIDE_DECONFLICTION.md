@@ -1,9 +1,9 @@
 # MKFS Fratricide & Deconfliction
 
 **Document ID:** MKFS-DOC-SAFE-001  
-**Version:** 0.1 (Phase 5)  
+**Version:** 0.2 (Phase 9)  
 **Mitigates:** R-004 in [RISK_REGISTER.md](RISK_REGISTER.md)  
-**Related:** [DUAL_ARRAY_FIRE_PLANS.md](DUAL_ARRAY_FIRE_PLANS.md) | [FCU_STATE_MACHINE.md](../src/fire_control/FCU_STATE_MACHINE.md) | [CONOPS_VIGNETTES.md](CONOPS_VIGNETTES.md)
+**Related:** [DUAL_ARRAY_FIRE_PLANS.md](DUAL_ARRAY_FIRE_PLANS.md) | [FCU_STATE_MACHINE.md](../src/fire_control/FCU_STATE_MACHINE.md) | [CONOPS_VIGNETTES.md](CONOPS_VIGNETTES.md) | [NETWORK_ARCHITECTURE.md](NETWORK_ARCHITECTURE.md)
 
 ---
 
@@ -30,6 +30,9 @@ From [FCU_STATE_MACHINE.md](../src/fire_control/FCU_STATE_MACHINE.md):
 | SI-006 | Dismount zone active within 75 m | Limit to **SECTOR_** profiles only |
 | SI-007 | Friendly aircraft ADIZ overlap | Full inhibit until clear |
 | SI-008 | Trophy/APS active engagement | 500 ms hold — avoid dual intercept |
+| SI-009 | C4ISR link lost | Use last-known inhibit zones (TTL 30 s); then **SECTOR_** profiles only |
+| SI-010 | Friendly position gossip stale (> 15 s) | Expand inhibit arc by +5° safety margin |
+| SI-011 | Conflicting inhibit from two nodes | **Hold fire** until resolved or local GPS truth wins |
 
 ---
 
@@ -87,19 +90,43 @@ Before arming MKFS:
 - [ ] Inhibit arcs set for troop position
 - [ ] Salvo profile selected *(default: SWARM_WIDE, not FULL)*
 - [ ] Commander authorizes ARMED
+- [ ] **C4ISR link status** acknowledged (SI-009 fallback understood)
+- [ ] **Gossip / adjacent-node inhibit** conflicts cleared (SI-011)
 
 **LAST_DITCH_FULL** requires **dual confirmation** (commander + gunner) when any friendly within 150 m.
 
 ---
 
-## 7. Range / Test Safety
+## 7. Degraded Connectivity
+
+When network links are lossy or denied — see [NETWORK_ARCHITECTURE.md](NETWORK_ARCHITECTURE.md) §6.4 degradation ladder.
+
+| Condition | Fratricide response |
+|-----------|---------------------|
+| C4ISR down | SI-009: last-known inhibit TTL 30 s → SECTOR-only |
+| Gossip stale | SI-010: widen inhibit arc |
+| Conflicting friendly reports | SI-011: hold fire |
+| Local GPS valid, C4ISR invalid | **Trust local GPS** for SI-002 inhibit arcs |
+| All position sources lost | **HOLD** — no fire until manual confirm |
+
+### Degraded comms checklist (add to §6)
+
+- [ ] C4ISR link state displayed on FCU
+- [ ] Last-known inhibit TTL visible
+- [ ] Gossip neighbor count / staleness shown
+- [ ] If any SI-009/010/011 active → LAST_DITCH_FULL **blocked**
+
+---
+
+## 8. Range / Test Safety
 
 T5 test per [SWARM_TEST_CONCEPT.md](SWARM_TEST_CONCEPT.md): 200 m lateral standoff, 600 m downrange clear. Instrumented inhibit zones validate SI-002 before live swarm surrogates.
 
 ---
 
-## 8. Revision History
+## 9. Revision History
 
 | Version | Date | Change |
 |---------|------|--------|
 | 0.1 | 2026-05-22 | Initial fratricide and deconfliction concept |
+| 0.2 | 2026-05-22 | Phase 9 — SI-009–011 degraded connectivity; network-stress cross-link |
