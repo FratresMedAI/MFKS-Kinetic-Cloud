@@ -1,5 +1,10 @@
 # MFKS / MKFS — One Pager
 
+**Status:** Concept | Phase 9
+**Purpose:** Prime-facing one-page summary.
+**Key Decisions:** See [../DECISIONS.md](../DECISIONS.md)
+**Open Questions:** See [../RISK_REGISTER.md](../RISK_REGISTER.md)
+
 **Modular Flechette Kinetic System · Last-Ditch Terminal Defense**
 
 ---

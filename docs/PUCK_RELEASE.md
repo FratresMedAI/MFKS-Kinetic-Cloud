@@ -1,5 +1,10 @@
 # MKFS Puck Release — Hollow-Point Cloud Mechanism
 
+**Status:** Concept | Phase 9
+**Purpose:** Puck release sequence and deployment timing.
+**Key Decisions:** See [DECISIONS.md](DECISIONS.md)
+**Open Questions:** See [RISK_REGISTER.md](RISK_REGISTER.md)
+
 **Document ID:** MKFS-DOC-RELEASE-001  
 **Version:** 0.1  
 **Related:** [CARRIER_PROJECTILE_ICD.md](CARRIER_PROJECTILE_ICD.md) | [DEPLOYMENT_MECHANISM.md](DEPLOYMENT_MECHANISM.md) | [DESIGN_PHILOSOPHY.md](DESIGN_PHILOSOPHY.md)

@@ -1,5 +1,10 @@
 # MKFS-ADP-STRYKER-A — Stryker Adapter Kit
 
+**Status:** Concept | Phase 9
+**Purpose:** Vehicle-specific adapter kit drawing set and mount layout.
+**Key Decisions:** See [../DECISIONS.md](../DECISIONS.md)
+**Open Questions:** See [../RISK_REGISTER.md](../RISK_REGISTER.md)
+
 **Kit ID:** `MKFS-ADP-STRYKER-A`  
 **Platforms:** Stryker ICV, CV, MGS, and related 8×8 variants  
 **Document ID:** MKFS-ADP-STRYKER-001

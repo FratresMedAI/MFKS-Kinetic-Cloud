@@ -1,8 +1,13 @@
 # MKFS Network & C2 Architecture
 
+**Status:** Concept | Phase 9
+**Purpose:** Tier 1/2/3 C2, latency model, degradation ladder, packet loss.
+**Key Decisions:** See [DECISIONS.md](DECISIONS.md)
+**Open Questions:** See [RISK_REGISTER.md](RISK_REGISTER.md)
+
 **Document ID:** MKFS-DOC-NET-001  
 **Version:** 0.2.2 (Phase 9 hardening)  
-**Related:** [ICD_POWER_C4ISR.md](ICD_POWER_C4ISR.md) | [ICD_SENSOR_INTEGRATION.md](ICD_SENSOR_INTEGRATION.md) | [FRATRICIDE_DECONFLICTION.md](FRATRICIDE_DECONFLICTION.md) | [SWARM_TEST_CONCEPT.md](SWARM_TEST_CONCEPT.md) | [latency_resilience_model.py](../scripts/latency_resilience_model.py) | [DECISIONS.md](DECISIONS.md) D-013
+**Related Documents:** [ICD_POWER_C4ISR.md](ICD_POWER_C4ISR.md) | [ICD_SENSOR_INTEGRATION.md](ICD_SENSOR_INTEGRATION.md) | [FRATRICIDE_DECONFLICTION.md](FRATRICIDE_DECONFLICTION.md) | [SWARM_TEST_CONCEPT.md](SWARM_TEST_CONCEPT.md) | [FCU_EDGE_PREDICTOR_ONEPAGER.md](FCU_EDGE_PREDICTOR_ONEPAGER.md) | [latency_resilience_model.py](../scripts/latency_resilience_model.py) | [DECISIONS.md](DECISIONS.md) D-013
 
 ---
 

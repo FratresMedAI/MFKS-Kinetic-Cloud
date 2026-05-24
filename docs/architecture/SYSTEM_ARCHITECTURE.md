@@ -1,5 +1,10 @@
 # MKFS System Architecture
 
+**Status:** Concept | Phase 9
+**Purpose:** System block diagram — FCU, arrays, sensors, CAN.
+**Key Decisions:** See [../DECISIONS.md](../DECISIONS.md)
+**Open Questions:** See [../RISK_REGISTER.md](../RISK_REGISTER.md)
+
 **Document ID:** MKFS-DOC-ARCH-001  
 **Version:** 0.2  
 **Related:** [DESIGN_PHILOSOPHY.md](../DESIGN_PHILOSOPHY.md) | [REQUIREMENTS.md](../REQUIREMENTS.md) | [VEHICLE_INTEGRATION.md](../VEHICLE_INTEGRATION.md) | [DEPLOYMENT_MECHANISM.md](../DEPLOYMENT_MECHANISM.md)

@@ -1,5 +1,10 @@
 # MKFS Maritime & Fixed-Site Concepts
 
+**Status:** Concept | Phase 9
+**Purpose:** USV and fixed-site mounting concepts.
+**Key Decisions:** See [DECISIONS.md](DECISIONS.md)
+**Open Questions:** See [RISK_REGISTER.md](RISK_REGISTER.md)
+
 **Document ID:** MKFS-DOC-DOM-001  
 **Version:** 0.1 (Phase 5)  
 **Related:** [VEHICLE_INTEGRATION.md](VEHICLE_INTEGRATION.md) | [MOUNTING_CONCEPT.md](../assets/MOUNTING_CONCEPT.md) | [ARRAY_MODULE_SPEC.md](../prototypes/array/ARRAY_MODULE_SPEC.md)

@@ -1,5 +1,10 @@
 # MKFS Deployment Mechanism Down-Select
 
+**Status:** Concept | Phase 9
+**Purpose:** Deployment mechanism down-select record.
+**Key Decisions:** See [DECISIONS.md](DECISIONS.md)
+**Open Questions:** See [RISK_REGISTER.md](RISK_REGISTER.md)
+
 **Document ID:** MKFS-DOC-DEPLOY-002  
 **Decision:** D-002  
 **Recommendation:** **Option D confirmed** as baseline; Option A noted as Phase 2 hybrid path  

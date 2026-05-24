@@ -1,5 +1,10 @@
 # MKFS Dual-Array Fire Plans
 
+**Status:** Concept | Phase 9
+**Purpose:** Per-platform dual-array fire allocation.
+**Key Decisions:** See [DECISIONS.md](DECISIONS.md)
+**Open Questions:** See [RISK_REGISTER.md](RISK_REGISTER.md)
+
 **Document ID:** MKFS-DOC-FIRE-001  
 **Version:** 0.1 (Phase 3)  
 **Related:** [VEHICLE_INTEGRATION.md](VEHICLE_INTEGRATION.md) | [adapters/README.md](adapters/README.md) | [FCU_STATE_MACHINE.md](../src/fire_control/FCU_STATE_MACHINE.md)

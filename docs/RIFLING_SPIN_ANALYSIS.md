@@ -1,5 +1,10 @@
 # MKFS Rifling & Spin Analysis
 
+**Status:** Concept | Phase 9
+**Purpose:** Rifling/spin trade study for puck stability.
+**Key Decisions:** See [DECISIONS.md](DECISIONS.md)
+**Open Questions:** See [RISK_REGISTER.md](RISK_REGISTER.md)
+
 **Document ID:** MKFS-DOC-RIFL-001  
 **Version:** 0.1  
 **Related:** [DEPLOYMENT_MECHANISM.md](DEPLOYMENT_MECHANISM.md) | [DEPLOYMENT_DOWN_SELECT.md](DEPLOYMENT_DOWN_SELECT.md) | [CARRIER_PROJECTILE_ICD.md](CARRIER_PROJECTILE_ICD.md) | [BALLISTICS_RESULTS.md](../research/ballistics/BALLISTICS_RESULTS.md) | [ballistics_model.py](../research/ballistics/ballistics_model.py)

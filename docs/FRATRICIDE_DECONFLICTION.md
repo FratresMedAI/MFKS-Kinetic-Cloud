@@ -1,5 +1,10 @@
 # MKFS Fratricide & Deconfliction
 
+**Status:** Concept | Phase 9
+**Purpose:** Friendly/APS deconfliction rules under partial connectivity.
+**Key Decisions:** See [DECISIONS.md](DECISIONS.md)
+**Open Questions:** See [RISK_REGISTER.md](RISK_REGISTER.md)
+
 **Document ID:** MKFS-DOC-SAFE-001  
 **Version:** 0.3 (Phase 9 hardening)  
 **Mitigates:** R-004, R-013 in [RISK_REGISTER.md](RISK_REGISTER.md)  

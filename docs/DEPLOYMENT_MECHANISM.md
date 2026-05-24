@@ -1,5 +1,10 @@
 # MKFS Mechanical Deployment Mechanism
 
+**Status:** Concept | Phase 9
+**Purpose:** Option D setback release mechanism.
+**Key Decisions:** See [DECISIONS.md](DECISIONS.md)
+**Open Questions:** See [RISK_REGISTER.md](RISK_REGISTER.md)
+
 **Document ID:** MKFS-DOC-DEPLOY-001  
 **Version:** 0.1 (Phase 0)  
 **Related:** [REQUIREMENTS.md](REQUIREMENTS.md) | [VEHICLE_INTEGRATION.md](VEHICLE_INTEGRATION.md) | [SYSTEM_ARCHITECTURE.md](architecture/SYSTEM_ARCHITECTURE.md) | [RIFLING_SPIN_ANALYSIS.md](RIFLING_SPIN_ANALYSIS.md) | [current_tasks.md](../tasks/current_tasks.md)

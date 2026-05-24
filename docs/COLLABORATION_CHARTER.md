@@ -1,5 +1,10 @@
 # MKFS Collaboration Charter
 
+**Status:** Concept | Phase 9
+**Purpose:** Partnership and contribution terms.
+**Key Decisions:** See [DECISIONS.md](DECISIONS.md)
+**Open Questions:** See [RISK_REGISTER.md](RISK_REGISTER.md)
+
 **Document ID:** MKFS-DOC-COLLAB-001  
 **Version:** 0.1 (Phase 5)  
 **License:** [Apache 2.0](../LICENSE)  

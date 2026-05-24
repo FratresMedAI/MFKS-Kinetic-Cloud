@@ -1,7 +1,13 @@
 # MKFS System Requirements
 
+> **M1 summary:** See [M1_SPEC.md](M1_SPEC.md) for consolidated M1 concept SoT. Full FR/NFR tables remain here.
+
 **Document ID:** MKFS-DOC-REQ-001  
 **Version:** 0.2 (design intent revision)  
+**Status:** Concept | Phase 9  
+**Purpose:** Functional and non-functional requirements for last-ditch terminal defense against close-in drone swarms.  
+**Key Decisions:** See [DECISIONS.md](DECISIONS.md)  
+**Open Questions:** See [RISK_REGISTER.md](RISK_REGISTER.md)  
 **Related:** [DESIGN_PHILOSOPHY.md](DESIGN_PHILOSOPHY.md) | [SYSTEM_ARCHITECTURE.md](architecture/SYSTEM_ARCHITECTURE.md) | [VEHICLE_INTEGRATION.md](VEHICLE_INTEGRATION.md) | [DEPLOYMENT_MECHANISM.md](DEPLOYMENT_MECHANISM.md) | [current_tasks.md](../tasks/current_tasks.md)
 
 ---

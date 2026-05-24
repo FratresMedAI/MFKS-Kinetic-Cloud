@@ -1,5 +1,10 @@
 # MKFS-ADP-LAV25-A — LAV-25 Adapter Kit
 
+**Status:** Concept | Phase 9
+**Purpose:** Vehicle-specific adapter kit drawing set and mount layout.
+**Key Decisions:** See [../DECISIONS.md](../DECISIONS.md)
+**Open Questions:** See [../RISK_REGISTER.md](../RISK_REGISTER.md)
+
 **Kit ID:** `MKFS-ADP-LAV25-A`  
 **Platform:** LAV-25 (USMC)  
 **Document ID:** MKFS-ADP-LAV25-001

@@ -1,5 +1,10 @@
 # MKFS Magazine Economics
 
+**Status:** Concept | Phase 9
+**Purpose:** ROM cost per salvo and magazine depth tradeoffs.
+**Key Decisions:** See [DECISIONS.md](DECISIONS.md)
+**Open Questions:** See [RISK_REGISTER.md](RISK_REGISTER.md)
+
 **Document ID:** MKFS-DOC-ECON-001  
 **Version:** 0.1 (Phase 5 — ROM estimates)  
 **Related:** [SALVO_SCENARIOS.md](../research/ballistics/SALVO_SCENARIOS.md) | [POD_MECHANISM_SPEC.md](../prototypes/array/POD_MECHANISM_SPEC.md) | [MKFS-ADP-STRYKER-A.md](adapters/MKFS-ADP-STRYKER-A.md)

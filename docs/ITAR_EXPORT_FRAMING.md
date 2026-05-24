@@ -1,5 +1,10 @@
 # MKFS ITAR & Export-Control Framing
 
+**Status:** Concept | Phase 9
+**Purpose:** Export control framing for open release.
+**Key Decisions:** See [DECISIONS.md](DECISIONS.md)
+**Open Questions:** See [RISK_REGISTER.md](RISK_REGISTER.md)
+
 **Document ID:** MKFS-DOC-LEGAL-001  
 **Version:** 0.1 (Phase 5 — collaborator briefing, **not legal advice**)  
 **Mitigates:** R-010 in [RISK_REGISTER.md](RISK_REGISTER.md)  

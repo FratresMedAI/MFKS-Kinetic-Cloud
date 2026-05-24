@@ -1,5 +1,10 @@
 # MKFS Power and C4ISR Interface Control Document
 
+**Status:** Concept | Phase 9
+**Purpose:** Power, CAN, optional C4ISR interface — MKFS-IF-004.
+**Key Decisions:** See [DECISIONS.md](DECISIONS.md)
+**Open Questions:** See [RISK_REGISTER.md](RISK_REGISTER.md)
+
 **Document ID:** MKFS-ICD-004  
 **Interface:** MKFS-IF-004  
 **Version:** 0.1 (Phase 3)  

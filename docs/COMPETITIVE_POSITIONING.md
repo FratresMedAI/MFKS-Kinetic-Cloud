@@ -1,5 +1,10 @@
 # MKFS Competitive Positioning
 
+**Status:** Concept | Phase 9
+**Purpose:** Competitive comparison vs missiles, APS, shotguns.
+**Key Decisions:** See [DECISIONS.md](DECISIONS.md)
+**Open Questions:** See [RISK_REGISTER.md](RISK_REGISTER.md)
+
 **Document ID:** MKFS-DOC-COMP-001  
 **Version:** 0.1 (Phase 5)  
 **Related:** [DESIGN_PHILOSOPHY.md](DESIGN_PHILOSOPHY.md) | [SALVO_SCENARIOS.md](../research/ballistics/SALVO_SCENARIOS.md) | [MAGAZINE_ECONOMICS.md](MAGAZINE_ECONOMICS.md)

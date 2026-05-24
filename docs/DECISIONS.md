@@ -1,5 +1,10 @@
 # MKFS Program Decisions Log
 
+**Status:** Concept | Phase 9
+**Purpose:** Architecture decision record.
+**Key Decisions:** See [DECISIONS.md](DECISIONS.md)
+**Open Questions:** See [RISK_REGISTER.md](RISK_REGISTER.md)
+
 **Document ID:** MKFS-DOC-DEC-001  
 **Version:** 0.1
 

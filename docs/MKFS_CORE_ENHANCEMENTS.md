@@ -1,8 +1,13 @@
 # MKFS Core Enhancements
 
+> **M1 summary:** See [M1_SPEC.md](M1_SPEC.md) §6 for M1 enhancement scope. Full detail remains here.
+
 **Document ID:** MKFS-DOC-CORE-001  
-**Version:** 0.1  
-**Status:** Authoritative direction — **terminal MKFS only**  
+**Version:** 0.3  
+**Status:** Concept | Phase 9  
+**Purpose:** Authoritative terminal-only enhancements — tube scale, turret ripple, edge C2.  
+**Key Decisions:** See [DECISIONS.md](DECISIONS.md) — rejected LR variants in §9  
+**Open Questions:** See [RISK_REGISTER.md](RISK_REGISTER.md)  
 **Related:** [DESIGN_PHILOSOPHY.md](DESIGN_PHILOSOPHY.md) | [SALVO_SCENARIOS.md](../research/ballistics/SALVO_SCENARIOS.md) | [FCU_STATE_MACHINE.md](../src/fire_control/FCU_STATE_MACHINE.md)
 
 ---
@@ -80,7 +85,7 @@ Stay on **31 mm × 28 mm hollow-point puck** everywhere:
 
 No caliber drift. No merged munitions.
 
-→ [PUCK_CUTAWAY_STORYBOARD.md](visual/PUCK_CUTAWAY_STORYBOARD.md) · [SPIN_DISPERSION_SCENARIO.md](../research/ballistics/SPIN_DISPERSION_SCENARIO.md) · [HIL_SIM.md](../src/fire_control/HIL_SIM.md)
+→ [PUCK_STORYBOARD.md](visual/PUCK_STORYBOARD.md) · [PUCK_CUTAWAY_STORYBOARD.md](visual/PUCK_CUTAWAY_STORYBOARD.md) · [SPIN_DISPERSION_SCENARIO.md](../research/ballistics/SPIN_DISPERSION_SCENARIO.md) · [HIL_SIM.md](../src/fire_control/HIL_SIM.md)
 
 ---
 

@@ -1,5 +1,10 @@
 # MKFS CONOPS Vignettes
 
+**Status:** Concept | Phase 9
+**Purpose:** Five operational last-ditch employment narratives.
+**Key Decisions:** See [DECISIONS.md](DECISIONS.md)
+**Open Questions:** See [RISK_REGISTER.md](RISK_REGISTER.md)
+
 **Document ID:** MKFS-DOC-CONOPS-001  
 **Version:** 0.1 (Phase 5)  
 **Related:** [ICD_SENSOR_INTEGRATION.md](ICD_SENSOR_INTEGRATION.md) | [FCU_STATE_MACHINE.md](../src/fire_control/FCU_STATE_MACHINE.md) | [FRATRICIDE_DECONFLICTION.md](FRATRICIDE_DECONFLICTION.md)

@@ -1,5 +1,10 @@
 # MKFS Puck Cutaway Storyboard
 
+**Status:** Concept | Phase 9
+**Purpose:** Six-frame cutaway storyboard with embedded renders.
+**Key Decisions:** See [../DECISIONS.md](../DECISIONS.md)
+**Open Questions:** See [../RISK_REGISTER.md](../RISK_REGISTER.md)
+
 **Document ID:** MKFS-VIS-STORY-001  
 **Version:** 0.3 (Phase 8)  
 **Related:** [PUCK_RELEASE.md](../PUCK_RELEASE.md) | [CARRIER_PROJECTILE_ICD.md](../CARRIER_PROJECTILE_ICD.md) | [PUCK_DESIGN_OPTIONS.md](../../assets/PUCK_DESIGN_OPTIONS.md)

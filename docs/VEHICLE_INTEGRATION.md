@@ -1,5 +1,10 @@
 # MKFS Vehicle Integration Matrix
 
+**Status:** Concept | Phase 9
+**Purpose:** Platform integration matrix.
+**Key Decisions:** See [DECISIONS.md](DECISIONS.md)
+**Open Questions:** See [RISK_REGISTER.md](RISK_REGISTER.md)
+
 **Document ID:** MKFS-DOC-VINT-001  
 **Version:** 0.1 (Phase 0)  
 **Related:** [REQUIREMENTS.md](REQUIREMENTS.md) | [DEPLOYMENT_MECHANISM.md](DEPLOYMENT_MECHANISM.md) | [SYSTEM_ARCHITECTURE.md](architecture/SYSTEM_ARCHITECTURE.md) | [adapters/README.md](adapters/README.md) | [current_tasks.md](../tasks/current_tasks.md)

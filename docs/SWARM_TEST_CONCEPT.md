@@ -1,5 +1,10 @@
 # MKFS Swarm Test Concept — Desk Exercise (T5)
 
+**Status:** Concept | Phase 9
+**Purpose:** T5 swarm surrogate and network-stress test concept.
+**Key Decisions:** See [DECISIONS.md](DECISIONS.md)
+**Open Questions:** See [RISK_REGISTER.md](RISK_REGISTER.md)
+
 **Document ID:** MKFS-DOC-T5-001  
 **Version:** 0.3 (Phase 9 hardening)  
 **Scope:** Planning document only — **no hardware required** to produce this artifact  
@@ -115,7 +120,7 @@ Per [NETWORK_ARCHITECTURE.md](NETWORK_ARCHITECTURE.md) §5 (quant baseline) and 
 | ID | Scenario | Inject | Pass criteria |
 |----|----------|--------|---------------|
 | T5-N01 | C4ISR loss mid-engagement | Drop TCP/IP tracks at T+0.5 s | Salvo completes on local CAN tracks; Tier 1 path unaffected |
-| T5-N02 | 250 ms track latency | Delay all CAN `0x300 TRACK` by 250 ms | `pattern_overlap_with_predictor` ≥ **0.70** — source: [`latency_resilience_output.json`](../scripts/latency_resilience_output.json) `baseline_reference` |
+| T5-N02 | 250 ms track latency | Delay all CAN `0x300 TRACK` by 250 ms | `pattern_overlap_with_predictor` ≥ **0.894** — source: [`latency_resilience_output.json`](../scripts/latency_resilience_output.json) `baseline_reference` |
 | T5-N03 | Sensor overload | 50 tracks, 32-cap sensor | Triage top-N by closure rate; FCU edge node does not fault |
 | T5-N04 | Partial convoy gossip | 1 of 3 nodes loses C4ISR | Adjacent node shares tracks; fratricide uses conservative union (SI-010/011) |
 

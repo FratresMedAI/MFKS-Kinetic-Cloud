@@ -1,5 +1,10 @@
 # MKFS Manufacturing Considerations
 
+**Status:** Concept | Phase 9
+**Purpose:** Production and scale considerations.
+**Key Decisions:** See [DECISIONS.md](DECISIONS.md)
+**Open Questions:** See [RISK_REGISTER.md](RISK_REGISTER.md)
+
 **Document ID:** MKFS-DOC-MFG-001  
 **Version:** 0.1 (Phase 4)  
 **Related:** [SYSTEM_SPEC.md](SYSTEM_SPEC.md) | [CARRIER_PROJECTILE_ICD.md](CARRIER_PROJECTILE_ICD.md)

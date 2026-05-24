@@ -1,5 +1,10 @@
 # MKFS-ADP-BRADLEY-A — Bradley Adapter Kit
 
+**Status:** Concept | Phase 9
+**Purpose:** Vehicle-specific adapter kit drawing set and mount layout.
+**Key Decisions:** See [../DECISIONS.md](../DECISIONS.md)
+**Open Questions:** See [../RISK_REGISTER.md](../RISK_REGISTER.md)
+
 **Kit ID:** `MKFS-ADP-BRADLEY-A`  
 **Platform:** M2 Bradley IFV  
 **Document ID:** MKFS-ADP-BRADLEY-001

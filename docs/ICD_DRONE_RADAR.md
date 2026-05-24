@@ -1,5 +1,10 @@
 # MKFS Terminal Drone Sensor — Radar + EM
 
+**Status:** Concept | Phase 9
+**Purpose:** Co-mounted terminal EM/radar cueing envelope.
+**Key Decisions:** See [DECISIONS.md](DECISIONS.md)
+**Open Questions:** See [RISK_REGISTER.md](RISK_REGISTER.md)
+
 **Document ID:** MKFS-ICD-RADAR-001  
 **Version:** 0.2 (terminal band only)  
 **Product:** `MKFS-SENS-EM-RADAR`  

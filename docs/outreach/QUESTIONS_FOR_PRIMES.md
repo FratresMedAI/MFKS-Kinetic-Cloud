@@ -1,5 +1,10 @@
 # Questions We'd Ask a Prime
 
+**Status:** Concept | Phase 9
+**Purpose:** Collaboration discovery questions for primes.
+**Key Decisions:** See [../DECISIONS.md](../DECISIONS.md)
+**Open Questions:** See [../RISK_REGISTER.md](../RISK_REGISTER.md)
+
 **Document ID:** MKFS-OUT-PRIME-001  
 **Version:** 0.1 (Phase 5)  
 **Audience:** Defense integrators (e.g., Northrop Grumman, L3Harris, RTX, Rheinmetall)  

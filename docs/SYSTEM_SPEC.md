@@ -1,8 +1,13 @@
 # MKFS System Specification
 
+> **M1 summary:** See [M1_SPEC.md](M1_SPEC.md) for consolidated M1 concept SoT. This document remains the full subsystem index.
+
 **Document ID:** MKFS-DOC-SPEC-001  
 **Version:** 0.1  
-**Status:** Consolidated specification (Phase 0–3)  
+**Status:** Concept | Phase 9  
+**Purpose:** Consolidated subsystem specification index (Phase 0–3) — projectile, array, FCU, adapters.  
+**Key Decisions:** See [DECISIONS.md](DECISIONS.md)  
+**Open Questions:** See [RISK_REGISTER.md](RISK_REGISTER.md)  
 **Related:** All docs in `docs/`, `research/`, `prototypes/`
 
 ---

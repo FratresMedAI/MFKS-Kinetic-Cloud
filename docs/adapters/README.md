@@ -1,5 +1,10 @@
 # MKFS Adapter Kits Index
 
+**Status:** Concept | Phase 9
+**Purpose:** Adapter kit drawing set index.
+**Key Decisions:** See [../DECISIONS.md](../DECISIONS.md)
+**Open Questions:** See [../RISK_REGISTER.md](../RISK_REGISTER.md)
+
 Vehicle-specific mounting hardware implementing **MKFS-IF-003**. All kits use the standard 800 × 800 mm adapter plate with 700 mm bolt pattern; platform sub-kits add risers, fairings, and harness routing.
 
 | Kit ID | Platform | Document |

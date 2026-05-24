@@ -1,5 +1,10 @@
 # MKFS Sensor Integration Requirements
 
+**Status:** Concept | Phase 9
+**Purpose:** Sensor fusion priority and track handoff to FCU.
+**Key Decisions:** See [DECISIONS.md](DECISIONS.md)
+**Open Questions:** See [RISK_REGISTER.md](RISK_REGISTER.md)
+
 **Document ID:** MKFS-ICD-SENS-001  
 **Version:** 0.2 (terminal sensor integration)  
 **Decision D-005:** **Vehicle sensors baseline; optional swarm sensor kit**  

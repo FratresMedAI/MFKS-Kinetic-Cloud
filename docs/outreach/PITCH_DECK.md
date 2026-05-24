@@ -1,5 +1,10 @@
 # MFKS / MKFS Pitch Deck
 
+**Status:** Concept | Phase 9
+**Purpose:** Pitch deck outline.
+**Key Decisions:** See [../DECISIONS.md](../DECISIONS.md)
+**Open Questions:** See [../RISK_REGISTER.md](../RISK_REGISTER.md)
+
 **10 slides · markdown format**
 
 ---

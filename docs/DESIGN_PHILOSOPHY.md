@@ -1,8 +1,13 @@
 # MKFS Design Philosophy — Last-Ditch Terminal Defense
 
+**Status:** Concept | Phase 9
+**Purpose:** Authoritative design intent — last-ditch terminal defense, form factors, tube scale.
+**Key Decisions:** See [DECISIONS.md](DECISIONS.md)
+**Open Questions:** See [RISK_REGISTER.md](RISK_REGISTER.md)
+
 **Document ID:** MKFS-DOC-PHIL-001  
 **Version:** 0.4  
-**Status:** Authoritative design intent
+**Related:** [M1_SPEC.md](M1_SPEC.md) | [REQUIREMENTS.md](REQUIREMENTS.md) | [00_INDEX.md](00_INDEX.md)
 
 > **Two module sizes — different packages**  
 > - **Vehicle appliqué / strips:** **2×1 ft** and **3×1 ft** tiles on armor  

@@ -1,5 +1,10 @@
 # MKFS Carrier Projectile — Interface Control Document
 
+**Status:** Concept | Phase 9
+**Purpose:** Projectile/cartridge interface — MKFS-IF-001.
+**Key Decisions:** See [DECISIONS.md](DECISIONS.md)
+**Open Questions:** See [RISK_REGISTER.md](RISK_REGISTER.md)
+
 **Document ID:** MKFS-ICD-001  
 **Version:** 0.5  
 **Interface:** MKFS-IF-001  

@@ -1,5 +1,10 @@
 # MKFS Reload Under Fire — Concept
 
+**Status:** Concept | Phase 9
+**Purpose:** Pod swap under fire concept.
+**Key Decisions:** See [../DECISIONS.md](../DECISIONS.md)
+**Open Questions:** See [../RISK_REGISTER.md](../RISK_REGISTER.md)
+
 **Document ID:** MKFS-VIS-RELOAD-001  
 **Version:** 0.1 (Phase 5)  
 **Related:** [POD_MECHANISM_SPEC.md](../../prototypes/array/POD_MECHANISM_SPEC.md) | [CONOPS_VIGNETTES.md](../CONOPS_VIGNETTES.md) | [MAGAZINE_ECONOMICS.md](../MAGAZINE_ECONOMICS.md)

@@ -1,5 +1,10 @@
 # MKFS Risk Register
 
+**Status:** Concept | Phase 9
+**Purpose:** Program risks and mitigations.
+**Key Decisions:** See [DECISIONS.md](DECISIONS.md)
+**Open Questions:** See [RISK_REGISTER.md](RISK_REGISTER.md)
+
 **Document ID:** MKFS-DOC-RISK-001  
 **Version:** 0.3 (Phase 9 hardening)  
 **Related:** [REQUIREMENTS.md](REQUIREMENTS.md) | [DEPLOYMENT_DOWN_SELECT.md](DEPLOYMENT_DOWN_SELECT.md) | [NETWORK_ARCHITECTURE.md](NETWORK_ARCHITECTURE.md)

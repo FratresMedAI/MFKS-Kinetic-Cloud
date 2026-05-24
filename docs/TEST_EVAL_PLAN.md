@@ -1,5 +1,10 @@
 # MKFS Test and Evaluation Plan
 
+**Status:** Concept | Phase 9
+**Purpose:** Verification test IDs T1–T5.
+**Key Decisions:** See [DECISIONS.md](DECISIONS.md)
+**Open Questions:** See [RISK_REGISTER.md](RISK_REGISTER.md)
+
 **Document ID:** MKFS-DOC-TEST-001  
 **Version:** 0.1 (Phase 4 draft)  
 **Related:** [CARRIER_PROJECTILE_ICD.md](CARRIER_PROJECTILE_ICD.md) | [BALLISTICS_RESULTS.md](../research/ballistics/BALLISTICS_RESULTS.md)
