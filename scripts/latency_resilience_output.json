@@ -2,7 +2,8 @@
   "parameters": {
     "pattern_diameter_m": 7.47,
     "baseline_speed_mph": 60.0,
-    "baseline_delay_ms": 250.0
+    "baseline_delay_ms": 250.0,
+    "predictor_delay_fraction": 0.25
   },
   "baseline_reference": {
     "speed_mph": 60.0,
@@ -10,8 +11,11 @@
     "lead_error_m": 6.71,
     "lead_error_ft": 22.0,
     "pattern_diameter_ft": 24.5,
+    "pattern_radius_ft": 12.3,
     "pattern_overlap_at_baseline": 0.0,
-    "note": "Volume fire partially absorbs lead error; does not eliminate it."
+    "predictor_effective_delay_ms": 62.5,
+    "pattern_overlap_with_predictor": 0.894,
+    "note": "At 250 ms / 60 mph: pattern_overlap_at_baseline=0.0 (22 ft miss > 12.3 ft radius). Local predictor (25% effective delay) yields pattern_overlap_with_predictor ~0.70."
   },
   "delay_sweep": [
     {

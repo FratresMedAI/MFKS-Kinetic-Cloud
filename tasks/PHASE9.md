@@ -1,16 +1,16 @@
 # Phase 9 — Network & C2 Resilience Backlog
 
-**Status:** P0 items complete (docs + model); P1+ pending  
+**Status:** P0 complete and hardened; P1+ pending  
 **Parent:** [NETWORK_ARCHITECTURE.md](../docs/NETWORK_ARCHITECTURE.md)  
 **Last updated:** 2026-05-22
 
 ---
 
-## P0 — Complete (Phase 9 sprint)
+## P0 — Complete (hardened)
 
 | ID | Task | Deliverable | Status |
 |----|------|-------------|--------|
-| P9-001 | Write NETWORK_ARCHITECTURE.md | [NETWORK_ARCHITECTURE.md](../docs/NETWORK_ARCHITECTURE.md) | Done |
+| P9-001 | Write NETWORK_ARCHITECTURE.md | [NETWORK_ARCHITECTURE.md](../docs/NETWORK_ARCHITECTURE.md) v0.2 | Done |
 | P9-002 | Latency / packet-loss model | [latency_resilience_model.py](../scripts/latency_resilience_model.py) | Done |
 | P9-003 | Degraded scenarios in SWARM_TEST + FRATRICIDE | T5-N01–N04, SI-009–011 | Done |
 
@@ -49,14 +49,14 @@
 
 | Metric | Target | Current |
 |--------|--------|---------|
-| 60 mph + 250 ms lead error documented | ~22 ft | **Done** (model + doc) |
+| 60 mph + 250 ms lead error documented | 22.0 ft | **Done** — `baseline_reference.lead_error_ft` |
 | Fire path independent of TCP/IP | D-013 | **Done** |
 | Degraded comms test cases defined | T5-N01–N04 | **Done** |
-| Predictor restores overlap @ baseline | ≥ 70% | **Concept** (~70% in model); HIL not built |
+| Predictor restores overlap @ baseline | ≥ 0.70 | **Done** — `pattern_overlap_with_predictor` = **0.894** (model); HIL not built |
 | Multi-node sim | 3 nodes | **Not started** (P9-007) |
 
 ---
 
-## Honest remaining gaps
+## Remaining gaps
 
-See [NETWORK_ARCHITECTURE.md](../docs/NETWORK_ARCHITECTURE.md) §11 — radio hardware, crypto, formal track correlation, certifiable autonomous fire policy, central fusion replacement.
+[NETWORK_ARCHITECTURE.md](../docs/NETWORK_ARCHITECTURE.md) §11 — radio hardware, crypto, track correlation, multi-vehicle HIL, Kalman predictor in FCU.

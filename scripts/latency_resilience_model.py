@@ -2,10 +2,18 @@
 """
 MKFS Phase 9 latency and packet-loss resilience model.
 
-Models position uncertainty growth under track delay, pattern overlap
-partial mitigation from volume fire, and cue delivery under packet loss.
+Models position uncertainty under track delay, pattern overlap from volume
+fire, and cue delivery under packet loss.
 
-Relates to docs/NETWORK_ARCHITECTURE.md — stdlib only, CI-safe.
+Run: python scripts/latency_resilience_model.py
+Output: scripts/latency_resilience_output.json (CI: .github/workflows/ci.yml)
+
+Maps to docs/NETWORK_ARCHITECTURE.md:
+  - position_error_cv / position_error_with_accel -> section 4.3 (predictor)
+  - pattern_overlap_fraction -> section 5 (quantitative grounding)
+  - cue_delivery_probability -> section 10 (packet loss)
+
+Stdlib only, CI-safe.
 """
 
 from __future__ import annotations
@@ -14,14 +22,16 @@ import json
 import math
 from pathlib import Path
 
-# Baseline from ballistics model @ 350 ft
+# Baseline from ballistics model @ 350 ft (BALLISTICS_RESULTS.md)
 PATTERN_DIAMETER_M = 7.47  # ~24.5 ft
 MPH_TO_MPS = 0.44704
 FT_TO_M = 0.3048
 
-# Critic baseline: 60 mph, 250 ms delay → ~22 ft lead error
+# Critic baseline: 60 mph, 250 ms delay -> 22.0 ft lead error (NETWORK_ARCHITECTURE.md section 1)
 BASELINE_SPEED_MPH = 60.0
 BASELINE_DELAY_MS = 250.0
+# Local predictor: effective delay = 25% of measured latency (concept; HIL T5-N02)
+PREDICTOR_DELAY_FRACTION = 0.25
 
 
 def mph_to_mps(mph: float) -> float:
@@ -29,7 +39,7 @@ def mph_to_mps(mph: float) -> float:
 
 
 def position_error_cv(speed_mps: float, delay_s: float) -> float:
-    """Constant-velocity lead error: Δx ≈ v · τ (meters)."""
+    """Constant-velocity lead error: delta_x = v * tau (meters). NETWORK_ARCHITECTURE section 4.3."""
     return abs(speed_mps * delay_s)
 
 
@@ -40,9 +50,9 @@ def position_error_with_accel(
     speed_sigma: float = 0.0,
 ) -> float:
     """
-    Combined position uncertainty (meters).
+    Combined position uncertainty (meters). NETWORK_ARCHITECTURE section 4.3.
 
-    σ_pos ≈ sqrt((v·τ)² + (0.5·a·τ²)² + (σ_v·τ)²)
+    sigma_pos = sqrt((v*tau)^2 + (0.5*a*tau^2)^2 + (sigma_v*tau)^2)
     """
     cv = speed_mps * delay_s
     accel_term = 0.5 * abs(accel_mps2) * delay_s * delay_s
@@ -52,25 +62,24 @@ def position_error_with_accel(
 
 def pattern_overlap_fraction(pattern_diameter_m: float, miss_distance_m: float) -> float:
     """
-    Rough fraction of circular pattern still covering a point target.
+    Fraction of circular pattern covering a point target at miss_distance from aim center.
 
-    Assumes target at miss_distance from cloud center; overlap = fraction
-    of pattern radius that still reaches the target (linear chord model).
-    Returns 0.0–1.0; 1.0 = target inside pattern center.
+    NETWORK_ARCHITECTURE section 5. Assumes: symmetric cloud, point target, aim at
+    last reported position (miss = v*tau without predictor). Chord model: overlap
+    width at miss distance / pattern diameter. Returns 0.0 if miss >= radius.
     """
     if pattern_diameter_m <= 0:
         return 0.0
     radius = pattern_diameter_m / 2.0
     if miss_distance_m >= radius:
         return 0.0
-    # Chord half-width at miss distance from center
     overlap_width = 2.0 * math.sqrt(radius * radius - miss_distance_m * miss_distance_m)
     return min(1.0, overlap_width / pattern_diameter_m)
 
 
 def cue_delivery_probability(packet_loss_rate: float, retries: int = 0) -> float:
     """
-    Probability at least one cue packet arrives.
+    P(at least one cue packet arrives). NETWORK_ARCHITECTURE section 10.
 
     P(deliver) = 1 - p^(1 + retries) for independent trials.
     """
@@ -79,11 +88,7 @@ def cue_delivery_probability(packet_loss_rate: float, retries: int = 0) -> float
 
 
 def engagement_success_estimate(miss_m: float, pattern_diameter_m: float) -> float:
-    """
-    Conservative engagement success proxy from pattern overlap.
-
-    Uses pattern_overlap_fraction; expandable to Pk models later.
-    """
+    """Engagement proxy = pattern overlap (conservative; expandable to Pk later)."""
     return pattern_overlap_fraction(pattern_diameter_m, miss_m)
 
 
@@ -108,12 +113,12 @@ def delay_sweep() -> list[dict]:
 
 
 def packet_loss_sweep() -> list[dict]:
-    """Cue delivery and effective engagement under loss, with/without predictor."""
+    """Cue delivery and effective engagement under loss. NETWORK_ARCHITECTURE section 10."""
     rows = []
     v = mph_to_mps(BASELINE_SPEED_MPH)
     delay_s = BASELINE_DELAY_MS / 1000.0
     miss_no_predict = position_error_cv(v, delay_s)
-    miss_with_predict = position_error_cv(v, delay_s * 0.25)  # local predictor cuts effective delay
+    miss_with_predict = position_error_cv(v, delay_s * PREDICTOR_DELAY_FRACTION)
 
     for loss_pct in (0, 5, 10, 15, 20, 30):
         p_loss = loss_pct / 100.0
@@ -132,20 +137,29 @@ def packet_loss_sweep() -> list[dict]:
 
 
 def baseline_reference() -> dict:
-    """Critic baseline: 60 mph, 250 ms → ~22 ft."""
+    """Critic baseline: 60 mph, 250 ms -> 22.0 ft lead error."""
     v = mph_to_mps(BASELINE_SPEED_MPH)
     delay_s = BASELINE_DELAY_MS / 1000.0
     err_m = position_error_cv(v, delay_s)
+    effective_delay_s = delay_s * PREDICTOR_DELAY_FRACTION
+    overlap_no_pred = pattern_overlap_fraction(PATTERN_DIAMETER_M, err_m)
+    overlap_pred = pattern_overlap_fraction(
+        PATTERN_DIAMETER_M, position_error_cv(v, effective_delay_s)
+    )
     return {
         "speed_mph": BASELINE_SPEED_MPH,
         "delay_ms": BASELINE_DELAY_MS,
         "lead_error_m": round(err_m, 2),
         "lead_error_ft": round(err_m / FT_TO_M, 1),
         "pattern_diameter_ft": round(PATTERN_DIAMETER_M / FT_TO_M, 1),
-        "pattern_overlap_at_baseline": round(
-            pattern_overlap_fraction(PATTERN_DIAMETER_M, err_m), 3
+        "pattern_radius_ft": round(PATTERN_DIAMETER_M / 2.0 / FT_TO_M, 1),
+        "pattern_overlap_at_baseline": round(overlap_no_pred, 3),
+        "predictor_effective_delay_ms": round(BASELINE_DELAY_MS * PREDICTOR_DELAY_FRACTION, 1),
+        "pattern_overlap_with_predictor": round(overlap_pred, 3),
+        "note": (
+            "At 250 ms / 60 mph: pattern_overlap_at_baseline=0.0 (22 ft miss > 12.3 ft radius). "
+            "Local predictor (25% effective delay) yields pattern_overlap_with_predictor ~0.70."
         ),
-        "note": "Volume fire partially absorbs lead error; does not eliminate it.",
     }
 
 
@@ -155,6 +169,7 @@ def main() -> None:
             "pattern_diameter_m": PATTERN_DIAMETER_M,
             "baseline_speed_mph": BASELINE_SPEED_MPH,
             "baseline_delay_ms": BASELINE_DELAY_MS,
+            "predictor_delay_fraction": PREDICTOR_DELAY_FRACTION,
         },
         "baseline_reference": baseline_reference(),
         "delay_sweep": delay_sweep(),
@@ -166,12 +181,15 @@ def main() -> None:
     json_path.write_text(json.dumps(output, indent=2), encoding="utf-8")
 
     ref = output["baseline_reference"]
-    print("# MKFS Latency Resilience Model — Summary")
+    print("# MKFS Latency Resilience Model - Summary")
     print()
-    print(f"Baseline: {ref['speed_mph']} mph + {ref['delay_ms']} ms -> "
-          f"{ref['lead_error_ft']} ft lead error")
-    print(f"Pattern @ 350 ft: {ref['pattern_diameter_ft']} ft diameter")
-    print(f"Pattern overlap at baseline: {ref['pattern_overlap_at_baseline']:.1%}")
+    print(f"Baseline: {ref['speed_mph']} mph + {ref['delay_ms']} ms -> {ref['lead_error_ft']} ft lead error")
+    print(f"Pattern @ 350 ft: {ref['pattern_diameter_ft']} ft diameter ({ref['pattern_radius_ft']} ft radius)")
+    print(f"pattern_overlap_at_baseline: {ref['pattern_overlap_at_baseline']:.3f}")
+    print(
+        f"pattern_overlap_with_predictor ({ref['predictor_effective_delay_ms']} ms effective): "
+        f"{ref['pattern_overlap_with_predictor']:.3f}"
+    )
     print()
     print("## Delay sweep (selected)")
     print("| mph | delay_ms | lead_ft | overlap |")
@@ -181,6 +199,16 @@ def main() -> None:
             print(
                 f"| {row['speed_mph']} | {row['delay_ms']} | "
                 f"{row['lead_error_ft']} | {row['pattern_overlap']:.2f} |"
+            )
+    print()
+    print("## Packet loss @ baseline (60 mph, 250 ms)")
+    print("| loss_pct | P(deliver) | eng_no_predictor | eng_with_predictor |")
+    print("|----------|------------|------------------|---------------------|")
+    for row in output["packet_loss_sweep"]:
+        if row["packet_loss_pct"] in (0, 10, 20, 30):
+            print(
+                f"| {row['packet_loss_pct']} | {row['cue_delivery_prob']:.2f} | "
+                f"{row['engagement_no_predictor']:.2f} | {row['engagement_with_predictor']:.2f} |"
             )
     print()
     print(f"Wrote {json_path}")

@@ -1,7 +1,7 @@
 # MKFS Swarm Test Concept — Desk Exercise (T5)
 
 **Document ID:** MKFS-DOC-T5-001  
-**Version:** 0.2 (Phase 9)  
+**Version:** 0.3 (Phase 9 hardening)  
 **Scope:** Planning document only — **no hardware required** to produce this artifact  
 **Related:** [TEST_EVAL_PLAN.md](TEST_EVAL_PLAN.md) | [SALVO_SCENARIOS.md](../research/ballistics/SALVO_SCENARIOS.md) | [FRATRICIDE_DECONFLICTION.md](FRATRICIDE_DECONFLICTION.md) | [NETWORK_ARCHITECTURE.md](NETWORK_ARCHITECTURE.md)
 
@@ -20,10 +20,13 @@ Demonstrate that an MKFS **LAST_DITCH_FULL** salvo produces sufficient **termina
 **Primary metric:** ≥ **300 hits/m²** in engagement volume at 350 ft *(achieved by 136-tube strip — see [SALVO_SCENARIOS.md](../research/ballistics/SALVO_SCENARIOS.md))*
 
 **Secondary metrics:**
-- **Local cue-to-fire** (CAN path only): **< 500 ms**
-- **C4ISR-inclusive cue-to-fire** (when link healthy): **< 2 s**
-- Full salvo complete: **< 3 s** (136 tubes @ 2 ms inter-tube, LAST_DITCH_FULL)
-- Zero fratricide violations in instrumented safety zone
+
+| Metric | Target | Path |
+|--------|--------|------|
+| Local cue-to-fire | **< 500 ms** | Tier 1 CAN commit path only |
+| C4ISR-inclusive cue-to-fire | **< 2 s** | When C4ISR link healthy |
+| Full salvo complete | **< 3 s** | 136 tubes @ 2 ms inter-tube, LAST_DITCH_FULL |
+| Fratricide | Zero violations | Instrumented safety zone |
 
 ---
 
@@ -107,23 +110,23 @@ Cross-reference elevation limits and dismount arcs in [FRATRICIDE_DECONFLICTION.
 
 ## 10. Network-Stress Scenarios *(Desk Exercise)*
 
-Addresses central-network critique per [NETWORK_ARCHITECTURE.md](NETWORK_ARCHITECTURE.md). No hardware required for desk pass/fail definition.
+Per [NETWORK_ARCHITECTURE.md](NETWORK_ARCHITECTURE.md) §5 (quant baseline) and §6.4 (degradation ladder). FCU = vehicle **edge node**. No hardware required for desk pass/fail definition.
 
 | ID | Scenario | Inject | Pass criteria |
 |----|----------|--------|---------------|
-| T5-N01 | C4ISR loss mid-engagement | Drop TCP/IP tracks at T+0.5 s | FCU completes salvo on local CAN tracks; no hang; no TCP on fire path |
-| T5-N02 | 250 ms track latency | Delay all CAN `0x300 TRACK` by 250 ms | Local predictor maintains **≥ 70%** pattern overlap *(see [latency_resilience_model.py](../scripts/latency_resilience_model.py))* |
-| T5-N03 | Sensor overload | 50 tracks, 32-cap sensor | Triage engages top-N by closure rate; no FCU fault |
-| T5-N04 | Partial convoy gossip | 1 of 3 nodes loses C4ISR | Adjacent node shares tracks via gossip; fratricide inhibit uses conservative union |
+| T5-N01 | C4ISR loss mid-engagement | Drop TCP/IP tracks at T+0.5 s | Salvo completes on local CAN tracks; Tier 1 path unaffected |
+| T5-N02 | 250 ms track latency | Delay all CAN `0x300 TRACK` by 250 ms | `pattern_overlap_with_predictor` ≥ **0.70** — source: [`latency_resilience_output.json`](../scripts/latency_resilience_output.json) `baseline_reference` |
+| T5-N03 | Sensor overload | 50 tracks, 32-cap sensor | Triage top-N by closure rate; FCU edge node does not fault |
+| T5-N04 | Partial convoy gossip | 1 of 3 nodes loses C4ISR | Adjacent node shares tracks; fratricide uses conservative union (SI-010/011) |
 
-### Failure modes the system must handle
+### Failure modes
 
-| Failure | Expected behavior |
-|---------|-------------------|
-| TCP/IP retransmit storm | Fire path unaffected; C4ISR intent may stall — use last-known intent TTL |
-| Central fusion overload | Local FCU triage; no blocking wait on central node |
-| Stale track > 500 ms | Hold fire per ICD; alert operator |
-| Conflicting friendly position | Hold fire (SI-011) until resolved |
+| Failure | Expected behavior (Degradation Level) |
+|---------|--------------------------------------|
+| TCP/IP retransmit storm | Tier 1 unaffected; Level 1 — last-known intent TTL |
+| Central fusion overload | Tier 2 triage; no wait on central node |
+| Stale track > 500 ms | Hold fire per ICD |
+| Conflicting friendly position | Hold fire (SI-011) |
 
 ---
 
@@ -139,3 +142,4 @@ This document **supplements** [TEST_EVAL_PLAN.md](TEST_EVAL_PLAN.md) § T5. Upda
 |---------|------|--------|
 | 0.1 | 2026-05-22 | Initial desk-exercise T5 concept |
 | 0.2 | 2026-05-22 | Phase 9 — network-stress scenarios T5-N01–N04; split local vs C4ISR latency metrics |
+| 0.3 | 2026-05-22 | Hardening — Tier 1/2 terminology, JSON field traceability for T5-N02 |

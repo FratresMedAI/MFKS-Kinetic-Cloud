@@ -1,7 +1,7 @@
 # MKFS Risk Register
 
 **Document ID:** MKFS-DOC-RISK-001  
-**Version:** 0.2 (Phase 9)  
+**Version:** 0.3 (Phase 9 hardening)  
 **Related:** [REQUIREMENTS.md](REQUIREMENTS.md) | [DEPLOYMENT_DOWN_SELECT.md](DEPLOYMENT_DOWN_SELECT.md) | [NETWORK_ARCHITECTURE.md](NETWORK_ARCHITECTURE.md)
 
 ---
@@ -25,9 +25,9 @@
 
 | ID | Risk | Likelihood | Impact | Mitigation | Owner |
 |----|------|------------|--------|------------|-------|
-| R-011 | Central fusion / C4ISR overload under multi-wave swarm | Medium | High | Edge FCU triage; CAN-local tracks; D-013 no TCP on fire path | Software |
-| R-012 | C4ISR latency / packet loss → stale aim | Medium | High | Local predictor; 500 ms hold-fire; [latency_resilience_model.py](../scripts/latency_resilience_model.py) | Software |
-| R-013 | Gossip fratricide uncertainty (spoofed/stale friendly position) | Low | Critical | SI-010/011; conservative inhibit union; hold fire on conflict | Safety |
+| R-011 | Central fusion / C4ISR overload under multi-wave swarm | Medium | High | Tier 2 edge triage; CAN-local tracks; D-013 CAN-only fire path | Software |
+| R-012 | C4ISR latency / packet loss → stale aim (`pattern_overlap_at_baseline` = 0 at 250 ms) | Medium | High | Local predictor on FCU edge node; 500 ms hold-fire; [latency_resilience_output.json](../scripts/latency_resilience_output.json) | Software |
+| R-013 | Gossip fratricide uncertainty (spoofed/stale friendly position) | Low | Critical | SI-010 (+5° margin); SI-011 hold fire on conflict | Safety |
 
 ---
 
@@ -51,3 +51,4 @@ Impact
 |---------|------|--------|
 | 0.1 | 2026-05-22 | Initial top 10 risks |
 | 0.2 | 2026-05-22 | Phase 9 — R-011–R-013 network/C2 risks |
+| 0.3 | 2026-05-22 | Hardening — mitigation wording tied to D-013, JSON fields, SI-010/011 |
