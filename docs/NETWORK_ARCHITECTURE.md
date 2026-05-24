@@ -1,16 +1,14 @@
 # MKFS Network & C2 Architecture
 
 **Document ID:** MKFS-DOC-NET-001  
-**Version:** 0.2 (Phase 9 hardening)  
+**Version:** 0.2.2 (Phase 9 hardening)  
 **Related:** [ICD_POWER_C4ISR.md](ICD_POWER_C4ISR.md) | [ICD_SENSOR_INTEGRATION.md](ICD_SENSOR_INTEGRATION.md) | [FRATRICIDE_DECONFLICTION.md](FRATRICIDE_DECONFLICTION.md) | [SWARM_TEST_CONCEPT.md](SWARM_TEST_CONCEPT.md) | [latency_resilience_model.py](../scripts/latency_resilience_model.py) | [DECISIONS.md](DECISIONS.md) D-013
 
 ---
 
 ## 1. Problem Statement
 
-Distributed terminal defense fails when **multidirectional swarms overload centralized fusion**, and when **TCP/IP links** add packet loss, retransmit storms, head-of-line blocking, and variable latency. At **60 mph**, **250 ms** of stale track data produces **22.0 ft** of uncompensated target motion ([`latency_resilience_output.json`](../scripts/latency_resilience_output.json) `baseline_reference.lead_error_ft`) — sufficient to miss a small UAS before sensor error is counted.
-
-Multi-wave, jam-resistant drone operations (e.g. March 2026 Barksdale AFB) show that **comms resilience precedes terminal effector value**. MKFS is **terminal kinetic** on the defended asset (200–500 yd). It does not replace BLOS cueing or base-wide fusion. This document defines how MKFS **limits dependence on low-latency central links** on the **Tier 1 CAN commit path**.
+Distributed terminal defense fails when **multidirectional swarms overload centralized fusion** or **TCP/IP links** add packet loss, retransmit storms, head-of-line blocking, and variable latency. At **60 mph** and **250 ms** track delay, uncompensated motion is **`baseline_reference.lead_error_ft` = 22.0 ft** — greater than **`pattern_radius_ft` = 12.3 ft**, so **`pattern_overlap_at_baseline` = 0.0** ([`latency_resilience_output.json`](../scripts/latency_resilience_output.json)). MKFS is **terminal kinetic** on the defended asset (200–500 yd), not BLOS cueing or base-wide fusion; this document defines **Tier 1 CAN-only** fire commit independent of low-latency C4ISR.
 
 ### TCP/IP limitations
 
@@ -107,36 +105,37 @@ Engage top-N; coast lower-priority tracks. FCU logs overload; does not fault.
 
 ### 4.3 Local predictor
 
+FCU edge node runs constant-velocity lead: `predictor_effective_delay_ms` = measured latency × `parameters.predictor_delay_fraction` (0.25). Aim point is predicted intercept, not last report.
+
 ```
 Δx ≈ v · τ
-σ_pos ≈ sqrt((v·τ)² + (0.5·a_max·τ²)² + (σ_v·τ)²)
 ```
-
-Aim **predicted intercept volume**, not last report. CV model is minimum spec; Kalman/IMM is implementation target.
 
 ---
 
 ## 5. Latency Mitigation — Quantitative Grounding
 
-**Key numbers** — source: [`latency_resilience_output.json`](../scripts/latency_resilience_output.json) `baseline_reference`:
+Source: [`latency_resilience_output.json`](../scripts/latency_resilience_output.json) `baseline_reference`:
 
 | Field | Value |
 |-------|-------|
-| `lead_error_ft` | **22.0** (60 mph, 250 ms) |
+| `lead_error_ft` | **22.0** |
 | `pattern_diameter_ft` / `pattern_radius_ft` | **24.5** / **12.3** |
 | `pattern_overlap_at_baseline` | **0.0** |
 | `predictor_effective_delay_ms` | **62.5** |
 | `pattern_overlap_with_predictor` | **0.894** |
 
-At the critic baseline, **22 ft miss exceeds 12.3 ft pattern radius** — `pattern_overlap_at_baseline` is zero. Volume fire does not compensate for stale tracks without **local predictor** on the FCU edge node. With predictor (`pattern_overlap_with_predictor` = 0.894), engagement proxy remains viable.
+At baseline, `pattern_overlap_at_baseline` = 0.0 because `lead_error_ft` (22.0) > `pattern_radius_ft` (12.3). Local predictor yields `pattern_overlap_with_predictor` = 0.894 at `predictor_effective_delay_ms` = 62.5.
 
-Regenerate tables: `python scripts/latency_resilience_model.py`
+`delay_sweep[].pattern_overlap` values **exclude** the local predictor (raw v·τ miss only).
 
-### Delay sweep (selected)
+Regenerate: `python scripts/latency_resilience_model.py`
 
-| Speed (mph) | Delay (ms) | Lead error (ft) | `pattern_overlap` |
-|-------------|------------|-----------------|-------------------|
-| 60 | 100 | 8.8 | 0.70 |
+### Delay sweep (selected; no predictor)
+
+| Speed (mph) | Delay (ms) | `lead_error_ft` | `pattern_overlap` |
+|-------------|------------|-----------------|---------------------|
+| 60 | 100 | 8.8 | 0.696 |
 | 60 | 250 | 22.0 | 0.00 |
 | 60 | 500 | 44.0 | 0.00 |
 
@@ -163,15 +162,15 @@ Compressed track state (id, az, el, range, range_rate, timestamp, confidence). N
 
 ### 6.4 Degradation ladder
 
-| Level | Condition | FCU behavior |
-|-------|-----------|--------------|
-| **0 — Normal** | Local sensor + C4ISR intent | Full profiles per ROE |
-| **1 — C4ISR loss** | TCP/IP down | Local sensor + last-known intent TTL (30 s) |
-| **2 — Sensor overload** | Tracks > capacity | Triage top-N; local predictor on |
-| **3 — Local sensor loss** | No auto-track | Sector scan behaviors; operator ARMED required |
-| **4 — Manual only** | All auto tracks lost | FCU panel az/el entry |
+| Level | Trigger | FCU edge node action |
+|-------|---------|----------------------|
+| **0** | Local sensor + C4ISR up | Full profiles per ROE |
+| **1** | TCP/IP down | CAN tracks + last-known intent (30 s TTL) |
+| **2** | Tracks > capacity | Triage top-N; local CV predictor (model: 62.5 ms eff. @ 250 ms baseline) |
+| **3** | No auto-track | Sector scan; operator ARMED required |
+| **4** | All auto tracks lost | Manual az/el only |
 
-No level autonomously initiates fire under current policy.
+Operator ARMED required at every level.
 
 ---
 
@@ -191,7 +190,7 @@ See [`FRATRICIDE_DECONFLICTION.md`](FRATRICIDE_DECONFLICTION.md) §7.
 
 ## 8. Operational Context
 
-Jam-resistant, long-link swarms stress systems that (1) fuse all tracks centrally, (2) require TCP/IP for engagement, (3) assume timely RWS/Ethernet under EW. MKFS remains operable when Ethernet/C4ISR degrades: co-mounted CAN sensor, local predictor, manual cue.
+Jam-resistant, long-link swarms break central fusion, TCP/IP-dependent fire paths, and RWS/Ethernet under EW. MKFS keeps Tier 1 on CAN: co-mounted sensor tracks, local CV predictor (`pattern_overlap_with_predictor` = 0.894 at baseline), manual cue at Level 4.
 
 ---
 
@@ -201,7 +200,7 @@ Jam-resistant, long-link swarms stress systems that (1) fuse all tracks centrall
 |----------|-------------|------|-------------------|
 | Primer fire command | ≤ 5 ms | CAN (Tier 1) | No |
 | Track update → aim | ≤ 100 ms | CAN / vehicle LAN (Tier 2) | No |
-| Track prediction | 250–500 ms compensated | FCU compute (Tier 2) | No |
+| Track prediction | 62.5 ms effective @ 250 ms baseline (`predictor_effective_delay_ms`) | FCU compute (Tier 2) | No |
 | ROE / ARMED | Seconds | FCU panel | No |
 | Mission intent / geofence | Seconds–minutes | C4ISR (Tier 3) | Optional |
 | Fleet picture | Seconds | TCP/IP / gossip | Optional |
@@ -210,39 +209,28 @@ Jam-resistant, long-link swarms stress systems that (1) fuse all tracks centrall
 
 ## 10. Packet Loss — Cue Delivery
 
-From `packet_loss_sweep` at baseline (60 mph, 250 ms):
+`packet_loss_sweep`: each row is `pattern_overlap_*` × `cue_delivery_prob` at baseline (60 mph, 250 ms).
 
-| Packet loss | P(deliver) | `engagement_no_predictor` | `engagement_with_predictor` |
-|-------------|------------|---------------------------|-----------------------------|
-| 0% | 1.00 | 0.00 | 0.89 |
-| 10% | 0.90 | 0.00 | 0.80 |
-| 20% | 0.80 | 0.00 | 0.71 |
-| 30% | 0.70 | 0.00 | 0.63 |
+| Packet loss | `cue_delivery_prob` | `pattern_overlap_at_baseline` | `pattern_overlap_with_predictor` |
+|-------------|---------------------|-------------------------------|----------------------------------|
+| 0% | 1.00 | 0.00 | 0.894 |
+| 10% | 0.90 | 0.00 | 0.805 |
+| 20% | 0.80 | 0.00 | 0.715 |
+| 30% | 0.70 | 0.00 | 0.626 |
 
-Local CAN tracks keep the Tier 1 commit path off IP. Retries increase delivery but add latency.
+Tier 1 commit stays on CAN; retries add latency.
 
 ---
 
 ## 11. Gap Assessment
 
-### Established in Phase 9
+### Established
 
-- Tier 1/2/3 separation and D-013 CAN-only fire path
-- Quantified baseline: 22 ft miss, 0.0 overlap without predictor, 0.894 with predictor
-- Degradation Levels 0–4, triage spec, network-stress tests T5-N01–N04
-- Fratricide rules SI-009–011 under partial connectivity
+Documented and model-backed in-repo: Tier 1/2/3 split; D-013 CAN-only fire commit; [`latency_resilience_output.json`](../scripts/latency_resilience_output.json) baseline (`lead_error_ft` 22.0, `pattern_overlap_at_baseline` 0.0, `pattern_overlap_with_predictor` 0.894); Degradation Levels 0–4; network-stress tests T5-N01–N04; fratricide rules SI-009–011 under partial connectivity.
 
 ### Remains unvalidated
 
-| Item | Status |
-|------|--------|
-| Radio hardware for gossip | Architectural only |
-| Crypto / authentication on gossip | Not specified |
-| Multi-node track correlation | Not specified |
-| Multi-vehicle HIL (P9-007) | Not built |
-| Kalman/IMM predictor in FCU | CV model only in repo |
-| Autonomous fire policy | Operator ARMED required |
-| Base-wide fusion replacement | Out of MKFS scope |
+No field hardware or multi-vehicle sim for gossip radio, gossip authentication, or multi-node track correlation. FCU runs CV lead in the model only — Kalman/IMM not implemented. P9-007 HIL not built. Operator ARMED is mandatory at every degradation level; base-wide fusion is out of MKFS scope.
 
 ---
 
@@ -258,3 +246,5 @@ Local CAN tracks keep the Tier 1 commit path off IP. Retries increase delivery b
 |---------|------|--------|
 | 0.1 | 2026-05-22 | Phase 9 — network/C2 resilience architecture |
 | 0.2 | 2026-05-22 | Hardening — quant anchor, Tier 1/2/3 terminology, JSON field traceability |
+| 0.2.1 | 2026-05-24 | Ruthless pass — pattern_overlap naming, note/JSON alignment, delay_sweep scope |
+| 0.2.2 | 2026-05-24 | Final polish — §11 gap assessment, quant/predictor/degradation language |

@@ -87,13 +87,12 @@ def cue_delivery_probability(packet_loss_rate: float, retries: int = 0) -> float
     return 1.0 - math.pow(p, 1 + retries)
 
 
-def engagement_success_estimate(miss_m: float, pattern_diameter_m: float) -> float:
-    """Engagement proxy = pattern overlap (conservative; expandable to Pk later)."""
-    return pattern_overlap_fraction(pattern_diameter_m, miss_m)
-
-
 def delay_sweep() -> list[dict]:
-    """Position error vs delay at 30/60/90 mph."""
+    """
+    Position error vs delay at 30/60/90 mph.
+
+    pattern_overlap is WITHOUT local predictor (raw v*tau miss only).
+    """
     rows = []
     for mph in (30, 60, 90):
         v = mph_to_mps(mph)
@@ -107,31 +106,26 @@ def delay_sweep() -> list[dict]:
                 "lead_error_m": round(err_m, 2),
                 "lead_error_ft": round(err_m / FT_TO_M, 1),
                 "pattern_overlap": round(overlap, 3),
-                "engagement_proxy": round(overlap, 3),
             })
     return rows
 
 
-def packet_loss_sweep() -> list[dict]:
-    """Cue delivery and effective engagement under loss. NETWORK_ARCHITECTURE section 10."""
+def packet_loss_sweep(
+    overlap_at_baseline: float,
+    overlap_with_predictor: float,
+) -> list[dict]:
+    """Overlap after packet loss: pattern_overlap * cue_delivery_prob."""
     rows = []
-    v = mph_to_mps(BASELINE_SPEED_MPH)
-    delay_s = BASELINE_DELAY_MS / 1000.0
-    miss_no_predict = position_error_cv(v, delay_s)
-    miss_with_predict = position_error_cv(v, delay_s * PREDICTOR_DELAY_FRACTION)
-
     for loss_pct in (0, 5, 10, 15, 20, 30):
         p_loss = loss_pct / 100.0
         p_deliver = cue_delivery_probability(p_loss, retries=0)
         p_deliver_retry = cue_delivery_probability(p_loss, retries=2)
-        eng_no_pred = engagement_success_estimate(miss_no_predict, PATTERN_DIAMETER_M)
-        eng_pred = engagement_success_estimate(miss_with_predict, PATTERN_DIAMETER_M)
         rows.append({
             "packet_loss_pct": loss_pct,
             "cue_delivery_prob": round(p_deliver, 3),
             "cue_delivery_prob_2retry": round(p_deliver_retry, 3),
-            "engagement_no_predictor": round(eng_no_pred * p_deliver, 3),
-            "engagement_with_predictor": round(eng_pred * p_deliver, 3),
+            "pattern_overlap_at_baseline": round(overlap_at_baseline * p_deliver, 3),
+            "pattern_overlap_with_predictor": round(overlap_with_predictor * p_deliver, 3),
         })
     return rows
 
@@ -146,6 +140,7 @@ def baseline_reference() -> dict:
     overlap_pred = pattern_overlap_fraction(
         PATTERN_DIAMETER_M, position_error_cv(v, effective_delay_s)
     )
+    pred_ms = round(BASELINE_DELAY_MS * PREDICTOR_DELAY_FRACTION, 1)
     return {
         "speed_mph": BASELINE_SPEED_MPH,
         "delay_ms": BASELINE_DELAY_MS,
@@ -154,16 +149,20 @@ def baseline_reference() -> dict:
         "pattern_diameter_ft": round(PATTERN_DIAMETER_M / FT_TO_M, 1),
         "pattern_radius_ft": round(PATTERN_DIAMETER_M / 2.0 / FT_TO_M, 1),
         "pattern_overlap_at_baseline": round(overlap_no_pred, 3),
-        "predictor_effective_delay_ms": round(BASELINE_DELAY_MS * PREDICTOR_DELAY_FRACTION, 1),
+        "predictor_effective_delay_ms": pred_ms,
         "pattern_overlap_with_predictor": round(overlap_pred, 3),
         "note": (
-            "At 250 ms / 60 mph: pattern_overlap_at_baseline=0.0 (22 ft miss > 12.3 ft radius). "
-            "Local predictor (25% effective delay) yields pattern_overlap_with_predictor ~0.70."
+            f"At {BASELINE_DELAY_MS} ms / {BASELINE_SPEED_MPH} mph: "
+            f"pattern_overlap_at_baseline={round(overlap_no_pred, 3)} "
+            f"(lead_error_ft={round(err_m / FT_TO_M, 1)} > pattern_radius_ft=12.3). "
+            f"pattern_overlap_with_predictor={round(overlap_pred, 3)} "
+            f"at predictor_effective_delay_ms={pred_ms}."
         ),
     }
 
 
 def main() -> None:
+    baseline = baseline_reference()
     output = {
         "parameters": {
             "pattern_diameter_m": PATTERN_DIAMETER_M,
@@ -171,9 +170,12 @@ def main() -> None:
             "baseline_delay_ms": BASELINE_DELAY_MS,
             "predictor_delay_fraction": PREDICTOR_DELAY_FRACTION,
         },
-        "baseline_reference": baseline_reference(),
+        "baseline_reference": baseline,
         "delay_sweep": delay_sweep(),
-        "packet_loss_sweep": packet_loss_sweep(),
+        "packet_loss_sweep": packet_loss_sweep(
+            baseline["pattern_overlap_at_baseline"],
+            baseline["pattern_overlap_with_predictor"],
+        ),
     }
 
     out_dir = Path(__file__).parent
@@ -191,7 +193,9 @@ def main() -> None:
         f"{ref['pattern_overlap_with_predictor']:.3f}"
     )
     print()
-    print("## Delay sweep (selected)")
+    print("delay_sweep.pattern_overlap excludes local predictor (raw v*tau miss only).")
+    print()
+    print("## Delay sweep (selected; no predictor)")
     print("| mph | delay_ms | lead_ft | overlap |")
     print("|-----|----------|---------|---------|")
     for row in output["delay_sweep"]:
@@ -201,14 +205,15 @@ def main() -> None:
                 f"{row['lead_error_ft']} | {row['pattern_overlap']:.2f} |"
             )
     print()
-    print("## Packet loss @ baseline (60 mph, 250 ms)")
-    print("| loss_pct | P(deliver) | eng_no_predictor | eng_with_predictor |")
-    print("|----------|------------|------------------|---------------------|")
+    print("## Packet loss @ baseline (overlap * cue_delivery_prob)")
+    print("| loss_pct | P(deliver) | pattern_overlap_at_baseline | pattern_overlap_with_predictor |")
+    print("|----------|------------|-----------------------------|--------------------------------|")
     for row in output["packet_loss_sweep"]:
         if row["packet_loss_pct"] in (0, 10, 20, 30):
             print(
                 f"| {row['packet_loss_pct']} | {row['cue_delivery_prob']:.2f} | "
-                f"{row['engagement_no_predictor']:.2f} | {row['engagement_with_predictor']:.2f} |"
+                f"{row['pattern_overlap_at_baseline']:.2f} | "
+                f"{row['pattern_overlap_with_predictor']:.2f} |"
             )
     print()
     print(f"Wrote {json_path}")
