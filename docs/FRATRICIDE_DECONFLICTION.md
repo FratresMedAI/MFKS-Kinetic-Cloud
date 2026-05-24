@@ -79,7 +79,7 @@ Per [DUAL_ARRAY_FIRE_PLANS.md](DUAL_ARRAY_FIRE_PLANS.md), forward and aft module
 | System | Deconfliction |
 |--------|---------------|
 | **Trophy / APS** | MKFS fires **outside** APS engagement envelope (> 50 m) or on SI-008 hold |
-| **CIWS / Phalanx** | MKFS is terminal backup — CIWS owns inner bubble; MKFS owns 200–500 yd band |
+| **CIWS / Phalanx** | MKFS is terminal backup — CIWS owns inner bubble; MKFS effective **150–350 yd** (threat tracked out to **~500 yd** envelope) |
 | **Friendly rotary-wing** | SI-007 + altitude filter — no fire above 200 ft AGL in friendly corridor |
 | **Dismounted infantry** | SI-006 sector masks — never LAST_DITCH_FULL with troops near |
 

@@ -16,11 +16,13 @@
 
 Expand T5 (*System — Swarm surrogate engagement*) from a single table row into a **desk-exercise test concept** suitable for prime review, range planning, and demo film storyboarding.
 
+**Range scope:** Tests **150–350 yd effective engagement** (nominal **300–400 ft** downrange in the model). The **~500 yd** figure is the outer **threat envelope** for planning — not a claimed M1 kill range. M1 baseline: low-pressure distributed salvo, not long-range single shots.
+
 ---
 
 ## 2. Test Objective
 
-Demonstrate that an MKFS **LAST_DITCH_FULL** salvo produces sufficient **terminal-band flechette density** to defeat a **multi-target swarm surrogate** at 250–400 ft without explosives or guided submunitions.
+Demonstrate that an MKFS **LAST_DITCH_FULL** salvo produces sufficient **terminal-band flechette density** to defeat a **multi-target swarm surrogate** at **300–400 ft (~100–133 yd)** — within the **150–350 yd effective engagement band** — without explosives or guided submunitions.
 
 **Primary metric:** ≥ **300 hits/m²** in engagement volume at 350 ft *(achieved by 136-tube strip — see [SALVO_SCENARIOS.md](../research/ballistics/SALVO_SCENARIOS.md))*
 
@@ -65,7 +67,7 @@ flowchart LR
 
 | Parameter | Value |
 |-----------|-------|
-| Engagement range | 300–400 ft (adjustable) |
+| Engagement range | 300–400 ft (~100–133 yd); within **150–350 yd** effective band |
 | Elevation | 25–35° (FCU computed) |
 | Lateral safety standoff | 200 m minimum from cloud center |
 | Downrange clear | 600 m no-man zone |

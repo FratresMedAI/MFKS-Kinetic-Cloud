@@ -21,7 +21,7 @@ Honest comparison of MKFS against alternative terminal-defense approaches — wh
 
 | Approach | Range | Swarm handling | Power / logistics | Weather | Cost curve | Fratricide risk | Maturity |
 |----------|-------|----------------|-------------------|---------|------------|-----------------|----------|
-| **MKFS kinetic cloud** | 200–500 yd | **High volume** — 310–1,977 hits/m² | Magazine mass; 28 VDC | All-weather kinetic | **Low per shot** (~$100 puck ROM) | **High** — needs interlocks | Concept TRL 2–3 |
+| **MKFS kinetic cloud** | **150–350 yd** effective (**~400–450 yd** optimal); threat envelope **~500 yd** | **High volume** — 310–1,977 hits/m² | Magazine mass; 28 VDC | All-weather kinetic | **Low per shot** (~$100 puck ROM) | **High** — needs interlocks | Concept TRL 2–3 |
 | Directed energy (DEW) | 100–1000+ m | Single beam — sequential | **High power** (kW–MW) | Rain/dust degraded | High capital, low per shot | Lower collateral | Emerging TRL 6+ |
 | EW / jamming | BLOS if linked | Soft kill — autonomy dependent | Moderate power | Spectrum contested | System cost | Low kinetic | Fielded |
 | Explosive intercept (Trophy) | 50–200 m | 1–2 targets per shot | Reload + blast hazard | All-weather | **High per shot** | Blast + debris | Fielded TRL 9 |
@@ -46,7 +46,7 @@ Honest comparison of MKFS against alternative terminal-defense approaches — wh
 
 ## 4. Where MKFS Loses
 
-**Beyond-line-of-sight.** MKFS is terminal only (~500 yd max). Not a replacement for radar, EW, or medium-range AD.
+**Beyond-line-of-sight.** MKFS is terminal only — **150–350 yd effective** (outer threat planning envelope **~500 yd**, not projectile range). Not a replacement for radar, EW, or medium-range AD.
 
 **Single-target precision.** Cannot pick one drone in a crowded sky with surgical precision — it saturates a volume.
 

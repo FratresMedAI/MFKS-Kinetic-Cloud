@@ -11,7 +11,7 @@
 
 ## The Problem
 
-Close-in drone swarms at **200–500 yd** overwhelm vehicles when EW fails, missiles run dry, and CIWS isn't mounted. By then the fight is about **volume and survival** — not elegance.
+Close-in drone swarms that have closed inside **~500 yd** (outer threat envelope — not effective projectile range) overwhelm vehicles when EW fails, missiles run dry, and CIWS isn't mounted. **Effective engagement: 150–350 yd.** Low-pressure distributed salvo — not long-range high-pressure shots. By then the fight is about **volume and survival**.
 
 ## Our Thesis — Return to Kinetic
 

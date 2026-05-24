@@ -15,7 +15,7 @@
 
 Answer whether MKFS terminal-defense tubes should be **rifled or smooth bore**, and whether **spin** can improve pattern spread, accuracy, or muzzle velocity for the **31 mm puck** strip without conflicting with **Option D setback skirt peel** (D-002) or **PUCK-B hollow-point** geometry (D-011).
 
-**Scope:** Terminal MKFS only (~200 ft `R_open`, ~500 yd `R_max`). Not long-range precision munitions.
+**Scope:** Terminal MKFS only (~200 ft `R_open`, **150–350 yd** effective engagement, **~500 yd** outer threat envelope). Not long-range precision munitions or high-pressure smokeless shots.
 
 ---
 

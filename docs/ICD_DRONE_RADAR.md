@@ -14,9 +14,9 @@
 
 ## 1. Purpose
 
-Compact **radar + passive EM** kit mounted **on or beside MKFS tiles/turret** — detects Group 1–2 drones in the **terminal band (50–800 yd)** and cues FCU to fire **appliqué strips and pan-tilt turret only**.
+Compact **radar + passive EM** kit mounted **on or beside MKFS tiles/turret** — detects Group 1–2 drones in the **terminal cueing band (50–800 yd)** and cues FCU to fire **appliqué strips and pan-tilt turret only** within **150–350 yd effective engagement** (useful pattern to **~400–450 yd** optimal).
 
-This is **not** a long-range engagement system. It exists so MKFS sees the swarm **before** it is on the vehicle skin — still inside the puck cloud envelope.
+This is **not** a long-range engagement system. Sensor may track out to **~500 yd** threat envelope; **fire effectiveness is 150–350 yd**. It exists so MKFS sees the swarm **before** it is on the vehicle skin.
 
 ---
 
@@ -78,7 +78,9 @@ flowchart LR
 | Track range | FCU action |
 |-------------|------------|
 | 400–800 yd | Alert + stage **SWARM_WIDE** — operator arms |
-| 250–500 yd | **Primary kill band** — sector or full tile salvo |
+| 150–350 yd | **Primary effective kill band** — sector or full tile salvo |
+| ~400–450 yd | Useful pattern density — optimal turret/elevated setups |
+| ~500 yd | **Outer threat envelope** — cueing/planning boundary; not claimed projectile range |
 | < 250 yd | **LAST_DITCH_FULL** if authorized |
 | Stale > 500 ms | Hold fire |
 

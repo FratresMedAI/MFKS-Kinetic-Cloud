@@ -1,6 +1,12 @@
 # MKFS Documentation Index
 
 **Status:** Concept | Phase 9  
+
+**Start Here (Primes / New Readers)**
+1. [README.md](../README.md) — 30-second problem + solution
+2. [FCU_EDGE_PREDICTOR_ONEPAGER.md](FCU_EDGE_PREDICTOR_ONEPAGER.md) — why the local predictor + CAN isolation actually works
+3. [M1_SPEC.md](M1_SPEC.md) — current concept baseline (configuration + performance)
+
 **Purpose:** Hub for all MKFS concept documentation — one sentence per doc, grouped by topic.  
 **Related Documents:** [README.md](../README.md) | [M1_SPEC.md](M1_SPEC.md)
 
@@ -11,7 +17,6 @@
 | Document | Purpose |
 |----------|---------|
 | [DESIGN_PHILOSOPHY.md](DESIGN_PHILOSOPHY.md) | Authoritative design intent — last-ditch terminal defense, form factors, tube scale |
-| [M1_SPEC.md](M1_SPEC.md) | **M1 concept SoT** — configuration, performance, FCU/C2 summary |
 | [REQUIREMENTS.md](REQUIREMENTS.md) | Full FR/NFR IDs, design constants, constraints |
 | [SYSTEM_SPEC.md](SYSTEM_SPEC.md) | Consolidated subsystem spec index (Phase 0–3) |
 | [MKFS_CORE_ENHANCEMENTS.md](MKFS_CORE_ENHANCEMENTS.md) | Terminal-only enhancements — tube scale, turret ripple, edge C2 |
@@ -24,9 +29,10 @@
 
 | Document | Purpose |
 |----------|---------|
+| [FCU_EDGE_PREDICTOR_ONEPAGER.md](FCU_EDGE_PREDICTOR_ONEPAGER.md) | **Why local predictor + CAN fire path fix stale-track miss — start here for C2** |
+| [M1_SPEC.md](M1_SPEC.md) | **M1 concept SoT — configuration, performance, FCU/C2 summary baseline** |
 | [architecture/SYSTEM_ARCHITECTURE.md](architecture/SYSTEM_ARCHITECTURE.md) | System block diagram — FCU, arrays, sensors, CAN |
 | [NETWORK_ARCHITECTURE.md](NETWORK_ARCHITECTURE.md) | Tier 1/2/3 C2, latency model, degradation ladder |
-| [FCU_EDGE_PREDICTOR_ONEPAGER.md](FCU_EDGE_PREDICTOR_ONEPAGER.md) | Why local predictor + CAN fire path fix stale-track miss |
 | [DUAL_ARRAY_FIRE_PLANS.md](DUAL_ARRAY_FIRE_PLANS.md) | Per-platform dual-array fire allocation |
 | [FRATRICIDE_DECONFLICTION.md](FRATRICIDE_DECONFLICTION.md) | Friendly/APS deconfliction rules (SI-001+) |
 | [SWARM_TEST_CONCEPT.md](SWARM_TEST_CONCEPT.md) | T5 swarm surrogate test concept + network stress (T5-N01–N04) |

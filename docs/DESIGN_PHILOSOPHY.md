@@ -28,7 +28,23 @@ MKFS is a **last-ditch, don’t-die defensive layer** — the same *role* as **C
 | **MKFS** | Drone swarm | **Kinetic puck clouds** — no explosives |
 | **MKFS pan-tilt turret** | Swarm, 360° | **Moving-head yoke → shutters open → 2×2 ft stack → rip** |
 
-This is **not** primary air defense. It is what the crew fires when the swarm is already close, other systems failed or weren’t there, and the vehicle **cannot afford to die**. Volume and speed matter more than elegance.
+This is **not** primary air defense or a long-range engagement system. It is what the crew fires when the swarm has already closed inside the **~500 yd threat envelope**, other systems failed or weren’t there, and the vehicle **cannot afford to die**. Volume and speed matter more than elegance.
+
+### Range model (M1 baseline)
+
+| Concept | Distance | Meaning |
+|---------|----------|---------|
+| Outer threat envelope | **~500 yd** | Swarm has closed on the defended asset — layer becomes relevant |
+| Effective engagement | **150–350 yd** | Primary kill band for current low-pressure pucks |
+| Useful pattern density (optimal) | **~400–450 yd** | Elevated turret / favorable geometry only |
+
+### Propulsion and fire (M1 baseline)
+
+- **Low-pressure** electric-primer tube launch — manageable recoil on appliqué mounts
+- **Distributed / sequenced** salvo: individual tube addressing, sector, ripple, full dump — not one high-pressure long-range shot
+- **Not** high-pressure smokeless-powder artillery or missile-class engagement
+
+**Exploring (not fielded):** Small cost-effective **puck boosters** or **mortar-style low-pressure** launch to extend useful pattern toward the full ~500 yd envelope without unacceptable recoil.
 
 ---
 
@@ -134,7 +150,7 @@ Dual (or multi) tile placement still gives **360°** coverage; geometry is per-v
 ## 6. Engagement Doctrine
 
 1. **Primary systems** (if any) engage farther out.  
-2. Swarm leaks inside ~500 yd.  
+2. Swarm closes inside **~500 yd** outer threat envelope (effective engagement **150–350 yd**).  
 3. MKFS is cleared — **terminal volume fire** into the approach corridor.  
 4. Goal: **kill enough drones in the volume** that the vehicle survives the pass — not perfect single-shot kills.
 

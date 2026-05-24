@@ -47,7 +47,7 @@ Band index set → QC → Seal → Pack
 |-----------|-----------------|------|
 | Ti-6Al-4V bar | Dual source (US) | Medium — see R-006 |
 | Cases | Existing 30 mm supply base | Low |
-| Propellant | Single-base smokeless | Low |
+| Propellant | Low-pressure charge (electric primer) | Not high-pressure smokeless long-range |
 | Petal polymer | Commercial FR-grade | Low |
 
 ---

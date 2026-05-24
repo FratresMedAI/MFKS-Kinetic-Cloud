@@ -21,7 +21,7 @@ Regenerates `BALLISTICS_RESULTS.md` and `ballistics_output.json`.
 
 ## Key Results (Nominal)
 
-- Drag-corrected time-to-range for `R_open` through `R_max`
+- Drag-corrected time-to-range for `R_open` through `R_band` (ft) and `R_threat` (~500 yd envelope — not effective engagement; see [REQUIREMENTS.md](../../docs/REQUIREMENTS.md))
 - Pattern diameter at 350 ft: ~24 ft (15–25 ft target)
 - 25-tube salvo density at 350 ft: ≥ 2 hits/m² (swarm coverage target)
 - V₀ ±5%: `R_open` shift ±10 ft (within ±30 ft limit)

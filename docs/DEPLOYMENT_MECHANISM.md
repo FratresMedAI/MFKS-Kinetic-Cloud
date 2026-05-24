@@ -22,8 +22,9 @@ Explore purely mechanical range-band deployment options for the MKFS carrier pro
 | Parameter | Symbol | Target | Notes |
 |-----------|--------|--------|-------|
 | Cloud open distance | `R_open` | ~200 ft (61 m) | Deployment initiates; sub-projectiles begin dispersing |
-| Primary damage band | `R_band` | 250–500 ft (76–152 m) | Peak pattern density and lethality |
-| Maximum range | `R_max` | ~500 yd (457 m) | Terminal defense envelope |
+| Primary damage band (cloud) | `R_band` | 250–500 ft (76–152 m) | Peak pattern density downrange |
+| Outer threat envelope | `R_threat` | ~500 yd (457 m) | Swarm closed on asset — **not** effective projectile range |
+| Effective engagement | `R_effective` | **150–350 yd** | Primary low-pressure kill band |
 | Design muzzle velocity | `V_0` | 900 m/s (2,953 ft/s) | Baseline for timing calculations |
 | Launch elevation | `θ` | 15°–45° (typical 30°) | Vehicle mount dependent |
 
@@ -37,7 +38,9 @@ Drag-corrected values from [ballistics_model.py](../research/ballistics/ballisti
 | 250 ft (76 m) | 0.101 s | 838 m/s |
 | 350 ft (107 m) | 0.144 s | 814 m/s |
 | 500 ft (152 m) | 0.210 s | 780 m/s |
-| 500 yd (457 m) | 0.731 s | 585 m/s |
+| 500 yd (457 m) — `R_threat` only | 0.731 s | 585 m/s |
+
+*Effective engagement **150–350 yd**. The 500 yd row is outer threat-envelope reference — not claimed kill range for low-pressure distributed pucks.*
 
 ### Mechanical R_open (Option D)
 

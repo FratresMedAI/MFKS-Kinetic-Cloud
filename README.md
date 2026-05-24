@@ -1,102 +1,46 @@
-# MFKS — Modular Flechette Kinetic System (MKFS)
+# MFKS — Modular Flechette Kinetic System
 
-**Last-ditch kinetic saturation when drone swarms are already inside ~500 yd and everything else failed.**
+**Terminal kinetic layer for swarms that have already closed inside ~500 yards** — the outer **threat envelope** when the last-ditch layer becomes relevant. **Not** a long-range engagement system.
 
-**Repository:** [github.com/FratresMedAI/MFKS-Kinetic-Cloud](https://github.com/FratresMedAI/MFKS-Kinetic-Cloud)
+**Effective engagement:** **150–350 yards**. Useful pattern density out to **~400–450 yards** in optimal turret/elevated setups.
 
-→ Full documentation: [docs/00_INDEX.md](docs/00_INDEX.md)
+**M1 baseline:** Low-pressure electric-primer charges, **distributed/sequenced tube fire** (sector, ripple, full dump) — not high-pressure smokeless powder or single long-range shots. When outer layers fail and the vehicle cannot afford to die, MFKS saturates the terminal volume with ~11,500+ sub-projectiles from a single 2×2 ft box.
 
----
+**Exploring (not M1):** Range-extension options — small cost-effective boosters on pucks or mortar-style low-pressure launch — to improve effectiveness toward the full ~500 yd threat envelope while keeping recoil manageable.
 
-## The Problem
+## Why it actually works when tracks are stale
 
-- **Close-in drone swarms** leak inside **~500 yd** when EW degrades, missiles run dry, and CIWS is not on the vehicle.
-- **One-shot interceptors** cannot saturate a multidirectional swarm at terminal range — cost and magazine depth lose to volume.
-- **Centralized track fusion over TCP/IP** adds latency and loss; at **60 mph** and **250 ms** stale tracks, uncompensated aim misses by **`lead_error_ft` = 22.0** — outside the **`pattern_radius_ft` = 12.3** cloud ([`latency_resilience_output.json`](scripts/latency_resilience_output.json)).
-- The fight at this range is **volume and survival**, not elegance.
+At 60 mph, a 250 ms track delay creates a **22 ft lead error**.  
+MFKS pattern radius is only **~12.3 ft** → baseline overlap = **0.0**.
 
----
+The FCU edge node runs a local constant-velocity predictor (effective delay 62.5 ms) and fires over **CAN only** (D-013).  
+Result: `pattern_overlap_with_predictor = 0.894`.
 
-## The MFKS Answer
+→ [FCU_EDGE_PREDICTOR_ONEPAGER.md](docs/FCU_EDGE_PREDICTOR_ONEPAGER.md)
 
-Modular **kinetic-only** appliqué — same role as hard-kill APS or CIWS, no explosives in the round.
+## Two packaging lines
 
-| Package | Form | Tubes (approx.) |
-|---------|------|-----------------|
-| **Appliqué strips** | Flat on Stryker/JLTV/ship skin | **136** (2×1 ft) / **208** (3×1 ft) |
-| **Pan-tilt turret** | Moving head + yoke (stage-light style) | **289** per deck × 3–4 deep |
+| Package              | Form                        | Module size     | Tubes (approx) |
+|----------------------|-----------------------------|-----------------|----------------|
+| **Appliqué strips**  | Flat on hull/roof           | 2×1 ft / 3×1 ft | 136 / 208      |
+| **Pan-tilt turret**  | Moving head + yoke          | 2×2 ft magazine | 289 per deck   |
 
-- **Half-dollar puck cartridges** (31 mm × 28 mm) — hollow-point skirt peels under speed; **~40 titanium BBs** per puck.
-- **Electronic per-tube fire** — sector, ripple, or full dump; not dumb fuse lines.
-- **Volume saturation @ 350 ft:** one **2×1 strip** (136 tubes) → **310 hits/m²** in a **~24.5 ft** pattern ([SALVO_SCENARIOS.md](research/ballistics/SALVO_SCENARIOS.md)).
+Every tube is individually addressable. Salvo profiles: `SECTOR`, `SWARM_WIDE`, `LAST_DITCH_FULL`.
 
-→ [DESIGN_PHILOSOPHY.md](docs/DESIGN_PHILOSOPHY.md) · [M1_SPEC.md](docs/M1_SPEC.md)
+**Concept renders:** [assets/](assets/)
 
----
+## Integration
 
-## Why It Actually Works in the Real World
+- Takes cues from co-mounted radar/EM or external AI/sensor layers ([ICD_SENSOR_INTEGRATION.md](docs/ICD_SENSOR_INTEGRATION.md), [ICD_DRONE_RADAR.md](docs/ICD_DRONE_RADAR.md))
+- Fire decision stays local and deterministic on CAN
+- Operator remains **ARMED** at every degradation level
 
-Stale tracks kill terminal kinetic if you aim at the last report. MKFS puts **prediction and fire commit on the vehicle**, not the brigade net.
+## Current status
 
-**Two mechanisms:**
+**Concept documentation only.** Not an engineering specification or procurement offer.
 
-1. **Local FCU predictor (Tier 2)** — constant-velocity lead on the edge node. Effective delay = measured latency × **0.25** → **`predictor_effective_delay_ms` = 62.5** at 250 ms baseline. Restores **`pattern_overlap_with_predictor` = 0.894** vs **`pattern_overlap_at_baseline` = 0.0** without it.
-2. **CAN-isolated fire path (Tier 1, [D-013](docs/DECISIONS.md))** — track → FCU → `FIRE_CMD` on vehicle CAN (≤ 5 ms). **Track-to-primer SHALL NOT traverse TCP/IP.** C4ISR delivers mission intent only.
+**Phase 9** in progress: hardware-scale FCU + live predictor validation targets.
 
-```
-Without predictor:  250 ms @ 60 mph → lead_error_ft 22.0 → pattern_overlap 0.0
-With FCU predictor: 62.5 ms effective → pattern_overlap_with_predictor 0.894
-```
+**License:** Apache 2.0 with explicit patent grant. Defense primes and integrators welcome to fork and extend.
 
-→ [FCU_EDGE_PREDICTOR_ONEPAGER.md](docs/FCU_EDGE_PREDICTOR_ONEPAGER.md) · [NETWORK_ARCHITECTURE.md](docs/NETWORK_ARCHITECTURE.md)
-
----
-
-## Two Form Factors
-
-### Appliqué strips (2×1 / 3×1 ft)
-
-![Appliqué mounts — Stryker, JLTV, USV](assets/mkfs_mounting_concept_stryker_jltv_usv.png)
-
-Flat tiles on hull, bustle, roof. **136–208 tubes** per face. Primary Stryker/JLTV integration path.
-
-### Pan-tilt turret (2×2 ft magazine in head)
-
-![Moving-head pan-tilt turret — 2×2 ft magazine inside head](assets/mkfs_moving_head_turret_2x2.png)
-
-**289 tubes** per deck, stacked 3–4 deep. Observatory shutters open; full dump in **~0.6–1.7 s**.
-
-→ Puck release sequence: [PUCK_STORYBOARD.md](docs/visual/PUCK_STORYBOARD.md)
-
----
-
-## Integration & Cueing
-
-MKFS is **sensor- and AI-layer friendly, not dependent** on them.
-
-| Priority | Source | Link |
-|----------|--------|------|
-| 1 | Co-mounted EM/radar | CAN `0x300 TRACK` |
-| 2 | Vehicle radar / RWS | Vehicle LAN or manual |
-| 3 | C4ISR / external AI | TCP/IP — **intent only** (ROE, inhibit zones) |
-| 4 | FCU panel | Manual az/el fallback |
-
-Co-mounted CAN tracks keep Tier 1 alive when Ethernet or C4ISR drops. Operator **ARMED** required — no autonomous fire.
-
-→ [ICD_SENSOR_INTEGRATION.md](docs/ICD_SENSOR_INTEGRATION.md) · [CONOPS_VIGNETTES.md](docs/CONOPS_VIGNETTES.md)
-
----
-
-## License
-
-Licensed under **[Apache License 2.0](LICENSE)** — industry-friendly open terms with an explicit patent grant.
-
-Contributions welcome (issues, pull requests, or direct outreach). Defense primes, integrators, and research partners can fork and extend under the license terms.
-
-→ [LICENSE](LICENSE) · [NOTICE](NOTICE) · [CONTRIBUTING.md](CONTRIBUTING.md)
-
----
-
-## Current Status
-
-**Concept documentation • Phase 9 network/C2 complete • Not an engineering spec or procurement offer**
+→ Full documentation hub: [docs/00_INDEX.md](docs/00_INDEX.md)

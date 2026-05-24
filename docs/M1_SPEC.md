@@ -3,18 +3,20 @@
 **Document ID:** MKFS-DOC-M1-001  
 **Version:** 0.1  
 **Status:** Concept | Phase 9  
-**Purpose:** Single source of truth for M1 concept — configuration, performance, FCU/C2, and open items.  
+**Purpose:** Single source of truth for the M1 concept baseline — configuration, performance, FCU/C2 architecture, and open items for outreach and Phase 9 planning.  
 **Key Decisions:** See [DECISIONS.md](DECISIONS.md) — D-003 (CAN), D-011 (PUCK-A/B), D-013 (CAN-only fire)  
 **Open Questions:** See [RISK_REGISTER.md](RISK_REGISTER.md); hardware validation P9-007  
 **Related Documents:** [SYSTEM_SPEC.md](SYSTEM_SPEC.md) | [REQUIREMENTS.md](REQUIREMENTS.md) | [MKFS_CORE_ENHANCEMENTS.md](MKFS_CORE_ENHANCEMENTS.md) | [DESIGN_PHILOSOPHY.md](DESIGN_PHILOSOPHY.md)
 
 > **M1 summary SoT.** Detailed requirements remain in [REQUIREMENTS.md](REQUIREMENTS.md); full subsystem index in [SYSTEM_SPEC.md](SYSTEM_SPEC.md).
 
+**Why M1 exists:** When drone swarms have already penetrated outer defenses inside **~500 yd** (outer threat envelope), MFKS delivers the final kinetic volume that lets the platform survive the pass. It is the terminal "don't die" layer — **not** a long-range high-pressure shot.
+
 ---
 
 ## 1. Purpose
 
-**MKFS M1** is a **last-ditch terminal defense** capability — kinetic-only, non-explosive, APS-analogue protection against **close-in drone swarms** inside **~500 yd**. Volume and survival over single-target precision.
+**MKFS M1** is the **last-ditch terminal defense** baseline — kinetic-only, non-explosive, APS-analogue protection against **close-in drone swarms** that have closed inside **~500 yd**. **Effective engagement: 150–350 yd**; useful pattern density to **~400–450 yd** in optimal turret/elevated setups. Volume and survival over single-target precision.
 
 ---
 
@@ -36,6 +38,7 @@
 | Payload | **~40 × Ti-6Al-4V BBs** per puck (hollow-point skirt peel) |
 | Deployment | Mechanical setback @ **`R_open` ≈ 200 ft** |
 | Guidance | **None** in round — electronic fire at launcher only |
+| Propulsion (M1) | **Low-pressure** electric-primer tube charge; distributed/sequenced salvo |
 
 ### Fire control
 
@@ -59,10 +62,12 @@ Stryker, M2 Bradley, M113, LAV-25, MRAP — see [adapters/README.md](adapters/RE
 | Constant | Value |
 |----------|-------|
 | `R_open` | ~200 ft |
-| `R_band` | 250–500 ft (peak effect) |
-| `R_max` | ~500 yd |
+| `R_band` | 250–500 ft (peak cloud effect downrange) |
+| Outer threat envelope | **~500 yd** — swarm closed on asset; **not** effective projectile range |
+| Effective engagement | **150–350 yd** — primary low-pressure puck/flechette kill band |
+| Useful pattern density (optimal) | **~400–450 yd** — elevated turret / optimal elevation |
 | `V_0` | 900 m/s ± 45 m/s |
-| Pattern @ 350 ft | **~24.5 ft** diameter |
+| Pattern @ 350 ft (~117 yd) | **~24.5 ft** diameter |
 
 ### Salvo density @ 350 ft ([SALVO_SCENARIOS.md](../research/ballistics/SALVO_SCENARIOS.md))
 
@@ -111,7 +116,7 @@ Three-tier separation ([NETWORK_ARCHITECTURE.md](NETWORK_ARCHITECTURE.md)):
 | `predictor_effective_delay_ms` | **62.5** |
 | `pattern_overlap_with_predictor` | **0.894** |
 
-→ [FCU_EDGE_PREDICTOR_ONEPAGER.md](FCU_EDGE_PREDICTOR_ONEPAGER.md)
+See the full explanation and mermaid diagram in [FCU_EDGE_PREDICTOR_ONEPAGER.md](FCU_EDGE_PREDICTOR_ONEPAGER.md).
 
 **Degradation ladder:** Levels 0–4 — CAN tracks + predictor through manual az/el. Operator ARMED at every level.
 
@@ -155,6 +160,7 @@ From [MKFS_CORE_ENHANCEMENTS.md](MKFS_CORE_ENHANCEMENTS.md):
 | Multi-vehicle HIL (P9-007) | Not built |
 | Gossip radio / crypto | Architecture only |
 | Field prototype | Per [PROTOTYPE_ROADMAP.md](../prototypes/PROTOTYPE_ROADMAP.md) |
+| Range extension (exploring) | Puck boosters or mortar-style low-pressure launch — not M1 baseline; target better coverage toward ~500 yd envelope |
 
 ---
 

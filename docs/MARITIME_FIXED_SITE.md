@@ -34,7 +34,7 @@ Low-profile **2×1 ft strips** on conning tower or superstructure faces — as s
 
 ### Employment
 
-Terminal defense vs **low flyers and FPV** at 250–500 yd — same band as land. Not anti-missile. Complements Phalanx inner bubble on manned vessels.
+Terminal defense vs **low flyers and FPV** at **150–350 yd** effective range (same band as land). Threat envelope **~500 yd**. Not anti-missile. Complements Phalanx inner bubble on manned vessels.
 
 ### Reload
 

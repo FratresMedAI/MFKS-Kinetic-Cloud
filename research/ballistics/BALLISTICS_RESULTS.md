@@ -18,6 +18,8 @@
 | R_band_max | 498.7 | 152 | 0.2095 | 780.3 |
 | R_max | 1499.3 | 457 | 0.7307 | 585.7 |
 
+*`R_max` (457 m / ~500 yd) is outer **threat-envelope** physics reference in the model — not claimed effective engagement. **Effective engagement: 150–350 yd**; useful pattern density to **~400–450 yd** optimal. See [REQUIREMENTS.md](../../docs/REQUIREMENTS.md).*
+
 ## Mechanical R_open (Option D)
 
 - Release time: 0.078 s from primer

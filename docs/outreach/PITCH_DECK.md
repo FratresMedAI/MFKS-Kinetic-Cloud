@@ -23,7 +23,7 @@ FratresMedAI · Apache 2.0 Open Concept
 
 ## Slide 2 — The Problem
 
-- Drone swarms close to **200–500 yd**  
+- Drone swarms close inside **~500 yd** threat envelope; **150–350 yd** effective engagement  
 - EW degraded · missiles exhausted · no ship CIWS on land vehicles  
 - Need: **don't die** layer — volume over precision  
 

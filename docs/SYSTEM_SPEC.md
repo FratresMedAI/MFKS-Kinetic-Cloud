@@ -29,7 +29,7 @@
 | Launcher | **2×1 ft tile** (18 tubes); scales to **3×1**, multi-tile, **2×100** |
 | Profile | **≤ 150 mm** — lays on armor |
 | Fire control | **Individual tube addressing** — CAN bus |
-| Role | **Last-ditch / don't die** when swarm is inside ~500 yd |
+| Role | **Last-ditch / don't die** when swarm has closed inside **~500 yd** threat envelope |
 
 ---
 
@@ -38,8 +38,9 @@
 | Parameter | Requirement | Verification |
 |-----------|-------------|--------------|
 | `R_open` | ~200 ft (61 m) | T2-002 |
-| `R_band` | 250–500 ft peak effect | T2-002, ballistics model |
-| `R_max` | ~500 yd | T2-002 |
+| `R_band` | 250–500 ft peak cloud effect | T2-002, ballistics model |
+| `R_threat` | ~500 yd outer threat envelope | T2-002 — not effective projectile range |
+| `R_effective` | 150–350 yd | T2-002 — primary engagement band |
 | `V_0` | 900 m/s ± 45 m/s | T2-001 |
 | Pattern at 350 ft | 15–25 ft diameter | T2-002 |
 | Swarm density | ≥ 2 hits/m² (25-tube salvo) | T2-003 |

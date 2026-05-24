@@ -32,6 +32,7 @@ Out of scope for baseline design:
 - Explosive warheads or electronic fuzes in the round
 - Wired or wireless guidance of individual projectiles
 - Beyond-line-of-sight or precision single-target engagement
+- **High-pressure smokeless long-range** single-shot engagement (M1 is low-pressure distributed/sequenced terminal fire)
 
 ---
 
@@ -40,9 +41,11 @@ Out of scope for baseline design:
 | Constant | Symbol | Value | Notes |
 |----------|--------|-------|-------|
 | Cloud open distance | `R_open` | ~200 ft (61 m) | Mechanical deployment initiates |
-| Primary damage band | `R_band` | 250–500 ft (76–152 m) | Maximum flechette cloud effectiveness |
-| Max engagement range | `R_max` | ~500 yd (457 m) | Terminal defense envelope |
-| Design muzzle velocity | `V_0` | 900 m/s (2,953 ft/s) | Puck nominal; tile salvo |
+| Primary damage band (cloud) | `R_band` | 250–500 ft (76–152 m) | Peak flechette cloud effectiveness downrange |
+| Outer threat envelope | `R_threat` | ~500 yd (457 m) | Swarm has closed on defended asset — **not** effective projectile range |
+| Effective engagement range | `R_effective` | **150–350 yd** | Low-pressure distributed puck system; primary kill band |
+| Useful pattern density (optimal) | — | **~400–450 yd** | Elevated turret / optimal elevation setups |
+| Design muzzle velocity | `V_0` | 900 m/s (2,953 ft/s) | Puck nominal; tile salvo — not smokeless long-range |
 | Baseline tile | — | **2×2 ft** (610×610 mm) | One standard module face |
 
 ---
@@ -56,7 +59,7 @@ Out of scope for baseline design:
 | FR-001 | System shall use **purely kinetic** effectors with **no explosives** in the projectile, payload, or deployment mechanism | Design review confirms zero energetic materials in round; deployment is mechanical only |
 | FR-002 | Carrier projectile shall deploy a flechette / sub-projectile cloud via **mechanical range-band or timer-based** release | Cloud opens at `R_open`; lethal pattern peaks within `R_band`; baseline mechanism: Option D setback release ([DEPLOYMENT_MECHANISM.md](DEPLOYMENT_MECHANISM.md) §8) |
 | FR-003 | Baseline engagement shall target **drone swarms** at **area/volume** effect in **last-ditch** scenarios | Multi-tube salvo density sufficient; vehicle survival prioritized over single-target precision |
-| FR-004 | Maximum effective engagement range shall not exceed **~500 yards** | Ballistics model and test data confirm pattern utility out to `R_max` |
+| FR-004 | Effective engagement range shall be **150–350 yards**; useful pattern density to **~400–450 yards** in optimal setups. Outer threat envelope (swarm closed inside **~500 yd**) is a **planning boundary**, not claimed projectile range | Ballistics model confirms density at 350 ft (~117 yd); not high-pressure long-range single shots |
 | FR-005 | Projectile shall contain **no wired guidance** in baseline configuration | No trailing wire, no in-round RF transceiver |
 | FR-013 | System shall operate as **terminal “don’t die” defense** when primary AD is absent or defeated | Documented in [DESIGN_PHILOSOPHY.md](DESIGN_PHILOSOPHY.md); FCU `LAST_DITCH` preset |
 

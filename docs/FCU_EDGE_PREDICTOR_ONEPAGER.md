@@ -71,7 +71,7 @@ Regenerate numbers: `python scripts/latency_resilience_model.py`
 
 ## Why This Matters for Terminal Swarm Defense
 
-Multidirectional swarms overload centralized fusion and degrade TCP/IP. MKFS is **200–500 yd terminal kinetic** — tracks are stale, links are lossy, and the vehicle cannot wait for brigade round-trip. Local prediction + CAN commit keeps **`pattern_overlap_with_predictor` = 0.894** at the critic baseline while Tier 3 intent degrades gracefully.
+Multidirectional swarms overload centralized fusion and degrade TCP/IP. MKFS is a **close-in terminal** layer — threats inside **~500 yd** outer envelope; **effective range 150–350 yd** via low-pressure distributed tube fire. Tracks are stale, links are lossy, and the vehicle cannot wait for brigade round-trip. Local prediction + CAN commit keeps **`pattern_overlap_with_predictor` = 0.894** at the critic baseline while Tier 3 intent degrades gracefully.
 
 Operator **ARMED** required at every degradation level. No autonomous fire.
 

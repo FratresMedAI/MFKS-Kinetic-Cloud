@@ -13,7 +13,7 @@
 
 ## 1. Problem Statement
 
-Distributed terminal defense fails when **multidirectional swarms overload centralized fusion** or **TCP/IP links** add packet loss, retransmit storms, head-of-line blocking, and variable latency. At **60 mph** and **250 ms** track delay, uncompensated motion is **`baseline_reference.lead_error_ft` = 22.0 ft** — greater than **`pattern_radius_ft` = 12.3 ft**, so **`pattern_overlap_at_baseline` = 0.0** ([`latency_resilience_output.json`](../scripts/latency_resilience_output.json)). MKFS is **terminal kinetic** on the defended asset (200–500 yd), not BLOS cueing or base-wide fusion; this document defines **Tier 1 CAN-only** fire commit independent of low-latency C4ISR.
+Distributed terminal defense fails when **multidirectional swarms overload centralized fusion** or **TCP/IP links** add packet loss, retransmit storms, head-of-line blocking, and variable latency. At **60 mph** and **250 ms** track delay, uncompensated motion is **`baseline_reference.lead_error_ft` = 22.0 ft** — greater than **`pattern_radius_ft` = 12.3 ft**, so **`pattern_overlap_at_baseline` = 0.0** ([`latency_resilience_output.json`](../scripts/latency_resilience_output.json)). MKFS is a **close-in terminal / last-ditch** layer — relevant when threats have penetrated inside **~500 yd** (outer threat envelope); **effective engagement is 150–350 yd** (useful pattern density to **~400–450 yd** optimal). M1 uses **low-pressure distributed/sequenced** tube fire, not long-range high-pressure shots. Not BLOS cueing or base-wide fusion. This document defines **Tier 1 CAN-only** fire commit independent of low-latency C4ISR.
 
 ### TCP/IP limitations
 
@@ -103,7 +103,7 @@ Prefer **CAN-local** sources over TCP/IP when both exist.
 When tracks exceed sensor capacity (32 per [`ICD_DRONE_RADAR.md`](ICD_DRONE_RADAR.md)):
 
 1. Closure rate toward defended asset
-2. Range (250–500 yd band weighted higher)
+2. Range (**150–350 yd** effective engagement band weighted higher; threat may be tracked out to **~500 yd** envelope)
 3. EM confidence
 
 Engage top-N; coast lower-priority tracks. FCU logs overload; does not fault.

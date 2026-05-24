@@ -14,7 +14,7 @@
 
 ## 1. North Star
 
-MKFS is **last-ditch terminal defense** — flat tube batteries and pan-tilt turret dumps when the swarm is inside **~500 yd**. We improve **that**, not bolt pucks into Javelins or chain guns.
+MKFS is **last-ditch terminal defense** — flat tube batteries and pan-tilt turret dumps when the swarm has closed inside **~500 yd** (threat envelope). **Effective engagement: 150–350 yd.** We improve **that**, not bolt pucks into Javelins or chain guns.
 
 ---
 
@@ -47,7 +47,7 @@ Pan-tilt head stacks **3–4 decks** of 289 tubes. Firing all decks in one flat 
 | 2 | +50 ms | Fills gaps |
 | 3 | +100 ms | Saturation |
 
-Still kinetic-only; still inside 200–500 yd band.
+Still kinetic-only; still inside **150–350 yd** effective engagement band.
 
 ---
 
@@ -112,6 +112,8 @@ Address central-network critique: **kinetic commit never waits on TCP/IP** (D-01
 | AMR / Gustaf puck rounds | Different crew, different fight |
 | Javelin-form LR pod | Confuses program; not MKFS |
 | 1,500 yd sensor cueing LR | Sensor now cues **terminal tiles only** |
+
+**Exploring (not M1):** Range extension via small puck boosters or mortar-style low-pressure launch — better pattern toward **~500 yd threat envelope** without high recoil.
 
 ---
 
